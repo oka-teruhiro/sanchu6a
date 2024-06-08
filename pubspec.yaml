@@ -1,27 +1,216 @@
 name: sanch6a
 description: "三柱推命ver6"
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
-
+publish_to: 'none' # pub.dev に公開したい場合はこの行を削除してください。
 version: 1.0.0+1
 
 environment:
   sdk: '>=3.4.1 <4.0.0'
 
 dependencies:
+  go_router:
+  flutter_riverpod:
   flutter:
     sdk: flutter
-
-
+  flutter_localizations:
+    sdk: flutter
+    # 日本語化するために0.18.1 を　0.18.0 にする必要あり(2023.6.11)
+  intl: ^0.19.0
   cupertino_icons: ^1.0.8
+  connectivity_plus: ^6.0.3
+  # ■■■■■■■■■動画を再生するために必要なパッケージ■■■■■■■■■
+  #video_player: ^2.8.5
+  #youtube_player_flutter: ^9.0.1
+  youtube_player_iframe: ^5.1.2
+  provider: ^6.1.2
+  shared_preferences: ^2.2.3
+  webview_flutter: ^4.8.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
   flutter_lints: ^4.0.0
+  #  #スプラッシュ画面作成用
+  #  flutter_native_splash: ^2.2.7
+  #flutter_native_splash:
+  #  image: "assets/images/icon/icon_uranai_x1024.png"
+  #  color: "#000000"
+  #  color_dark: "#000000"
+  #  android_12:
+  #    icon_background_color: '#000000'
+  #    #image: 'assets/images/splash_android12.png'
+  #    icon_background_color_dark: '#000000'
+  #    #image_dark: 'assets/images/splash_android12.png'
 
+  #  #アプリアイコン作成用
+  #  flutter_launcher_icons: ^0.11.0
+  #flutter_icons:
+  #  android: true
+  #  ios: true
+  #  remove_alpha_ios: true
+  #  image_path: "assets/images/icon/icon_uranai_x512.png"
+  #  min_sdk_android: 21
+  #  adaptive_icon_background: '#FFFFFF'
+  #  adaptive_icon_foreground: "assets/images/icon/icon_uranai_x512.png"
 
 flutter:
-
   uses-material-design: true
+  assets:
+    - assets/
+    - assets/images/main/gogyou1.png
+    - assets/images/main/gogyou2.jpg
+    - assets/images/main/gogyou3.jpg
+    - assets/images/main/taxi.png
+    - assets/images/main/取説4a.jpg
+    - assets/images/main/取説4b.jpg
+    - assets/images/main/取説4c.jpg
+    - assets/images/main/取説4d.jpg
+    - assets/images/main/取説4e.jpg
+    - assets/images/main/取説4f.jpg
+    - assets/images/main/取説4g.jpg
+    - assets/images/main/取説5a.jpg
+    - assets/images/main/取説5b.jpg
+    - assets/images/main/取説5d.jpg
+    - assets/images/nikkan/甲_大樹.jpg
+    - assets/images/nikkan/甲_木陰.jpg
+    - assets/images/nikkan/丁_キャンドル.jpg
+    - assets/images/nikkan/丁_燃える炎.jpg
+    - assets/images/nikkan/丙_太陽.jpg
+    - assets/images/nikkan/丙_朝日.jpg
+    - assets/images/nikkan/乙_からみつく.jpg
+    - assets/images/nikkan/乙_イラスト１.jpg
+    - assets/images/nikkan/壬_支流.jpg
+    - assets/images/nikkan/壬_海.jpg
+    - assets/images/nikkan/己_畑土.jpg
+    - assets/images/nikkan/己_陶芸.jpg
+    - assets/images/nikkan/庚_剣.jpg
+    - assets/images/nikkan/庚_鍛える.jpg
+    - assets/images/nikkan/戊_岩山.jpg
+    - assets/images/nikkan/戊_石垣.jpg
+    - assets/images/nikkan/癸_潤う.jpg
+    - assets/images/nikkan/癸_雲雨.jpg
+    - assets/images/nikkan/辛_宝石.jpg
+    - assets/images/nikkan/辛_王冠.jpg
+    - assets/images/tentitokugou/anehaturu.jpg
+    - assets/images/tentitokugou/anehaturu1.jpg
+    - assets/images/tentitokugou/anehaturu2.jpg
+    - assets/images/tuuhenbosi/t0.png
+    - assets/images/tuuhenbosi/t1.png
+    - assets/images/tuuhenbosi/t2.png
+    - assets/images/tuuhenbosi/t3.png
+    - assets/images/tuuhenbosi/t4.png
+    - assets/images/tuuhenbosi/t5.png
+    - assets/images/tuuhenbosi/t6.png
+    - assets/images/tuuhenbosi/t7.png
+    - assets/images/tuuhenbosi/t8.png
+    - assets/images/tuuhenbosi/t9.png
+    - assets/images/tuuhenbosi/通変星概要1.jpg
+    - assets/images/tuuhenbosi/通変星概要2.jpg
+    - assets/images/tuuhenbosi/通変星概要3.jpg
+    - assets/images/tuuhenbosi/通変星概要4.jpg
+    - assets/images/tuuhenbosi/通変星概要5.jpg
+    - assets/images/tuuhenbosi/通変星概要6.jpg
+    - assets/images/tuuhenbosi/通変星概要7.jpg
+    - assets/images/tuuhenbosi/通変星蔵干1.jpg
+    - assets/images/tuuhenbosi/通変星蔵干2.jpg
+    - assets/images/tuuhenbosi/通変星蔵干3.jpg
+    - assets/images/tuuhenbosi/通変星蔵干4.jpg
+    - assets/images/tuuhenbosi/通変星蔵干5.jpg
+    - assets/images/tuuhenbosi/通変星蔵干6.jpg
+    - assets/images/tuuhenbosi/通変星蔵干7.jpg
+    - assets/images/tuuhenbosi/通変星蔵干8.jpg
+    - assets/images/tuuhenbosi/通変星算出2.jpg
+    - assets/images/tuuhenbosi/通変星算出3.jpg
+    - assets/images/tuuhenbosi/通変星算出4.jpg
+    - assets/images/tuuhenbosi/通変星算出5.jpg
+    - assets/images/tuuhenbosi/通変星1.jpg
+    - assets/images/tuuhenbosi/通変星2.jpg
+    - assets/images/tuuhenbosi/通変星3a.jpg
+    - assets/images/tuuhenbosi/通変星3b.jpg
+    - assets/images/tuuhenbosi/通変星4.jpg
+    - assets/images/tuuhenbosi/通変星5.jpg
+    - assets/images/tuuhenbosi/通変星6.jpg
+    - assets/images/tuuhenbosi/通変星7.jpg
+    - assets/images/tuuhenbosi/通変星8.jpg
+    - assets/images/tuuhenbosi/通変星9.jpg
+    - assets/images/tuuhenbosi/通変星10.jpg
+    - assets/images/tuuhenbosi/通変星11.jpg
+    - assets/images/tuuhenbosi/通変星12.jpg
+    - assets/images/tuuhenbosi/通変星13.jpg
+    - assets/images/tuuhenbosi/通変星14.jpg
+    - assets/images/tuuhenbosi/通変星15.jpg
+    - assets/images/tuuhenbosi/通変星16.jpg
+    - assets/images/tuuhenbosi/通変星17.jpg
+    - assets/images/tuuhenbosi/通変星18.jpg
+    - assets/images/tuuhenbosi/通変星19.jpg
+    - assets/images/tuuhenbosi/通変星20.jpg
+    - assets/images/quiz/Q001/A0010.png
+    - assets/images/quiz/Q001/A0011.png
+    - assets/images/quiz/Q001/A0012.png
+    - assets/images/quiz/Q001/Q001.png
+    - assets/images/quiz/Q002/Q002.png
+    - assets/images/quiz/Q002/A0020.png
+    - assets/images/quiz/Q003/Q003.png
+    - assets/images/quiz/Q003/A0030.png
+    - assets/images/quiz/Q003/A0031.png
+    - assets/images/quiz/Q004/Q004.png
+    - assets/images/quiz/Q004/A0040.png
+    - assets/images/quiz/Q004/A0041.png
+    - assets/images/quiz/Q005/Q005.png
+    - assets/images/quiz/Q005/A0050.png
+    - assets/images/quiz/Q005/A0051.png
+    - assets/images/quiz/Q005/A0052.png
+    - assets/images/quiz/Q006/Q006.png
+    - assets/images/quiz/Q006/A0060.png
+    - assets/images/quiz/Q006/A0061.png
+    - assets/images/quiz/Q006/A0062.png
+    - assets/images/quiz/Q007/Q007.png
+    - assets/images/quiz/Q007/A0070.png
+    - assets/images/quiz/Q007/A0071.png
+    - assets/images/quiz/Q007/A0072.png
+    - assets/images/juuniun/上流下流.jpg
+    - assets/images/juuniun/エレベータ階段.jpg
+    - assets/images/juuniun/大きい石小さい石.jpg
+    - assets/images/juuniun/自分の荷をあげる.jpg
+    - assets/images/juuniun/十二運の強弱.jpg
+    - assets/images/juuniun/十二運の読み.jpg
+    - assets/images/juuniun/十二運と一生1.jpg
+    - assets/images/juuniun/十二運と一生2.jpg
+    - assets/images/juuniun/十二運の出し方.jpg
+    - assets/images/juuniun/四旺.jpg
+    - assets/images/juuniun/四衰.jpg
+    - assets/images/juuniun/四旺と四衰.jpg
+    - assets/images/juuniun/宇多田ヒカル.jpg
+    - assets/images/juuniun/宇多田ヒカル命式.jpg
+    - assets/images/juuniun/宇多田ヒカル十二運.jpg
+    - assets/images/juuniun/四旺四衰特徴.jpg
+    - assets/images/juuniun/12運_各論.jpg
+    - assets/images/juuniun/12運_月柱の影響.jpg
+    - assets/images/juuniun/12運_胎.jpg
+    - assets/images/juuniun/12運_養.jpg
+    - assets/images/juuniun/12運_長.jpg
+    - assets/images/juuniun/12運_沐.jpg
+    - assets/images/juuniun/12運_冠.jpg
+    - assets/images/juuniun/12運_建.jpg
+    - assets/images/juuniun/12運_帝.jpg
+    - assets/images/juuniun/12運_衰.jpg
+    - assets/images/juuniun/12運_病.jpg
+    - assets/images/juuniun/12運_死.jpg
+    - assets/images/juuniun/12運_墓.jpg
+    - assets/images/juuniun/12運_絶.jpg
+    - assets/images/juuniun/12運_四旺四衰バランス.jpg
+    - assets/images/0.jpg
+    - assets/images/1.jpg
+    - assets/images/juuniun/12胎.jpg
+    - assets/images/juuniun/12養.jpg
+    - assets/images/juuniun/12長.jpg
+    - assets/images/juuniun/12沐.jpg
+    - assets/images/juuniun/12冠.jpg
+    - assets/images/juuniun/12建.jpg
+    - assets/images/juuniun/12帝.jpg
+    - assets/images/juuniun/12衰.jpg
+    - assets/images/juuniun/12病.jpg
+    - assets/images/juuniun/12死.jpg
+    - assets/images/juuniun/12墓.jpg
+    - assets/images/juuniun/12絶.jpg
+    - assets/images/juuniun/12運と地上生活.jpg
 
