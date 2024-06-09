@@ -1,71 +1,75 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sanch6a/page_a.dart';
+import 'package:sanch6a/page_b.dart';
+import 'package:sanch6a/page_c.dart';
 
-void main() {
-  runApp(const MyApp());
+main() {
+  // アプリ
+  const app = MaterialApp(home: Root(),);
+
+  // プロバイダースコープでアプリを囲む
+  const scope = ProviderScope(child: app);
+  runApp(scope);
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+// プロバイダー
+final indexProvider = StateProvider((ref) {
+  // 変化させたいデータ => 0, 1, 2
+  return 0;
+},);
+
+class Root extends ConsumerWidget {
+  const Root({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+  Widget build(BuildContext context, WidgetRef ref) {
+    // インデックスを手に入れる
+    final index = ref.watch(indexProvider);
+
+    // アイテムたち
+    const items = [
+
+      BottomNavigationBarItem(
+        icon: Icon(Icons.person),
+        label: 'アイテムA',
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+
+      BottomNavigationBarItem(
+        icon: Icon(Icons.home),
+        label: 'アイテムB',
+      ),
+
+      BottomNavigationBarItem(
+        icon: Icon(Icons.settings),
+        label: 'アイテムC',
+      ),
+    ];
+
+    final bar = BottomNavigationBar(
+      items: items,
+      backgroundColor: Colors.red,
+      selectedItemColor: Colors.white,
+      unselectedItemColor: Colors.black,
+      currentIndex: index,
+      onTap: (index) {
+        // タップされたとき　インデックスを変更する
+        ref.read(indexProvider.notifier).state = index;
+      },
     );
-  }
-}
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+    // 画面たち
+    final pagrs = [
+      PageA(),
+      PageB(),
+      PageC(),
 
+    ];
 
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'タップしてみて:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      body: pagrs[index],
+      bottomNavigationBar: bar,
     );
   }
 }
