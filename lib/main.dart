@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'page_a.dart';
 import 'page_b.dart';
 import 'page_c.dart';
@@ -13,9 +14,21 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      // DatePickerを日本語化する
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en'),
+        Locale('ja'),
+      ],
+      locale: const Locale('ja', 'JP'),
+      // 日本語化ここまで
       title: '天運三柱推命',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+      theme: ThemeData.dark(
+        //primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(),
     );
