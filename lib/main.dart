@@ -1,75 +1,84 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:sanch6a/page_a.dart';
-import 'package:sanch6a/page_b.dart';
-import 'package:sanch6a/page_c.dart';
+import 'page_a.dart';
+import 'page_b.dart';
+import 'page_c.dart';
 
-main() {
-  // アプリ
-  const app = MaterialApp(home: Root(),);
-
-  // プロバイダースコープでアプリを囲む
-  const scope = ProviderScope(child: app);
-  runApp(scope);
+void main() {
+  runApp(const MyApp());
 }
 
-// プロバイダー
-final indexProvider = StateProvider((ref) {
-  // 変化させたいデータ => 0, 1, 2
-  return 0;
-},);
-
-class Root extends ConsumerWidget {
-  const Root({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    // インデックスを手に入れる
-    final index = ref.watch(indexProvider);
-
-    // アイテムたち
-    const items = [
-
-      BottomNavigationBarItem(
-        icon: Icon(Icons.person),
-        label: 'アイテムA',
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: '天運三柱推命',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
       ),
-
-      BottomNavigationBarItem(
-        icon: Icon(Icons.home),
-        label: 'アイテムB',
-      ),
-
-      BottomNavigationBarItem(
-        icon: Icon(Icons.settings),
-        label: 'アイテムC',
-      ),
-    ];
-
-    final bar = BottomNavigationBar(
-      items: items,
-      backgroundColor: Colors.red,
-      selectedItemColor: Colors.white,
-      unselectedItemColor: Colors.black,
-      currentIndex: index,
-      onTap: (index) {
-        // タップされたとき　インデックスを変更する
-        ref.read(indexProvider.notifier).state = index;
-      },
+      home: const MyHomePage(),
     );
+  }
+}
 
-    // 画面たち
-    final pagrs = [
-      PageA(),
-      PageB(),
-      PageC(),
+class MyHomePage extends StatefulWidget {
+  final int currentIndex;
 
-    ];
+  const MyHomePage({super.key, this.currentIndex = 0}); // currentIndexを追加
 
+  @override
+  MyHomePageState createState() => MyHomePageState();
+}
+
+class MyHomePageState extends State<MyHomePage> {
+  late int _currentIndex;
+
+  @override
+  void initState() {
+    super.initState();
+    _currentIndex = widget.currentIndex;
+  }
+
+  final List<Widget> _children = [
+    const PageA(),
+    const PageB(),
+    const PageC(),
+  ];
+
+  void onTabTapped(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
-      body: pagrs[index],
-      bottomNavigationBar: bar,
+      body: _children[_currentIndex],
+      bottomNavigationBar: _currentIndex == 0
+          ? null
+          : BottomNavigationBar(
+              backgroundColor: Colors.red,
+              selectedItemColor: Colors.white,
+              unselectedItemColor: Colors.black,
+              onTap: onTabTapped,
+              currentIndex: _currentIndex,
+              items: const [
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.cake),
+                  label: '誕生日入力',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.person),
+                  label: '性格',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.settings),
+                  label: '天運の年',
+                )
+              ],
+            ),
     );
   }
 }
