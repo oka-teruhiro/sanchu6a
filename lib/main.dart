@@ -3,6 +3,10 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'page_a.dart';
 import 'page_b.dart';
 import 'page_c.dart';
+import 'page_d.dart';
+import 'page_e.dart';
+import 'page_f.dart';
+import 'page_g.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,8 +32,8 @@ class MyApp extends StatelessWidget {
       // 日本語化ここまで
       title: '天運三柱推命',
       theme: ThemeData.dark(
-        //primarySwatch: Colors.blue,
-      ),
+          //primarySwatch: Colors.blue,
+          ),
       home: const MyHomePage(),
     );
   }
@@ -57,6 +61,10 @@ class MyHomePageState extends State<MyHomePage> {
     const PageA(),
     const PageB(),
     const PageC(),
+    const PageD(),
+    const PageE(),
+    const PageF(),
+    const PageG(),
   ];
 
   void onTabTapped(int index) {
@@ -72,24 +80,41 @@ class MyHomePageState extends State<MyHomePage> {
       bottomNavigationBar: _currentIndex == 0
           ? null
           : BottomNavigationBar(
-              backgroundColor: Colors.red,
+              type: BottomNavigationBarType.fixed,
+              backgroundColor: Colors.white24,
               selectedItemColor: Colors.white,
-              unselectedItemColor: Colors.black,
+              unselectedItemColor: Colors.pinkAccent,
               onTap: onTabTapped,
               currentIndex: _currentIndex,
               items: const [
                 BottomNavigationBarItem(
                   icon: Icon(Icons.cake),
-                  label: '誕生日入力',
+                  label: '誕生日',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.trending_up),
+                  label: '今日の運勢',
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.person),
                   label: '性格',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.settings),
+                  icon: Icon(Icons.upload),
                   label: '天運の年',
-                )
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.table_chart),
+                  label: '命式表',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.pie_chart),
+                  label: 'チャート',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.supervisor_account),
+                  label: '相性',
+                ),
               ],
             ),
     );

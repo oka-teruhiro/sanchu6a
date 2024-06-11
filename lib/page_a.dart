@@ -57,6 +57,7 @@ class PageA extends StatelessWidget {
   int seiGatu = 1;
   int seiNiti = 1;
 
+
   @override
   void initState() {
     super.initState();
@@ -265,7 +266,7 @@ class PageA extends StatelessWidget {
                           ),
                         ),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             // 生年月日表示欄
@@ -333,9 +334,9 @@ class PageA extends StatelessWidget {
                                 child: const Text(
                                   style: TextStyle(
                                     height: -0.2,
-                                    fontWeight: FontWeight.bold,
+                                    fontWeight: FontWeight.normal,
                                     color: Colors.white,
-                                    fontSize: 12,
+                                    fontSize: 14,
                                   ),
                                   '鑑定結果',
                                 ),
