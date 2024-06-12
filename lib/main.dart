@@ -93,7 +93,7 @@ class MyHomePageState extends State<MyHomePage> {
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.trending_up),
-                  label: '今日の運勢',
+                  label: '運勢',
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.person),
@@ -101,7 +101,7 @@ class MyHomePageState extends State<MyHomePage> {
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.upload),
-                  label: '天運の年',
+                  label: '天運年',
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.table_chart),
@@ -109,7 +109,7 @@ class MyHomePageState extends State<MyHomePage> {
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.pie_chart),
-                  label: 'チャート',
+                  label: 'ﾁｬｰﾄ',
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.supervisor_account),

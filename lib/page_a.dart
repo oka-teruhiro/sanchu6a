@@ -1,10 +1,12 @@
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'main.dart';
-
 
 class PageA extends StatefulWidget {
   const PageA({super.key});
@@ -24,6 +26,22 @@ class _PageAState extends State<PageA> {
 class PageA extends StatelessWidget {
   const PageA({super.key});*/
 
+  // 鑑定ボタンの色
+  // final List<String> colerButton = ['0xFFFFFFFF', '0xFF1E88E5',] ;
+  List<int> color1 = [
+    0xFF000000,
+    0xFF000000,
+    0xFF000000,
+    0xFF000000,
+    0xFF000000,
+  ];
+  List<int> color2 = [
+    0xFF000000,
+    0xFF000000,
+    0xFF000000,
+    0xFF000000,
+    0xFF000000,
+  ];
   String _birthday = '';
   String _birthdaya = '2000-01-01';
   String birthdayHyouji = '';
@@ -56,7 +74,6 @@ class PageA extends StatelessWidget {
   int seiNen = 2000;
   int seiGatu = 1;
   int seiNiti = 1;
-
 
   @override
   void initState() {
@@ -107,8 +124,12 @@ class PageA extends StatelessWidget {
       _birthday = _birthD[i];
       if (_birthday == '生年月日') {
         birthdayHyouji = '$j : 生年月日 ?　 ';
+        color1[i] = 0xFF000000;
+        color2[i] = 0xFF000000;
       } else {
         birthdayHyouji = '$j : $_birthday 生';
+        color1[i] = 0xFF1E88E5;
+        color2[i] = 0xFFFFFFFF;
       }
       _birthH.removeAt(i);
       _birthH.insert(i, birthdayHyouji);
@@ -324,18 +345,18 @@ class PageA extends StatelessWidget {
                               width: 80,
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.blue, //背景色
+                                  backgroundColor: Color(color1[index]), //背景色
                                   padding: const EdgeInsets.all(4), //パディング
                                   alignment: Alignment.center,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(4.0),
                                   ),
                                 ),
-                                child: const Text(
+                                child: Text(
                                   style: TextStyle(
                                     height: -0.2,
                                     fontWeight: FontWeight.normal,
-                                    color: Colors.white,
+                                    color: Color(color2[index]),
                                     fontSize: 14,
                                   ),
                                   '鑑定結果',
@@ -353,7 +374,10 @@ class PageA extends StatelessWidget {
                                         seinengappiMojia.substring(8, 10));
                                     Navigator.pushReplacement(
                                       context,
-                                      MaterialPageRoute(builder: (context) =>  const MyHomePage(currentIndex: 1)),
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const MyHomePage(
+                                                  currentIndex: 1)),
                                     );
                                     /*Navigator.push(
                                       context,
@@ -453,7 +477,9 @@ class PageA extends StatelessWidget {
                   },
                 ),
               ),
-              Expanded(flex: 2, child: Image.asset('assets/images/main/gogyou3.jpg')),
+              Expanded(
+                  flex: 2,
+                  child: Image.asset('assets/images/main/gogyou3.jpg')),
             ],
           ),
         ),
@@ -490,100 +516,198 @@ class PageA extends StatelessWidget {
         context: context,
         builder: (BuildContext context) {
           return SizedBox(
-            height: 260,
-            child: Column(
-              children: [
-                // iOS タイプのDatePickerを表示
-                SizedBox(
-                  height: 200,
-                  child: CupertinoDatePicker(
-                    backgroundColor: Colors.black54,
-                    initialDateTime: date9,
-                    minimumYear: 1901,
-                    maximumYear: 2199,
-                    mode: CupertinoDatePickerMode.date,
-                    onDateTimeChanged: (newDate) {
-                      _birthday = DateFormat('yyyy/MM/dd').format(newDate);
-                      birthdayHyouji = '($j : $_birthday 生';
-                      setState(() {});
-                    },
+            height: 280,
+            child: Container(
+              color: Colors.white12,
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 20,
                   ),
-                ),
+                  // iOS タイプのDatePickerを表示
+                  SizedBox(
+                    height: 200,
+                    child: CupertinoDatePicker(
+                      backgroundColor: Colors.black54,
+                      initialDateTime: date9,
+                      minimumYear: 1901,
+                      maximumYear: 2199,
+                      mode: CupertinoDatePickerMode.date,
+                      onDateTimeChanged: (newDate) {
+                        _birthday = DateFormat('yyyy/MM/dd').format(newDate);
+                        birthdayHyouji = '($j : $_birthday 生';
+                        setState(() {});
+                      },
+                    ),
+                  ),
 
-                // 「キャンセル」「削除」「登録」ボタン
-                SizedBox(
-                  //color: Colors.blue,
-                  height: 40,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      // キャンセル　ボタン
-                      TextButton(
-                        child: const Text(
-                          'キャンセル',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        onPressed: () {
-                          _birthday = birthdayOld;
-                          if (_birthday == '生年月日') {
-                            birthdayHyouji = '$j : 生年月日 ?';
-                          } else {
-                            birthdayHyouji = '$j : $_birthday 生';
-                          }
-                          setState(() {});
-                          Navigator.of(context).pop();
-                        },
-                      ),
-
-                      // 「削除」ボタン
-                      TextButton(
+                  // 「キャンセル」「削除」「登録」ボタン
+                  SizedBox(
+                    //color: Colors.blue,
+                    height: 40,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        // キャンセル　ボタン
+                        TextButton(
                           child: const Text(
-                            '削除',
+                            'キャンセル',
                             style: TextStyle(
+                              fontSize: 16,
                               color: Colors.white,
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.normal,
                             ),
                           ),
-                          onPressed: () async {
-                            _birthday = _birthO[i];
+                          onPressed: () {
+                            _birthday = birthdayOld;
                             if (_birthday == '生年月日') {
+                              birthdayHyouji = '$j : 生年月日 ?';
                             } else {
+                              birthdayHyouji = '$j : $_birthday 生';
+                            }
+                            setState(() {});
+                            Navigator.of(context).pop();
+                          },
+                        ),
+
+                        // 「削除」ボタン
+                        TextButton(
+                            child: const Text(
+                              '削除',
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.white,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                            onPressed: () async {
+                              _birthday = _birthO[i];
+                              if (_birthday == '生年月日') {
+                              } else {
+                                //var result =
+                                await showDialog<int>(
+                                  context: context,
+                                  barrierDismissible: false,
+                                  builder: (BuildContext context) {
+                                    // 削除のダイアログを表示
+                                    return AlertDialog(
+                                      backgroundColor: Colors.blue,
+                                      content: Text(
+                                          '$_birthday を削除しますか？',
+                                        style: const TextStyle(
+                                          fontSize: 16,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.normal,
+                                        ),
+                                      ),
+                                      actions: <Widget>[
+                                        // 「Cancel」ボタン
+                                        TextButton(
+                                            child: const Text(
+                                              'Cancel',
+                                              style: TextStyle(
+                                                fontSize: 16,
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.normal,
+                                              ),
+                                            ),
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            }),
+
+                                        // 「OK」ボタン
+                                        TextButton(
+                                            child: const Text(
+                                              '削除',
+                                              style: TextStyle(
+                                                fontSize: 16,
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.normal,
+                                              ),
+                                            ),
+                                            onPressed: () {
+                                              _removePrefItems(i);
+                                              Navigator.of(context).pop();
+                                              Navigator.of(context).pop();
+                                              color1[i] = 0xFF000000;
+                                              color2[i] = 0xFF000000;
+
+                                              setState(() {});
+                                            }),
+                                      ],
+                                    );
+                                  },
+                                );
+                              }
+                            }),
+
+                        // 「登録」　ボタン
+                        TextButton(
+                            child: const Text(
+                              '登録',
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.white,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                            onPressed: () async {
+                              //TODO;
+                              if (_birthday == '生年月日') {
+                                _birthday = DateFormat('yyyy/MM/dd')
+                                    .format(DateTime.now());
+                              } else {}
                               //var result =
                               await showDialog<int>(
                                 context: context,
                                 barrierDismissible: false,
                                 builder: (BuildContext context) {
-                                  // 削除のダイアログを表示
+                                  // 登録　ダイアログを表示する
                                   return AlertDialog(
-                                    content: Text('$_birthday を削除しますか？'),
+
+                                    backgroundColor: Colors.blue,
+                                    content: Text(
+                                        '$_birthday で登録しますか？',
+                                      style: const TextStyle(
+                                        fontSize: 16,
+                                        color: Colors.white
+                                      ),
+                                    ),
                                     actions: <Widget>[
-                                      // 「Cancel」ボタン
+                                      //「Cancel」ボタン
                                       TextButton(
                                           child: const Text(
                                             'Cancel',
                                             style: TextStyle(
+                                              fontSize: 16,
                                               color: Colors.white,
-                                              fontWeight: FontWeight.bold,
+                                              fontWeight: FontWeight.normal,
                                             ),
                                           ),
                                           onPressed: () {
+                                            setState(() {});
                                             Navigator.of(context).pop();
                                           }),
 
                                       // 「OK」ボタン
                                       TextButton(
                                           child: const Text(
-                                            'OK',
+                                            '登録',
                                             style: TextStyle(
+                                              fontSize: 16,
                                               color: Colors.white,
-                                              fontWeight: FontWeight.bold,
+                                              fontWeight: FontWeight.normal,
                                             ),
                                           ),
                                           onPressed: () {
-                                            _removePrefItems(i);
+                                            birthdayHyouji = ' : $_birthday 生';
+                                            birthdayOld = _birthday;
+                                            seinengappiMojia = _birthday;
+                                            color1[i] = 0xFF1E88E5;
+                                            color2[i] = 0xFFFFFFFF;
+
+                                            _setPrefItems(i);
+                                            setState(() {});
                                             Navigator.of(context).pop();
                                             Navigator.of(context).pop();
                                             setState(() {});
@@ -592,75 +716,12 @@ class PageA extends StatelessWidget {
                                   );
                                 },
                               );
-                            }
-                          }),
-
-                      // 「登録」　ボタン
-                      TextButton(
-                          child: const Text(
-                            '登録',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          onPressed: () async {
-                            //TODO;
-                            if (_birthday == '生年月日') {
-                              _birthday = DateFormat('yyyy/MM/dd')
-                                  .format(DateTime.now());
-                            } else {}
-                            //var result =
-                            await showDialog<int>(
-                              context: context,
-                              barrierDismissible: false,
-                              builder: (BuildContext context) {
-                                // 登録　ダイアログを表示する
-                                return AlertDialog(
-                                  content: Text('$_birthday で登録しますか？'),
-                                  actions: <Widget>[
-                                    //「Cancel」ボタン
-                                    TextButton(
-                                        child: const Text(
-                                          'Cancel',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                        onPressed: () {
-                                          setState(() {});
-                                          Navigator.of(context).pop();
-                                        }),
-
-                                    // 「OK」ボタン
-                                    TextButton(
-                                        child: const Text(
-                                          'OK',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                        onPressed: () {
-                                          birthdayHyouji = ' : $_birthday 生';
-                                          birthdayOld = _birthday;
-                                          seinengappiMojia = _birthday;
-                                          _setPrefItems(i);
-                                          setState(() {});
-                                          Navigator.of(context).pop();
-                                          Navigator.of(context).pop();
-                                          setState(() {});
-                                        }),
-                                  ],
-                                );
-                              },
-                            );
-                          }),
-                    ],
+                            }),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           );
         });
