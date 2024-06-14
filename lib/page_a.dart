@@ -1,11 +1,7 @@
-import 'dart:ui';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'main.dart';
 
 class PageA extends StatefulWidget {
@@ -16,18 +12,9 @@ class PageA extends StatefulWidget {
 }
 
 class _PageAState extends State<PageA> {
-  //@override
-  /*Widget build(BuildContext context) {
-    return const Placeholder();
-  }
-}
 
-
-class PageA extends StatelessWidget {
-  const PageA({super.key});*/
 
   // 鑑定ボタンの色
-  // final List<String> colerButton = ['0xFFFFFFFF', '0xFF1E88E5',] ;
   List<int> color1 = [
     0xFF000000,
     0xFF000000,
@@ -209,7 +196,7 @@ class PageA extends StatelessWidget {
         backgroundColor: Colors.black,
         appBar: AppBar(
           backgroundColor: Colors.white24,
-          title: const Text('天運三柱推命 ver.5.1.9',
+          title: const Text('天運三柱推命 ver.6.1.2',
               style: TextStyle(
                 color: Colors.pinkAccent,
                 fontWeight: FontWeight.bold,
@@ -249,7 +236,7 @@ class PageA extends StatelessWidget {
                 child: TextButton(
                   style: ButtonStyle(
                     foregroundColor:
-                        MaterialStateProperty.all<Color>(Colors.black),
+                        WidgetStateProperty.all<Color>(Colors.black),
                   ),
                   child: const Text(
                     'このアプリの使い方を見る',
@@ -376,8 +363,12 @@ class PageA extends StatelessWidget {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              const MyHomePage(
-                                                  currentIndex: 1)),
+                                              MyHomePage(
+                                                  currentIndex: 1,
+                                                seinenInt: seiNen,   // 6.1.2
+                                                seigatuInt: seiGatu, // 6.1.2
+                                                seinitiInt: seiNiti, // 6.1.2
+                                              )),
                                     );
                                     /*Navigator.push(
                                       context,
@@ -456,7 +447,7 @@ class PageA extends StatelessWidget {
                 child: TextButton(
                   style: ButtonStyle(
                     foregroundColor:
-                        MaterialStateProperty.all<Color>(Colors.black),
+                        WidgetStateProperty.all<Color>(Colors.black),
                   ),
                   child: const Text(
                     '易占クイズに挑戦する',

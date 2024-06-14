@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'kyou_unsei_page.dart';
 import 'page_a.dart';
-import 'page_b.dart';
 import 'page_c.dart';
 import 'page_d.dart';
 import 'page_e.dart';
@@ -34,15 +34,28 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark(
           //primarySwatch: Colors.blue,
           ),
-      home: const MyHomePage(),
+      home: const MyHomePage(
+        seinenInt: 2000, // 6.1.2
+        seigatuInt: 1,   // 6.1.2
+        seinitiInt: 1,   // 6.1.2
+      ),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
   final int currentIndex;
+  final int seinenInt;  // 6.1.2
+  final int seigatuInt; // 6.1.2
+  final int seinitiInt; // 6.1.2
 
-  const MyHomePage({super.key, this.currentIndex = 0}); // currentIndexを追加
+  const MyHomePage({
+    super.key,
+    this.currentIndex = 0,
+    required this.seinenInt,  // 6.1.2
+    required this.seigatuInt, // 6.1.2
+    required this.seinitiInt, // 6.1.2
+  }); // currentIndexを追加
 
   @override
   MyHomePageState createState() => MyHomePageState();
@@ -50,22 +63,18 @@ class MyHomePage extends StatefulWidget {
 
 class MyHomePageState extends State<MyHomePage> {
   late int _currentIndex;
+  late int _seinenInt;     // 6.1.2
+  late int _seigatuInt;    // 6.1.2
+  late int _seinitiInt;    // 6.1.2
 
   @override
   void initState() {
     super.initState();
     _currentIndex = widget.currentIndex;
+    _seinenInt = widget.seinenInt;  // 6.1.2
+    _seigatuInt = widget.seigatuInt; // 6.1.2
+    _seinitiInt =widget.seinitiInt;  // 6.1.2
   }
-
-  final List<Widget> _children = [
-    const PageA(),
-    const PageB(),
-    const PageC(),
-    const PageD(),
-    const PageE(),
-    const PageF(),
-    const PageG(),
-  ];
 
   void onTabTapped(int index) {
     setState(() {
@@ -75,8 +84,21 @@ class MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final List<Widget> children = [
+      const PageA(),
+      KyouUnseiPage(
+        seinenInt: _seinenInt,   // 6.1.2
+        seigatuInt: _seigatuInt, // 6.1.2
+        seinitiInt: _seinitiInt, // 6.1.2
+      ),
+      const PageC(),
+      const PageD(),
+      const PageE(),
+      const PageF(),
+      const PageG(),
+    ];
     return Scaffold(
-      body: _children[_currentIndex],
+      body: children[_currentIndex],
       bottomNavigationBar: _currentIndex == 0
           ? null
           : BottomNavigationBar(
