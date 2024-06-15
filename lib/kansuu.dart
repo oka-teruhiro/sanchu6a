@@ -1,5 +1,4 @@
 // 関数定義　十干から十干数を算出する
-//  c = zouKan(a, b)
 //  b = juKanNo( a )
 //   a: 十干を表す文字（'甲','乙',・・・,'癸'）
 //   b: 十干を表す数字（'0','1',・・・,'9' ）
@@ -26,6 +25,37 @@ juKanNo(String a) {
     b = 8;
   } else if (a == '癸') {
     b = 9;
+  } else {}
+  return b;
+}
+
+// 関数定義　十干から十干のよみがなを算出する
+//  b = juKanYomi( a )
+//   a: 十干を表す文字（'甲','乙',・・・,'癸'）
+//   b: 十干のよみがな（'きのえ','きのと',・・・,'みずのと' ）
+
+juKanYomi(String a) {
+  String b = 'みずのと';
+  if (a == '甲') {
+    b = 'きのえ';
+  } else if (a == '乙') {
+    b = 'きのと';
+  } else if (a == '丙') {
+    b = 'ひのえ';
+  } else if (a == '丁') {
+    b = 'ひのと';
+  } else if (a == '戊') {
+    b = 'つちのえ';
+  } else if (a == '己') {
+    b = 'つちのと';
+  } else if (a == '庚') {
+    b = 'かのえ';
+  } else if (a == '辛') {
+    b = 'かのと';
+  } else if (a == '壬') {
+    b = 'みずのえ';
+  } else if (a == '癸') {
+    b = 'みずのと';
   } else {}
   return b;
 }
@@ -61,7 +91,40 @@ juuniSiNo(String a) {
   } else if (a == '亥') {
     b = 11;
   } else {}
-  //b = 11;
+  return b;
+}
+
+// 関数定義　十二支から十二支のよみがなを算出する
+//  b = juuniSiYomi( a )
+//   a: 十二支を表す文字（'子','丑',・・・,'亥'）
+//   b: 十二支を表す数字（'0','1',・・・,'11' ）
+juuniSiYomi(String a) {
+  String b = 'い';
+  if (a == '子') {
+    b = 'ね';
+  } else if (a == '丑') {
+    b = 'うし';
+  } else if (a == '寅') {
+    b = 'とら';
+  } else if (a == '卯') {
+    b = 'う';
+  } else if (a == '辰') {
+    b = 'たつ';
+  } else if (a == '巳') {
+    b = 'み';
+  } else if (a == '午') {
+    b = 'うま';
+  } else if (a == '未') {
+    b = 'ひつじ';
+  } else if (a == '申') {
+    b = 'さる';
+  } else if (a == '酉') {
+    b = 'とり';
+  } else if (a == '戌') {
+    b = 'いぬ';
+  } else if (a == '亥') {
+    b = 'い';
+  } else {}
   return b;
 }
 

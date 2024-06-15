@@ -195,8 +195,8 @@ class _PageAState extends State<PageA> {
       child: Scaffold(
         backgroundColor: Colors.black,
         appBar: AppBar(
-          backgroundColor: Colors.white24,
-          title: const Text('天運三柱推命 ver.6.1.2',
+          backgroundColor: Colors.black12,
+          title: const Text('天運三柱推命 ver.6.1.3',
               style: TextStyle(
                 color: Colors.pinkAccent,
                 fontWeight: FontWeight.bold,

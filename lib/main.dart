@@ -103,7 +103,7 @@ class MyHomePageState extends State<MyHomePage> {
           ? null
           : BottomNavigationBar(
               type: BottomNavigationBarType.fixed,
-              backgroundColor: Colors.white24,
+              backgroundColor: Colors.black12,
               selectedItemColor: Colors.white,
               unselectedItemColor: Colors.pinkAccent,
               onTap: onTabTapped,
