@@ -141,11 +141,11 @@ class KyouUnseiPage extends StatelessWidget {
               backgroundColor: Colors.black,
               appBar: AppBar(
                 title: Text(
-                  model.nowMojiApp,
+                  '$seinenInt.$seigatuInt.$seinitiInt 生　の運勢',
                   style: const TextStyle(
+                    fontSize: 20,
                     color: Colors.redAccent,
                     fontWeight: FontWeight.bold,
-                    fontSize: 20,
                   ),
                 ),
               ),
@@ -246,7 +246,7 @@ class KyouUnseiPage extends StatelessWidget {
                                       ),
 
                                       // ■■■■■■■■■ 左上の生年月日の表示 ■■■■■■■■■
-                                      Transform.translate(
+                                      /*Transform.translate(
                                         offset: const Offset(0, 0),
                                         child: Text(
                                           '$seinenInt.$seigatuInt.$seinitiInt 生',
@@ -267,7 +267,7 @@ class KyouUnseiPage extends StatelessWidget {
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
-                                      ),
+                                      ),*/
                                       Transform.translate(
                                         offset: const Offset(238, 30),
                                         child: Text(
@@ -939,16 +939,27 @@ class KyouUnseiPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         SizedBox(
-                          width: 144,
+                          width: 200,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
+                              SizedBox(
+                                height: 32,
+                                child: Text(
+                                    model.nowMojiApp,
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              ),
                               Text(
                                 model.kitiKyou,
                                 style: const TextStyle(
                                   color: Colors.purpleAccent,
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 40,
+                                  fontSize: 32,
                                 ),
                               ),
                             ],
