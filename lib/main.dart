@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import '../meisiki_chart_page.dart';
 import 'kyou_unsei_page.dart';
 import 'page_a.dart';
 import 'page_c.dart';
 import 'page_d.dart';
 import 'page_e.dart';
-import 'page_f.dart';
+//import 'page_f.dart';
 import 'page_g.dart';
 
 void main() {
@@ -94,7 +95,12 @@ class MyHomePageState extends State<MyHomePage> {
       const PageC(),
       const PageD(),
       const PageE(),
-      const PageF(),
+      MeisikiChartPage(          // 6.1.8
+        seinenInt: _seinenInt,   // 6.1.8
+        seigatuInt: _seigatuInt, // 6.1.8
+        seinitiInt: _seinitiInt, // 6.1.8
+      ),
+      //const PageF(),
       const PageG(),
     ];
     return Scaffold(
