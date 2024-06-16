@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:sanch6a/meisiki_page.dart';
 import '../meisiki_chart_page.dart';
 import 'kyou_unsei_page.dart';
 import 'page_a.dart';
@@ -94,7 +95,20 @@ class MyHomePageState extends State<MyHomePage> {
       ),
       const PageC(),
       const PageD(),
-      const PageE(),
+      MeisikiPage(                    // 6.1.9
+          nenchu: nenchu,             // 6.1.9
+          gechu: gechu,               // 6.1.9
+          nichu: nichu,               // 6.1.9
+          seinen: _seinenInt,         // 6.1.9
+          seigatu: _seigatuInt,       // 6.1.9
+          seiniti: _seinitiInt,       // 6.1.9
+          setuirinen: setuirinen,     // 6.1.9
+          setuirigatu: setuirigatu,   // 6.1.9
+          setuiriniti: setuiriniti,   // 6.1.9
+          setuiriji: setuiriji,       // 6.1.9
+          setuirihun: setuirihun,     // 6.1.9
+          setuirinitisuu: setuirinitisuu,   // 6.1.9
+      ),      // 6.1.9
       MeisikiChartPage(          // 6.1.8
         seinenInt: _seinenInt,   // 6.1.8
         seigatuInt: _seigatuInt, // 6.1.8
