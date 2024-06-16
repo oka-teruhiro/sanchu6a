@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-//import 'package:sanchu4b/output/meisiki_chart_page4.dart';
 import '../tuuhenbosi/tuhen_kaisetu.dart';
-
 import '../juuniun/juni_juuniun.dart';
 import '../juuniun/juni_sihei.dart';
 import '../juuniun/juni_siou.dart';
@@ -20,32 +18,14 @@ import 'kansuu.dart';
 import 'meisiki_chart_page.dart';
 
 class MeisikiPage extends StatefulWidget {
-  final String nenchu; //年柱
-  final String gechu; //月柱
-  final String nichu; //日柱
   final int seinen; //生年
   final int seigatu; //生月
   final int seiniti; //生日
-  final int setuirinen; //節入り年
-  final int setuirigatu; //節入り月
-  final int setuiriniti; //節入り日
-  final int setuiriji; //節入り時
-  final int setuirihun; //節入り分
-  final int setuirinitisuu; //節入り日からの日数（節入り日は第1日目）
   const MeisikiPage({
     super.key,
-    required this.nenchu,
-    required this.gechu,
-    required this.nichu,
     required this.seinen,
     required this.seigatu,
     required this.seiniti,
-    required this.setuirinen,
-    required this.setuirigatu,
-    required this.setuiriniti,
-    required this.setuiriji,
-    required this.setuirihun,
-    required this.setuirinitisuu,
   });
 
   @override
@@ -53,7 +33,16 @@ class MeisikiPage extends StatefulWidget {
 }
 
 class _MeisikiPageState extends State<MeisikiPage> {
-  //
+  String nenchuW = '甲子'; //6.1.10
+  String gechuW = '甲子'; //6.1.10
+  String nichuW = '甲子'; //6.1.10
+  String setuirinenW = '甲子'; //6.1.10
+  String setuirigatuW = '甲子'; //6.1.10
+  String setuirinitiW = '甲子'; //6.1.10
+  String setuirijiW = '17'; //6.1.10
+  String setuirihunW = '30'; //6.1.10
+  String setuirinitisuuW = '10'; //6.1.10
+  int setuirinitisuu = 10; //6.1.10
   int _counter = 0;
   String nenchu = '甲子'; //widget内で使う年柱
   String gechu = '甲子'; //widget内で使う月柱
@@ -151,7 +140,6 @@ class _MeisikiPageState extends State<MeisikiPage> {
       zenGo = _counter % 2;
     });
   }
-  //
 
   @override
   Widget build(BuildContext context) {
@@ -160,17 +148,24 @@ class _MeisikiPageState extends State<MeisikiPage> {
     seigatuInt = widget.seigatu;
     seinitiInt = widget.seiniti;
     
-    
-    setuirinenInt = widget.setuirinen;
-    setuirigatuInt = widget.setuirigatu;
-    setuirinitiInt = widget.setuiriniti;
-    setuirijiInt = widget.setuiriji;
-    setuirihunInt = widget.setuirihun;
-    setuirinitisuuInt = widget.setuirinitisuu;
-
-    nenchu = widget.nenchu;
-    gechu = widget.gechu;
-    nichu = widget.nichu;
+    nenchuW = meisikiA(seinenInt, seigatuInt, seinitiInt).substring(0, 2);      //6.1.10
+    gechuW = meisikiA(seinenInt, seigatuInt, seinitiInt).substring(2, 4);       //6.1.10
+    nichuW = meisikiA(seinenInt, seigatuInt, seinitiInt).substring(4, 6);       //6.1.10
+    setuirinenW = meisikiA(seinenInt, seigatuInt, seinitiInt).substring(6, 10); //6.1.10
+    setuirigatuW = meisikiA(seinenInt, seigatuInt, seinitiInt).substring(10, 12); //6.1.10
+    setuirinitiW = meisikiA(seinenInt, seigatuInt, seinitiInt).substring(12, 14); //6.1.10
+    setuirijiW = meisikiA(seinenInt, seigatuInt, seinitiInt).substring(14, 16); //6.1.10
+    setuirihunW = meisikiA(seinenInt, seigatuInt, seinitiInt).substring(17, 19); //6.1.10
+    setuirinitisuuW = meisikiA(seinenInt, seigatuInt, seinitiInt).substring(19, 21); //6.1.10
+    nenchu = nenchuW;                                                           // 6.1.10
+    gechu = gechuW;                                                             // 6.1.10
+    nichu = nichuW;                                                             // 6.1.10
+    setuirinenInt = int.parse(setuirinenW);                                     // 6.1.10
+    setuirigatuInt = int.parse(setuirigatuW);                                   // 6.1.10
+    setuirinitiInt = int.parse(setuirinitiW);                                   // 6.1.10
+    setuirijiInt = int.parse(setuirijiW);                                       // 6.1.10
+    setuirihunInt = int.parse(setuirihunW);                                     // 6.1.10
+    setuirinitisuu = int.parse(setuirinitisuuW);                                // 6.1.10
 
     nenchuNo[0] = rokujuKansiNoA(nenchu);
     if (seigatuInt == 2) {
@@ -1784,14 +1779,6 @@ class _MeisikiPageState extends State<MeisikiPage> {
                                                           const JuniJuuniun(),
                                                     ));
                                               },
-                                              /*onLongPress: () {
-                                                Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                      builder: (context) => MeisikiPage3(
-                                                          title: "oka", nenchu: '壬寅'),
-                                                    ));
-                                              },*/
                                             ),
                                           ),
                                         ),
@@ -1824,14 +1811,9 @@ class _MeisikiPageState extends State<MeisikiPage> {
                                               ),
                                             ),
                                             onPressed: () {
-                                              if (widget.setuirinitisuu == 1) {
+                                              if (setuirinitisuu == 1) {
                                                 _showSetuiri(context);
                                               } else {}
-                                              /*Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                    builder: (context) => const Setuiribi(),
-                                                  ));*/
                                             },
                                           ),
                                         ),
@@ -1868,32 +1850,9 @@ class _MeisikiPageState extends State<MeisikiPage> {
                                                       seinitiInt: seinitiInt,
                                                       seigatuInt: seigatuInt,
                                                       seinenInt: seinenInt,
-                                                      // nichu: nichu,
-                                                      // gechu: gechu,
-                                                      // nenchu: nenchu,
-                                                      // tuuhenbosiNenKan:
-                                                      //     tuuhenbosiNenKan,
-                                                      // tuuhenbosiNenSi:
-                                                      //     tuuhenbosiNenSi,
-                                                      // tuuhenbosiGetuKan:
-                                                      //     tuuhenbosiGetuKan,
-                                                      // tuuhenbosiGetuSi:
-                                                      //     tuuhenbosiGetuSi,
-                                                      // tuuhenbosiNitiKan:
-                                                      //     tuuhenbosiNitiKan,
-                                                      // tuuhenbosiNitiSi:
-                                                      //     tuuhenbosiNitiSi,
                                                     ),
                                                   ));
                                             },
-                                            /*onLongPress: () {
-                                                Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                      builder: (context) => MeisikiPage3(
-                                                          title: "oka", nenchu: '壬寅'),
-                                                    ));
-                                              },*/
                                           ),
                                         ),
                                       ),
@@ -1917,15 +1876,6 @@ class _MeisikiPageState extends State<MeisikiPage> {
                                               fontWeight: FontWeight.bold,
                                             ),
                                           ),
-                                          /*
-                                          Text('$_counter'),
-                                          Text('$zenGo'),
-                                          //Text('年柱：$nenchuNo'),
-                                          //Text('月柱：$gechuNo'),
-                                          Text('$nitiSiNo:$nitisi'),
-                                          Text('$gatuSiNo:$gatusi'),
-                                          Text('$nenSiNo:$nensi'),
-                                          */
                                         ],
                                       ),
                                     ),

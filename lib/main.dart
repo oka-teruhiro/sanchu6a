@@ -6,8 +6,6 @@ import 'kyou_unsei_page.dart';
 import 'page_a.dart';
 import 'page_c.dart';
 import 'page_d.dart';
-import 'page_e.dart';
-//import 'page_f.dart';
 import 'page_g.dart';
 
 void main() {
@@ -34,7 +32,6 @@ class MyApp extends StatelessWidget {
       // 日本語化ここまで
       title: '天運三柱推命',
       theme: ThemeData.dark(
-          //primarySwatch: Colors.blue,
           ),
       home: const MyHomePage(
         seinenInt: 2000, // 6.1.2
@@ -96,18 +93,9 @@ class MyHomePageState extends State<MyHomePage> {
       const PageC(),
       const PageD(),
       MeisikiPage(                    // 6.1.9
-          nenchu: nenchu,             // 6.1.9
-          gechu: gechu,               // 6.1.9
-          nichu: nichu,               // 6.1.9
           seinen: _seinenInt,         // 6.1.9
           seigatu: _seigatuInt,       // 6.1.9
           seiniti: _seinitiInt,       // 6.1.9
-          setuirinen: setuirinen,     // 6.1.9
-          setuirigatu: setuirigatu,   // 6.1.9
-          setuiriniti: setuiriniti,   // 6.1.9
-          setuiriji: setuiriji,       // 6.1.9
-          setuirihun: setuirihun,     // 6.1.9
-          setuirinitisuu: setuirinitisuu,   // 6.1.9
       ),      // 6.1.9
       MeisikiChartPage(          // 6.1.8
         seinenInt: _seinenInt,   // 6.1.8
