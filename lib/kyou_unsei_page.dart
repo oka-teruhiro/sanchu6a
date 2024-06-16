@@ -23,15 +23,17 @@ class KyouUnseiPage extends StatelessWidget {
     const int c2 = -1; // 白
     const int c3 = -1407770; // ピンク
 
-    double r1 = 36; // 日干の１階の円の中心の半径
-    double r2 = 72; // 日干の２階の円の中心の半径
-    double r3 = 108; // 日干の３階の円の中心の半径
-    double r4 = 112; // 日支の３階の円の中心の半径
-    double r5 = 74; // 日支の２階の円の中心の半径
-    double r6 = 36; // 日支の１階の円の中心の半径
-    double rrM = 24; //文字の大きさ
-    double rrM1 = 24; //日支１階２階のフォントサイズ
-    double rrM2 = 6; //日支１階２階の文字位置調整
+    double bbb = 1.6; // ToDo: 6.1.4 縮小倍率・全体の倍率
+    double bb = bbb;  // 6.1.4 縮小倍率
+    double r1 = 36/bb; // 日干の１階の円の中心の半径
+    double r2 = 72/bb; // 日干の２階の円の中心の半径
+    double r3 = 108/bb; // 日干の３階の円の中心の半径
+    double r4 = 112/bb; // 日支の３階の円の中心の半径
+    double r5 = 74/bb; // 日支の２階の円の中心の半径
+    double r6 = 36/bb; // 日支の１階の円の中心の半径
+    double rrM = 24/bb; //文字の大きさ
+    double rrM1 = 24/bb; //日支１階２階のフォントサイズ
+    double rrM2 = 6/bb; //日支１階２階の文字位置調整
 
     // 文字のセンター位置
     var centa2 = Offset((150 - rrM / 2), (130 - rrM / 2)); // 日干文字の中心座標
@@ -152,7 +154,7 @@ class KyouUnseiPage extends StatelessWidget {
                 children: [
                   Expanded(
                     child: Container(
-                      color: Colors.black,
+                      color: Colors.blue,  // todo:
                       child: SizedBox(
                         height: double.infinity,
                         width: double.infinity,
@@ -182,7 +184,9 @@ class KyouUnseiPage extends StatelessWidget {
                                         height: h2,
                                         child: CustomPaint(
                                           painter:
-                                              ShapePainter3(), // 日干と日支の固定円の描画
+                                              ShapePainter3(
+                                                bbb: bbb,
+                                              ), // 日干と日支の固定円の描画
                                         ),
                                       ),
                                       SizedBox(
@@ -193,6 +197,7 @@ class KyouUnseiPage extends StatelessWidget {
                                             // 日干と日支のV字の描画
                                             gogyou: model.gogyou,
                                             nitiSi: model.nitiSi,
+                                            bbb: bbb,  // 6.1.4
                                           ),
                                         ),
                                       ),
@@ -203,6 +208,7 @@ class KyouUnseiPage extends StatelessWidget {
                                           painter: ShapePainter5(
                                             tuhen: model.tuhen,
                                             gogyou: model.gogyou,
+                                            bbb: bbb,  // 6.1.4
                                           ), // 渡したい変数を引数に指定する
                                         ),
                                       ),
@@ -212,6 +218,7 @@ class KyouUnseiPage extends StatelessWidget {
                                         child: CustomPaint(
                                           painter: ShapePainter6(
                                             kei: model.kei,
+                                            bbb: bbb,  // 6.1.4
                                           ), // 渡したい変数を引数に指定する
                                         ),
                                       ),
@@ -222,6 +229,7 @@ class KyouUnseiPage extends StatelessWidget {
                                           painter: ShapePainter8(
                                             sigo: model.nowNitiSi,
                                             kei: model.kei,
+                                            bbb: bbb,  // 6.1.4
                                           ), // 渡したい変数を引数に指定する
                                         ),
                                       ),
@@ -232,6 +240,7 @@ class KyouUnseiPage extends StatelessWidget {
                                         child: CustomPaint(
                                           painter: ShapePainter7(
                                             sigo: model.nowNitiSi,
+                                            bbb: bbb,  // 6.1.4
                                           ), // 渡したい変数を引数に指定する
                                         ),
                                       ),
@@ -1109,18 +1118,26 @@ class KyouUnseiPage extends StatelessWidget {
 }
 
 class ShapePainter3 extends CustomPainter {
+  double bbb;       // 6.1.4
+
+  ShapePainter3({
+    Key? key,
+    required this.bbb
+});
+
   @override
   void paint(Canvas canvas, Size size) {
     var center1 = const Offset(150, 130); // 表面の中心座標
     var center2 = const Offset(150, 384); // 本質の中心座標
-    double r1 = 36; // 日干の１階の円の中心の半径
-    double r2 = 72; // 日干の２階の円の中心の半径
-    double r3 = 108; // 日干の３階の円の中心の半径
-    double r4 = 112; // 日支の３階の円の中心の半径
-    double r5 = 74; // 日支の２階の円の中心の半径
-    double rr1 = 18; // 小さい円の半径
-    double rr2 = 90; // 日干の大きい円の半径
-    double rr3 = 93; // 日支の大きな円の半径
+    double bb = bbb;   // 6.1.4 縮小倍率
+    double r1 = 36/bb; // 日干の１階の円の中心の半径
+    double r2 = 72/bb; // 日干の２階の円の中心の半径
+    double r3 = 108/bb; // 日干の３階の円の中心の半径
+    double r4 = 112/bb; // 日支の３階の円の中心の半径
+    double r5 = 74/bb; // 日支の２階の円の中心の半径
+    double rr1 = 18/bb; // 小さい円の半径
+    double rr2 = 90/bb; // 日干の大きい円の半径
+    double rr3 = 93/bb; // 日支の大きな円の半径
 
     final penWhite = Paint()
       ..color = Colors.white
@@ -1276,16 +1293,19 @@ class ShapePainter3 extends CustomPainter {
 class ShapePainter4 extends CustomPainter {
   int gogyou; // 五行
   int nitiSi; // 日支
+  double bbb;      // 6.1.4
   ShapePainter4({
     required this.gogyou,
     required this.nitiSi,
+    required this.bbb,  // 6.1.4
   });
   @override
   void paint(Canvas canvas, Size size) {
     var center1 = const Offset(150, 130); // 表面の中心座標
     var center2 = const Offset(150, 384); // 本質の中心座標
-    const lineLength1 = 120.0;
-    const lineLength2 = 130.0;
+    double bb = bbb;          // 6.1.4 縮小倍率
+    var lineLength1 = 120.0/bb; // 6.1.4
+    var lineLength2 = 130.0/bb; // 6.1.4
 
     final penWhite = Paint()
       ..color = Colors.white
@@ -1326,31 +1346,34 @@ class ShapePainter4 extends CustomPainter {
 class ShapePainter5 extends CustomPainter {
   int tuhen; // 日干
   int gogyou;
+  double bbb;      // 6.1.4
   ShapePainter5({
     required this.tuhen,
     required this.gogyou,
+    required this.bbb,  // 6.1.4
   }); //
   @override
   void paint(Canvas canvas, Size size) {
     var center1 = const Offset(150, 130); // 表面の中心座標
 
-    double rr1 = 18;
-    double r1 = 36;
-    double r2 = 72;
+    double bb = bbb;          // 6.1.4 縮小倍率
+    double rr1 = 18/bb;
+    double r1 = 36/bb;
+    double r2 = 72/bb;
     double rt;
     double gogyo2;
     int gogyo1;
 
     final penPink2 = Paint()
       ..color = Colors.purple
-      ..strokeWidth = 2.0;
+      ..strokeWidth = 2.0/bb;
     final penPink1 = Paint()
       ..color = Colors.pink
-      ..strokeWidth = 2.0;
+      ..strokeWidth = 2.0/bb;
 
     final penPink = Paint()
       ..color = Colors.purpleAccent
-      ..strokeWidth = 2.0;
+      ..strokeWidth = 2.0/bb;
 
     gogyo1 = tuhen % 2;
     if (gogyo1 == 0) {
@@ -1365,9 +1388,9 @@ class ShapePainter5 extends CustomPainter {
     double radianTu = (72 * (gogyo2 + gogyou) - 90) / 180 * pi;
     final centerTu = center1 + Offset(rt * cos(radianTu), rt * sin(radianTu));
 
-    canvas.drawCircle(centerTu, rr1 + 8, penPink2..style = PaintingStyle.fill);
-    canvas.drawCircle(centerTu, rr1 + 4, penPink1..style = PaintingStyle.fill);
-    canvas.drawCircle(centerTu, rr1 - 0, penPink..style = PaintingStyle.fill);
+    canvas.drawCircle(centerTu, rr1 + 8/bb, penPink2..style = PaintingStyle.fill);
+    canvas.drawCircle(centerTu, rr1 + 4/bb, penPink1..style = PaintingStyle.fill);
+    canvas.drawCircle(centerTu, rr1 - 0/bb, penPink..style = PaintingStyle.fill);
   }
 
   @override
@@ -1379,13 +1402,18 @@ class ShapePainter5 extends CustomPainter {
 // 日支の１階「刑」の薄い黒丸の描画
 class ShapePainter6 extends CustomPainter {
   String kei;
-  ShapePainter6({required this.kei});
+  double bbb;      // 6.1.4
+  ShapePainter6({
+    required this.kei,
+    required this.bbb,  // 6.1.4
+  });
   @override
   void paint(Canvas canvas, Size size) {
     var center2 = const Offset(150, 384); // 本質の中心座標
 
-    double r6 = 36; // 日支の１階の円の中心の半径
-    double rr1 = 18; // 小さい円の半径
+    double bb = bbb;          // 6.1.4 縮小倍率
+    double r6 = 36/bb; // 日支の１階の円の中心の半径
+    double rr1 = 18/bb; // 小さい円の半径
 
     List<String> keiL = [
       kei.substring(0, 1),
@@ -1479,30 +1507,35 @@ class ShapePainter6 extends CustomPainter {
 // 日支の２階ピンクの丸の描画
 class ShapePainter7 extends CustomPainter {
   int sigo; // 日し
-  ShapePainter7({required this.sigo}); // ■■■■■■■■■受け取る値を上記変数に代入
+  double bbb;      // 6.1.4
+  ShapePainter7({
+    required this.sigo,
+    required this.bbb,  // 6.1.4
+  }); // ■■■■■■■■■受け取る値を上記変数に代入
   @override
   void paint(Canvas canvas, Size size) {
     var center2 = const Offset(150, 384); // 本質の中心座標
 
-    double rr1 = 18;
-    double r5 = 74; // 日支の２階の円の中心の半径
+    double bb = bbb;          // 6.1.4 縮小倍率
+    double rr1 = 18/bb;
+    double r5 = 74/bb; // 日支の２階の円の中心の半径
 
     final penPink2 = Paint()
       ..color = Colors.purple
-      ..strokeWidth = 2.0;
+      ..strokeWidth = 2.0/bb;
     final penPink1 = Paint()
       ..color = Colors.pink
-      ..strokeWidth = 2.0;
+      ..strokeWidth = 2.0/bb;
 
     final penPink = Paint()
       ..color = Colors.purpleAccent
-      ..strokeWidth = 2.0;
+      ..strokeWidth = 2.0/bb;
 
     double radianSi = (30 * sigo + 90) / 180 * pi;
     final centerSi = center2 + Offset(r5 * cos(radianSi), r5 * sin(radianSi));
 
-    canvas.drawCircle(centerSi, rr1 + 8, penPink2..style = PaintingStyle.fill);
-    canvas.drawCircle(centerSi, rr1 + 4, penPink1..style = PaintingStyle.fill);
+    canvas.drawCircle(centerSi, rr1 + 8/bb, penPink2..style = PaintingStyle.fill);
+    canvas.drawCircle(centerSi, rr1 + 4/bb, penPink1..style = PaintingStyle.fill);
     canvas.drawCircle(centerSi, rr1 - 0, penPink..style = PaintingStyle.fill);
   }
 
@@ -1516,37 +1549,40 @@ class ShapePainter7 extends CustomPainter {
 class ShapePainter8 extends CustomPainter {
   String kei;
   int sigo;
+  double bbb;      // 6.1.4
   ShapePainter8({
     required this.kei,
     required this.sigo,
+    required this.bbb,  // 6.1.4
   });
   @override
   void paint(Canvas canvas, Size size) {
     var center2 = const Offset(150, 384); // 本質の中心座標
 
-    double r6 = 36; // 日支の１階の円の中心の半径
-    double rr1 = 18; // 小さい円の半径
+    double bb = bbb;          // 6.1.4 縮小倍率
+    double r6 = 36/bb; // 日支の１階の円の中心の半径
+    double rr1 = 18/bb; // 小さい円の半径
 
     final penPink2 = Paint()
       ..color = Colors.purple
-      ..strokeWidth = 2.0;
+      ..strokeWidth = 2.0/bb;
     final penPink1 = Paint()
       ..color = Colors.pink
-      ..strokeWidth = 2.0;
+      ..strokeWidth = 2.0/bb;
 
     final penPink = Paint()
       ..color = Colors.purpleAccent
-      ..strokeWidth = 2.0;
+      ..strokeWidth = 2.0/bb;
 
     double radianSi = (30 * sigo + 90) / 180 * pi;
     final centerSi = center2 + Offset(r6 * cos(radianSi), r6 * sin(radianSi));
 
     if (kei.substring(sigo, sigo + 1) == '刑') {
       canvas.drawCircle(
-          centerSi, rr1 + 4, penPink2..style = PaintingStyle.fill);
+          centerSi, rr1 + 4/bb, penPink2..style = PaintingStyle.fill);
       canvas.drawCircle(
           centerSi, rr1 + 0, penPink1..style = PaintingStyle.fill);
-      canvas.drawCircle(centerSi, rr1 - 4, penPink..style = PaintingStyle.fill);
+      canvas.drawCircle(centerSi, rr1 - 4/bb, penPink..style = PaintingStyle.fill);
     } else {}
   }
 

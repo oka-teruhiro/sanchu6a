@@ -1159,7 +1159,7 @@ class KyouUnseiModel extends ChangeNotifier {
     }
 //  支合・支冲等関係図を算出する
     // 解説２
-    moji[44] = '２．「日支」からみた今日の運勢';
+    moji[44] = '２．「日支」からみた $nowMoji の運勢';
     nitiSiMoji = meisikiA(seinenInt, seigatuInt, seinitiInt).substring(5, 6);  // 6.1.3 日支を算出
     nitiSiYomi = juuniSiYomi(nitiSiMoji);                                      // 6.1.3 日支のよみを算出
     moji[45] = '　　生年月日の日支：$nitiSiMoji（$nitiSiYomi）';                   // 6.1.3
