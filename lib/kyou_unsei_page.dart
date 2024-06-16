@@ -17,13 +17,28 @@ class KyouUnseiPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<int> indexA = [
+      52,53,54,55,56,57,58,59,5,6,
+      7,8,9,10,11,12,13,14,15,16,
+      17,18,19,20,21,22,23,24,25,26,
+      27,28,29,30,31,32,33,34,35,36,
+      37,38,39,40,41,42,43,44,45,46,
+      47,48,49,50,51,60,0,1,2,3,
+      4,61,
+    ];
     const double h1 = 25;
-    const double h2 = 530; // 図の部分の高さ
-    const double h3 = h2 - 150; // 説明の部分の高さ
+    const double h2 = 200; // ToDo: 図の部分の高さ・// 530
+    const double w2 = 312; // ToDo: 図の部分の幅・// 312
+    const double h3 = 300; // 説明の部分の高さ
     const int c2 = -1; // 白
     const int c3 = -1407770; // ピンク
 
     double bbb = 1.6; // ToDo: 6.1.4 縮小倍率・全体の倍率
+    double x1 = 74;     // ToDo: 6.1.6 表面中心座標x 150
+    double y1 = 90;     // ToDo: 6.1.6 表面中心座標y 130
+    double x2 = 230;     // ToDo: 6.1.6 本質中心座標x 150
+    double y2 = 90;     // ToDo: 6.1.6 本質中心座標y 384
+
     double bb = bbb;  // 6.1.4 縮小倍率
     double r1 = 36/bb; // 日干の１階の円の中心の半径
     double r2 = 72/bb; // 日干の２階の円の中心の半径
@@ -36,8 +51,8 @@ class KyouUnseiPage extends StatelessWidget {
     double rrM2 = 6/bb; //日支１階２階の文字位置調整
 
     // 文字のセンター位置
-    var centa2 = Offset((150 - rrM / 2), (130 - rrM / 2)); // 日干文字の中心座標
-    var centa4 = Offset((150 - rrM / 2), (384 - rrM / 2)); // 日支文字の中心座標
+    var centa2 = Offset((x1 - rrM / 2), (y1 - rrM / 2)); // 日干文字の中心座標
+    var centa4 = Offset((x2 - rrM / 2), (y2 - rrM / 2)); // 日支文字の中心座標
 
     // 角度の定数
     double radiG0 = (72 * 0 - 90) / 180 * pi; // 木の角度
@@ -152,101 +167,106 @@ class KyouUnseiPage extends StatelessWidget {
               body: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Expanded(
-                    child: Container(
-                      color: Colors.blue,  // todo:
-                      child: SizedBox(
-                        height: double.infinity,
-                        width: double.infinity,
-                        child: ListView(
-                          children: [
-                            ListTile(
-                              title: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Stack(
-                                    children: [
-                                      const SizedBox(
-                                        // 第一階層
-                                        width: 312,
-                                        height: h2,
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [],
-                                        ),
-                                      ),
-                                      // ここから第二階層
-                                      SizedBox(
-                                        width: 312,
-                                        height: h2,
-                                        child: CustomPaint(
-                                          painter:
-                                              ShapePainter3(
-                                                bbb: bbb,
-                                              ), // 日干と日支の固定円の描画
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 312,
-                                        height: h2,
-                                        child: CustomPaint(
-                                          painter: ShapePainter4(
-                                            // 日干と日支のV字の描画
-                                            gogyou: model.gogyou,
-                                            nitiSi: model.nitiSi,
-                                            bbb: bbb,  // 6.1.4
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 312,
-                                        height: h2,
-                                        child: CustomPaint(
-                                          painter: ShapePainter5(
-                                            tuhen: model.tuhen,
-                                            gogyou: model.gogyou,
-                                            bbb: bbb,  // 6.1.4
-                                          ), // 渡したい変数を引数に指定する
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 312,
-                                        height: h2,
-                                        child: CustomPaint(
-                                          painter: ShapePainter6(
-                                            kei: model.kei,
-                                            bbb: bbb,  // 6.1.4
-                                          ), // 渡したい変数を引数に指定する
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 312,
-                                        height: h2,
-                                        child: CustomPaint(
-                                          painter: ShapePainter8(
-                                            sigo: model.nowNitiSi,
-                                            kei: model.kei,
-                                            bbb: bbb,  // 6.1.4
-                                          ), // 渡したい変数を引数に指定する
-                                        ),
-                                      ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Stack(
+                        children: [
+                          Container(
+                            color: Colors.black, // ToDo color
+                            child: SizedBox(
+                              width: w2,  // 6.1.5
+                              height: h2,
+                              child: CustomPaint(
+                                painter:
+                                ShapePainter3(
+                                  bbb: bbb,
+                                  x1: x1,           // 6.1.6
+                                  y1: y1,           // 6.1.6
+                                  x2: x2,           // 6.1.6
+                                  y2: y2,           // 6.1.6
+                                ), // 日干と日支の固定円の描画
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: w2,  // 6.1.5
+                            height: h2,
+                            child: CustomPaint(
+                              painter: ShapePainter4(
+                                // 日干と日支のV字の描画
+                                gogyou: model.gogyou,
+                                nitiSi: model.nitiSi,
+                                bbb: bbb,  // 6.1.4
+                                x1: x1,           // 6.1.6
+                                y1: y1,           // 6.1.6
+                                x2: x2,           // 6.1.6
+                                y2: y2,           // 6.1.6
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: w2,  // 6.1.5
+                            height: h2,
+                            child: CustomPaint(
+                              painter: ShapePainter5(
+                                tuhen: model.tuhen,
+                                gogyou: model.gogyou,
+                                bbb: bbb,  // 6.1.4
+                                x1: x1,           // 6.1.6
+                                y1: y1,           // 6.1.6
+                                x2: x2,           // 6.1.6
+                                y2: y2,           // 6.1.6
+                              ), // 渡したい変数を引数に指定する
+                            ),
+                          ),
+                          SizedBox(
+                            width: w2,  // 6.1.5
+                            height: h2,
+                            child: CustomPaint(
+                              painter: ShapePainter6(
+                                kei: model.kei,
+                                bbb: bbb,  // 6.1.4
+                                x1: x1,           // 6.1.6
+                                y1: y1,           // 6.1.6
+                                x2: x2,           // 6.1.6
+                                y2: y2,           // 6.1.6
+                              ), // 渡したい変数を引数に指定する
+                            ),
+                          ),
+                          SizedBox(
+                            width: w2,  // 6.1.5
+                            height: h2,
+                            child: CustomPaint(
+                              painter: ShapePainter8(
+                                sigo: model.nowNitiSi,
+                                kei: model.kei,
+                                bbb: bbb,  // 6.1.4
+                                x1: x1,           // 6.1.6
+                                y1: y1,           // 6.1.6
+                                x2: x2,           // 6.1.6
+                                y2: y2,           // 6.1.6
+                              ), // 渡したい変数を引数に指定する
+                            ),
+                          ),
 
-                                      SizedBox(
-                                        width: 312,
-                                        height: h2,
-                                        child: CustomPaint(
-                                          painter: ShapePainter7(
-                                            sigo: model.nowNitiSi,
-                                            bbb: bbb,  // 6.1.4
-                                          ), // 渡したい変数を引数に指定する
-                                        ),
-                                      ),
+                          SizedBox(
+                            width: w2,  // 6.1.5
+                            height: h2,
+                            child: CustomPaint(
+                              painter: ShapePainter7(
+                                sigo: model.nowNitiSi,
+                                bbb: bbb,  // 6.1.4
+                                x1: x1,           // 6.1.6
+                                y1: y1,           // 6.1.6
+                                x2: x2,           // 6.1.6
+                                y2: y2,           // 6.1.6
+                              ), // 渡したい変数を引数に指定する
+                            ),
+                          ),
 
-                                      // ■■■■■■■■■ 左上の生年月日の表示 ■■■■■■■■■
-                                      /*Transform.translate(
+                          // ■■■■■■■■■ 左上の生年月日の表示 ■■■■■■■■■
+                          /*Transform.translate(
                                         offset: const Offset(0, 0),
                                         child: Text(
                                           '$seinenInt.$seigatuInt.$seinitiInt 生',
@@ -268,617 +288,627 @@ class KyouUnseiPage extends StatelessWidget {
                                           ),
                                         ),
                                       ),*/
-                                      Transform.translate(
-                                        offset: const Offset(238, 30),
-                                        child: Text(
-                                          model.kangouMoji,
-                                          style: const TextStyle(
-                                            fontSize: 24,
-                                            color: Colors.purpleAccent,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ),
-
-                                      // ■■■■■■■■■ 日干の３階五行の文字の表示 ■■■■■■■■■
-                                      // 木
-                                      Transform.translate(
-                                        offset: centaG0M3,
-                                        child: Text(
-                                          '木',
-                                          style: TextStyle(
-                                            fontSize: rrM1,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      ),
-                                      // 火
-                                      Transform.translate(
-                                        offset: centaG1M3,
-                                        child: Text(
-                                          '火',
-                                          style: TextStyle(
-                                            fontSize: rrM1,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      ),
-                                      // 土
-                                      Transform.translate(
-                                        offset: centaG2M3,
-                                        child: Text(
-                                          '土',
-                                          style: TextStyle(
-                                            fontSize: rrM1,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      ),
-                                      // 金
-                                      Transform.translate(
-                                        offset: centaG3M3,
-                                        child: Text(
-                                          '金',
-                                          style: TextStyle(
-                                            fontSize: rrM1,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      ),
-                                      // 水
-                                      Transform.translate(
-                                        offset: centaG4M3,
-                                        child: Text(
-                                          '水',
-                                          style: TextStyle(
-                                            fontSize: rrM1,
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      ),
-
-                                      //■■■■■■■■■ 日干の１階２階通変星の文字の表示 ■■■■■■■■■
-                                      Transform.translate(
-                                        offset: centaG0M2,
-                                        child: SizedBox(
-                                          height: rrM,
-                                          width: rrM,
-                                          child: Image.asset(model.go[0]),
-                                        ),
-                                      ),
-                                      Transform.translate(
-                                        offset: centaG0M1,
-                                        child: SizedBox(
-                                          height: rrM,
-                                          width: rrM,
-                                          child: Image.asset(model.go[1]),
-                                        ),
-                                      ),
-                                      Transform.translate(
-                                        offset: centaG1M2,
-                                        child: SizedBox(
-                                          height: rrM,
-                                          width: rrM,
-                                          child: Image.asset(model.go[2]),
-                                        ),
-                                      ),
-                                      Transform.translate(
-                                        offset: centaG1M1,
-                                        child: SizedBox(
-                                          height: rrM,
-                                          width: rrM,
-                                          child: Image.asset(model.go[3]),
-                                        ),
-                                      ),
-                                      Transform.translate(
-                                        offset: centaG2M2,
-                                        child: SizedBox(
-                                          height: rrM,
-                                          width: rrM,
-                                          child: Image.asset(model.go[4]),
-                                        ),
-                                      ),
-
-                                      Transform.translate(
-                                        offset: centaG2M1,
-                                        child: SizedBox(
-                                          height: rrM,
-                                          width: rrM,
-                                          child: Image.asset(model.go[5]),
-                                        ),
-                                      ),
-                                      Transform.translate(
-                                        offset: centaG3M2,
-                                        child: SizedBox(
-                                          height: rrM,
-                                          width: rrM,
-                                          child: Image.asset(model.go[6]),
-                                        ),
-                                      ),
-                                      Transform.translate(
-                                        offset: centaG3M1,
-                                        child: SizedBox(
-                                          height: rrM,
-                                          width: rrM,
-                                          child: Image.asset(model.go[7]),
-                                        ),
-                                      ),
-                                      Transform.translate(
-                                        offset: centaG4M2,
-                                        child: SizedBox(
-                                          height: rrM,
-                                          width: rrM,
-                                          child: Image.asset(model.go[8]),
-                                        ),
-                                      ),
-                                      Transform.translate(
-                                        offset: centaG4M1,
-                                        child: SizedBox(
-                                          height: rrM,
-                                          width: rrM,
-                                          child: Image.asset(model.go[9]),
-                                        ),
-                                      ),
-
-                                      // ■■■■■■■■■ 日支の３階の文字の表示 ■■■■■■■■■
-                                      Transform.translate(
-                                        // 子
-                                        offset: centaS0,
-                                        child: Text(
-                                          '子',
-                                          style: TextStyle(
-                                            fontSize: rrM1,
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      ),
-                                      Transform.translate(
-                                        // 丑
-                                        offset: centaS1,
-                                        child: Text(
-                                          '丑',
-                                          style: TextStyle(
-                                            fontSize: rrM1,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      ),
-                                      Transform.translate(
-                                        // 寅
-                                        offset: centaS2,
-                                        child: Text(
-                                          '寅',
-                                          style: TextStyle(
-                                            fontSize: rrM1,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      ),
-                                      Transform.translate(
-                                        // 卯
-                                        offset: centaS3,
-                                        child: Text(
-                                          '卯',
-                                          style: TextStyle(
-                                            fontSize: rrM1,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      ),
-                                      Transform.translate(
-                                        // 辰
-                                        offset: centaS4,
-                                        child: Text(
-                                          '辰',
-                                          style: TextStyle(
-                                            fontSize: rrM1,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      ),
-                                      Transform.translate(
-                                        // 巳
-                                        offset: centaS5,
-                                        child: Text(
-                                          '巳',
-                                          style: TextStyle(
-                                            fontSize: rrM1,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      ),
-                                      Transform.translate(
-                                        // 午
-                                        offset: centaS6,
-                                        child: Text(
-                                          '午',
-                                          style: TextStyle(
-                                            fontSize: rrM1,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      ),
-                                      Transform.translate(
-                                        // 未
-                                        offset: centaS7,
-                                        child: Text(
-                                          '未',
-                                          style: TextStyle(
-                                            fontSize: rrM1,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      ),
-                                      Transform.translate(
-                                        // 申
-                                        offset: centaS8,
-                                        child: Text(
-                                          '申',
-                                          style: TextStyle(
-                                            fontSize: rrM1,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      ),
-                                      Transform.translate(
-                                        // 酉
-                                        offset: centaS9,
-                                        child: Text(
-                                          '酉',
-                                          style: TextStyle(
-                                            fontSize: rrM1,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      ),
-                                      Transform.translate(
-                                        // 戌
-                                        offset: centaS10,
-                                        child: Text(
-                                          '戌',
-                                          style: TextStyle(
-                                            fontSize: rrM1,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      ),
-                                      Transform.translate(
-                                        // 亥
-                                        offset: centaS11,
-                                        child: Text(
-                                          '亥',
-                                          style: TextStyle(
-                                            fontSize: rrM1,
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      ),
-
-                                      // ■■■■■■■■■ 日支２階の文字 ■■■■■■■■■
-
-                                      Transform.translate(
-                                        // 子
-                                        offset: centaS0a,
-                                        child: Text(
-                                          model.sigo.substring(0, 1),
-                                          style: TextStyle(
-                                            fontSize: rrM1,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      ),
-                                      Transform.translate(
-                                        // 丑
-                                        offset: centaS1a,
-                                        child: Text(
-                                          model.sigo.substring(1, 2),
-                                          style: TextStyle(
-                                            fontSize: rrM1,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      ),
-                                      Transform.translate(
-                                        // 寅
-                                        offset: centaS2a,
-                                        child: Text(
-                                          model.sigo.substring(2, 3),
-                                          style: TextStyle(
-                                            fontSize: rrM1,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      ),
-                                      Transform.translate(
-                                        // 卯
-                                        offset: centaS3a,
-                                        child: Text(
-                                          model.sigo.substring(3, 4),
-                                          style: TextStyle(
-                                            fontSize: rrM1,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      ),
-                                      Transform.translate(
-                                        // 辰
-                                        offset: centaS4a,
-                                        child: Text(
-                                          model.sigo.substring(4, 5),
-                                          style: TextStyle(
-                                            fontSize: rrM1,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      ),
-                                      Transform.translate(
-                                        // 巳
-                                        offset: centaS5a,
-                                        child: Text(
-                                          model.sigo.substring(5, 6),
-                                          style: TextStyle(
-                                            fontSize: rrM1,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      ),
-                                      Transform.translate(
-                                        // 午
-                                        offset: centaS6a,
-                                        child: Text(
-                                          model.sigo.substring(6, 7),
-                                          style: TextStyle(
-                                            fontSize: rrM1,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      ),
-                                      Transform.translate(
-                                        // 未
-                                        offset: centaS7a,
-                                        child: Text(
-                                          model.sigo.substring(7, 8),
-                                          style: TextStyle(
-                                            fontSize: rrM1,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      ),
-                                      Transform.translate(
-                                        // 申
-                                        offset: centaS8a,
-                                        child: Text(
-                                          model.sigo.substring(8, 9),
-                                          style: TextStyle(
-                                            fontSize: rrM1,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      ),
-                                      Transform.translate(
-                                        // 酉
-                                        offset: centaS9a,
-                                        child: Text(
-                                          model.sigo.substring(9, 10),
-                                          style: TextStyle(
-                                            fontSize: rrM1,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      ),
-                                      Transform.translate(
-                                        // 戌
-                                        offset: centaS10a,
-                                        child: Text(
-                                          model.sigo.substring(10, 11),
-                                          style: TextStyle(
-                                            fontSize: rrM1,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      ),
-                                      Transform.translate(
-                                        // 亥
-                                        offset: centaS11a,
-                                        child: Text(
-                                          model.sigo.substring(11, 12),
-                                          style: TextStyle(
-                                            fontSize: rrM1,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      ),
-
-                                      // ■■■■■■■■■ 日支1階の文字の表示 ■■■■■■■■■
-                                      Transform.translate(
-                                        // 子
-                                        offset: centaS0b,
-                                        child: Text(
-                                          model.kei.substring(0, 1),
-                                          style: TextStyle(
-                                            fontSize: rrM1,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      ),
-                                      Transform.translate(
-                                        // 丑
-                                        offset: centaS1b,
-                                        child: Text(
-                                          model.kei.substring(1, 2),
-                                          style: TextStyle(
-                                            fontSize: rrM1,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      ),
-                                      Transform.translate(
-                                        // 寅
-                                        offset: centaS2b,
-                                        child: Text(
-                                          model.kei.substring(2, 3),
-                                          style: TextStyle(
-                                            fontSize: rrM1,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      ),
-                                      Transform.translate(
-                                        // 卯
-                                        offset: centaS3b,
-                                        child: Text(
-                                          model.kei.substring(3, 4),
-                                          style: TextStyle(
-                                            fontSize: rrM1,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      ),
-                                      Transform.translate(
-                                        // 辰
-                                        offset: centaS4b,
-                                        child: Text(
-                                          model.kei.substring(4, 5),
-                                          style: TextStyle(
-                                            fontSize: rrM1,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      ),
-                                      Transform.translate(
-                                        // 巳
-                                        offset: centaS5b,
-                                        child: Text(
-                                          model.kei.substring(5, 6),
-                                          style: TextStyle(
-                                            fontSize: rrM1,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      ),
-                                      Transform.translate(
-                                        // 午
-                                        offset: centaS6b,
-                                        child: Text(
-                                          model.kei.substring(6, 7),
-                                          style: TextStyle(
-                                            fontSize: rrM1,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      ),
-                                      Transform.translate(
-                                        // 未
-                                        offset: centaS7b,
-                                        child: Text(
-                                          model.kei.substring(7, 8),
-                                          style: TextStyle(
-                                            fontSize: rrM1,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      ),
-                                      Transform.translate(
-                                        // 申
-                                        offset: centaS8b,
-                                        child: Text(
-                                          model.kei.substring(8, 9),
-                                          style: TextStyle(
-                                            fontSize: rrM1,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      ),
-                                      Transform.translate(
-                                        // 酉
-                                        offset: centaS9b,
-                                        child: Text(
-                                          model.kei.substring(9, 10),
-                                          style: TextStyle(
-                                            fontSize: rrM1,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      ),
-                                      Transform.translate(
-                                        // 戌
-                                        offset: centaS10b,
-                                        child: Text(
-                                          model.kei.substring(10, 11),
-                                          style: TextStyle(
-                                            fontSize: rrM1,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      ),
-                                      Transform.translate(
-                                        // 亥
-                                        offset: centaS11b,
-                                        child: Text(
-                                          model.kei.substring(11, 12),
-                                          style: TextStyle(
-                                            fontSize: rrM1,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      ),
-                                      Transform.translate(
-                                        offset: const Offset(0, h2 - 14),
-                                        child: const Text(
-                                          '■■■■■■■ この図の見方 ■■■■■■■',
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                            color: Colors.greenAccent,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                          Transform.translate(
+                            offset: const Offset(84, -4),
+                            child: Text(
+                              model.kangouMoji,
+                              style: const TextStyle(
+                                fontSize: 16,
+                                color: Colors.purpleAccent,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
+                          ),
+
+                          // ■■■■■■■■■ 日干の３階五行の文字の表示 ■■■■■■■■■
+                          // 木
+                          Transform.translate(
+                            offset: centaG0M3,
+                            child: Text(
+                              '木',
+                              style: TextStyle(
+                                fontSize: rrM1,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          // 火
+                          Transform.translate(
+                            offset: centaG1M3,
+                            child: Text(
+                              '火',
+                              style: TextStyle(
+                                fontSize: rrM1,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          // 土
+                          Transform.translate(
+                            offset: centaG2M3,
+                            child: Text(
+                              '土',
+                              style: TextStyle(
+                                fontSize: rrM1,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          // 金
+                          Transform.translate(
+                            offset: centaG3M3,
+                            child: Text(
+                              '金',
+                              style: TextStyle(
+                                fontSize: rrM1,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          // 水
+                          Transform.translate(
+                            offset: centaG4M3,
+                            child: Text(
+                              '水',
+                              style: TextStyle(
+                                fontSize: rrM1,
+                                color: Colors.white,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+
+                          //■■■■■■■■■ 日干の１階２階通変星の文字の表示 ■■■■■■■■■
+                          Transform.translate(
+                            offset: centaG0M2,
+                            child: SizedBox(
+                              height: rrM,
+                              width: rrM,
+                              child: Image.asset(model.go[0]),
+                            ),
+                          ),
+                          Transform.translate(
+                            offset: centaG0M1,
+                            child: SizedBox(
+                              height: rrM,
+                              width: rrM,
+                              child: Image.asset(model.go[1]),
+                            ),
+                          ),
+                          Transform.translate(
+                            offset: centaG1M2,
+                            child: SizedBox(
+                              height: rrM,
+                              width: rrM,
+                              child: Image.asset(model.go[2]),
+                            ),
+                          ),
+                          Transform.translate(
+                            offset: centaG1M1,
+                            child: SizedBox(
+                              height: rrM,
+                              width: rrM,
+                              child: Image.asset(model.go[3]),
+                            ),
+                          ),
+                          Transform.translate(
+                            offset: centaG2M2,
+                            child: SizedBox(
+                              height: rrM,
+                              width: rrM,
+                              child: Image.asset(model.go[4]),
+                            ),
+                          ),
+
+                          Transform.translate(
+                            offset: centaG2M1,
+                            child: SizedBox(
+                              height: rrM,
+                              width: rrM,
+                              child: Image.asset(model.go[5]),
+                            ),
+                          ),
+                          Transform.translate(
+                            offset: centaG3M2,
+                            child: SizedBox(
+                              height: rrM,
+                              width: rrM,
+                              child: Image.asset(model.go[6]),
+                            ),
+                          ),
+                          Transform.translate(
+                            offset: centaG3M1,
+                            child: SizedBox(
+                              height: rrM,
+                              width: rrM,
+                              child: Image.asset(model.go[7]),
+                            ),
+                          ),
+                          Transform.translate(
+                            offset: centaG4M2,
+                            child: SizedBox(
+                              height: rrM,
+                              width: rrM,
+                              child: Image.asset(model.go[8]),
+                            ),
+                          ),
+                          Transform.translate(
+                            offset: centaG4M1,
+                            child: SizedBox(
+                              height: rrM,
+                              width: rrM,
+                              child: Image.asset(model.go[9]),
+                            ),
+                          ),
+
+                          // ■■■■■■■■■ 日支の３階の文字の表示 ■■■■■■■■■
+                          Transform.translate(
+                            // 子
+                            offset: centaS0,
+                            child: Text(
+                              '子',
+                              style: TextStyle(
+                                fontSize: rrM1,
+                                color: Colors.white,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          Transform.translate(
+                            // 丑
+                            offset: centaS1,
+                            child: Text(
+                              '丑',
+                              style: TextStyle(
+                                fontSize: rrM1,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          Transform.translate(
+                            // 寅
+                            offset: centaS2,
+                            child: Text(
+                              '寅',
+                              style: TextStyle(
+                                fontSize: rrM1,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          Transform.translate(
+                            // 卯
+                            offset: centaS3,
+                            child: Text(
+                              '卯',
+                              style: TextStyle(
+                                fontSize: rrM1,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          Transform.translate(
+                            // 辰
+                            offset: centaS4,
+                            child: Text(
+                              '辰',
+                              style: TextStyle(
+                                fontSize: rrM1,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          Transform.translate(
+                            // 巳
+                            offset: centaS5,
+                            child: Text(
+                              '巳',
+                              style: TextStyle(
+                                fontSize: rrM1,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          Transform.translate(
+                            // 午
+                            offset: centaS6,
+                            child: Text(
+                              '午',
+                              style: TextStyle(
+                                fontSize: rrM1,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          Transform.translate(
+                            // 未
+                            offset: centaS7,
+                            child: Text(
+                              '未',
+                              style: TextStyle(
+                                fontSize: rrM1,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          Transform.translate(
+                            // 申
+                            offset: centaS8,
+                            child: Text(
+                              '申',
+                              style: TextStyle(
+                                fontSize: rrM1,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          Transform.translate(
+                            // 酉
+                            offset: centaS9,
+                            child: Text(
+                              '酉',
+                              style: TextStyle(
+                                fontSize: rrM1,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          Transform.translate(
+                            // 戌
+                            offset: centaS10,
+                            child: Text(
+                              '戌',
+                              style: TextStyle(
+                                fontSize: rrM1,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          Transform.translate(
+                            // 亥
+                            offset: centaS11,
+                            child: Text(
+                              '亥',
+                              style: TextStyle(
+                                fontSize: rrM1,
+                                color: Colors.white,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+
+                          // ■■■■■■■■■ 日支２階の文字 ■■■■■■■■■
+
+                          Transform.translate(
+                            // 子
+                            offset: centaS0a,
+                            child: Text(
+                              model.sigo.substring(0, 1),
+                              style: TextStyle(
+                                fontSize: rrM1,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          Transform.translate(
+                            // 丑
+                            offset: centaS1a,
+                            child: Text(
+                              model.sigo.substring(1, 2),
+                              style: TextStyle(
+                                fontSize: rrM1,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          Transform.translate(
+                            // 寅
+                            offset: centaS2a,
+                            child: Text(
+                              model.sigo.substring(2, 3),
+                              style: TextStyle(
+                                fontSize: rrM1,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          Transform.translate(
+                            // 卯
+                            offset: centaS3a,
+                            child: Text(
+                              model.sigo.substring(3, 4),
+                              style: TextStyle(
+                                fontSize: rrM1,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          Transform.translate(
+                            // 辰
+                            offset: centaS4a,
+                            child: Text(
+                              model.sigo.substring(4, 5),
+                              style: TextStyle(
+                                fontSize: rrM1,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          Transform.translate(
+                            // 巳
+                            offset: centaS5a,
+                            child: Text(
+                              model.sigo.substring(5, 6),
+                              style: TextStyle(
+                                fontSize: rrM1,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          Transform.translate(
+                            // 午
+                            offset: centaS6a,
+                            child: Text(
+                              model.sigo.substring(6, 7),
+                              style: TextStyle(
+                                fontSize: rrM1,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          Transform.translate(
+                            // 未
+                            offset: centaS7a,
+                            child: Text(
+                              model.sigo.substring(7, 8),
+                              style: TextStyle(
+                                fontSize: rrM1,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          Transform.translate(
+                            // 申
+                            offset: centaS8a,
+                            child: Text(
+                              model.sigo.substring(8, 9),
+                              style: TextStyle(
+                                fontSize: rrM1,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          Transform.translate(
+                            // 酉
+                            offset: centaS9a,
+                            child: Text(
+                              model.sigo.substring(9, 10),
+                              style: TextStyle(
+                                fontSize: rrM1,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          Transform.translate(
+                            // 戌
+                            offset: centaS10a,
+                            child: Text(
+                              model.sigo.substring(10, 11),
+                              style: TextStyle(
+                                fontSize: rrM1,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          Transform.translate(
+                            // 亥
+                            offset: centaS11a,
+                            child: Text(
+                              model.sigo.substring(11, 12),
+                              style: TextStyle(
+                                fontSize: rrM1,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+
+                          // ■■■■■■■■■ 日支1階の文字の表示 ■■■■■■■■■
+                          Transform.translate(
+                            // 子
+                            offset: centaS0b,
+                            child: Text(
+                              model.kei.substring(0, 1),
+                              style: TextStyle(
+                                fontSize: rrM1,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          Transform.translate(
+                            // 丑
+                            offset: centaS1b,
+                            child: Text(
+                              model.kei.substring(1, 2),
+                              style: TextStyle(
+                                fontSize: rrM1,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          Transform.translate(
+                            // 寅
+                            offset: centaS2b,
+                            child: Text(
+                              model.kei.substring(2, 3),
+                              style: TextStyle(
+                                fontSize: rrM1,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          Transform.translate(
+                            // 卯
+                            offset: centaS3b,
+                            child: Text(
+                              model.kei.substring(3, 4),
+                              style: TextStyle(
+                                fontSize: rrM1,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          Transform.translate(
+                            // 辰
+                            offset: centaS4b,
+                            child: Text(
+                              model.kei.substring(4, 5),
+                              style: TextStyle(
+                                fontSize: rrM1,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          Transform.translate(
+                            // 巳
+                            offset: centaS5b,
+                            child: Text(
+                              model.kei.substring(5, 6),
+                              style: TextStyle(
+                                fontSize: rrM1,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          Transform.translate(
+                            // 午
+                            offset: centaS6b,
+                            child: Text(
+                              model.kei.substring(6, 7),
+                              style: TextStyle(
+                                fontSize: rrM1,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          Transform.translate(
+                            // 未
+                            offset: centaS7b,
+                            child: Text(
+                              model.kei.substring(7, 8),
+                              style: TextStyle(
+                                fontSize: rrM1,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          Transform.translate(
+                            // 申
+                            offset: centaS8b,
+                            child: Text(
+                              model.kei.substring(8, 9),
+                              style: TextStyle(
+                                fontSize: rrM1,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          Transform.translate(
+                            // 酉
+                            offset: centaS9b,
+                            child: Text(
+                              model.kei.substring(9, 10),
+                              style: TextStyle(
+                                fontSize: rrM1,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          Transform.translate(
+                            // 戌
+                            offset: centaS10b,
+                            child: Text(
+                              model.kei.substring(10, 11),
+                              style: TextStyle(
+                                fontSize: rrM1,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          Transform.translate(
+                            // 亥
+                            offset: centaS11b,
+                            child: Text(
+                              model.kei.substring(11, 12),
+                              style: TextStyle(
+                                fontSize: rrM1,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          Transform.translate(
+                            offset: const Offset(30, h2 - 18),
+                            child: const Text(
+                              '■■■■■■■■　解説　■■■■■■■■',
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.greenAccent,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+
+                  Expanded(
+                    child: Container(
+                      color: Colors.black,  // todo:
+                      child: SizedBox(
+                        height: double.infinity,
+                        width: double.infinity,
+                        child: ListView(
+
+                          children: [
+
                             ListTile(
                               title: SizedBox(
                                 height: h3,
@@ -888,23 +918,23 @@ class KyouUnseiPage extends StatelessWidget {
                                     Expanded(
                                       //height: 400,
                                       child: ListView.builder(
-                                        itemCount: 60,
+                                        itemCount: 62,
                                         itemBuilder:
                                             (BuildContext context, int index) {
                                           return Column(
                                             children: [
                                               SizedBox(
                                                 //width: 500.0,
-                                                height: model.takasaMoji[index],
+                                                height: model.takasaMoji[indexA[index]],
                                                 child: ListTile(
                                                   tileColor: Colors.black,
                                                   title: Text(
-                                                    model.moji[index],
+                                                    model.moji[indexA[index]],
                                                     style: TextStyle(
                                                       height: 1.1,
                                                       fontSize: 16,
                                                       color: Color(
-                                                          model.iroMoji[index]),
+                                                          model.iroMoji[indexA[index]]),
                                                       fontWeight:
                                                           FontWeight.normal,
                                                     ),
@@ -1130,16 +1160,24 @@ class KyouUnseiPage extends StatelessWidget {
 
 class ShapePainter3 extends CustomPainter {
   double bbb;       // 6.1.4
+  double x1;    // 6.1.6 表面の中心座標x
+  double y1;    // 6.1.6 表面の中心座標y
+  double x2;    // 6.1.6 本質の中心座標x
+  double y2;    // 6.1.6 本質の中心座標y
 
   ShapePainter3({
     Key? key,
-    required this.bbb
+    required this.bbb,
+    required this.x1,    // 6.1.6 表面の中心座標x
+    required this.y1,    // 6.1.6 表面の中心座標y
+    required this.x2,    // 6.1.6 本質の中心座標x
+    required this.y2,    // 6.1.6 本質の中心座標y
 });
 
   @override
   void paint(Canvas canvas, Size size) {
-    var center1 = const Offset(150, 130); // 表面の中心座標
-    var center2 = const Offset(150, 384); // 本質の中心座標
+    var center1 = Offset(x1, y1,); // 表面の中心座標
+    var center2 = Offset(x2, y2,); // 本質の中心座標
     double bb = bbb;   // 6.1.4 縮小倍率
     double r1 = 36/bb; // 日干の１階の円の中心の半径
     double r2 = 72/bb; // 日干の２階の円の中心の半径
@@ -1305,15 +1343,23 @@ class ShapePainter4 extends CustomPainter {
   int gogyou; // 五行
   int nitiSi; // 日支
   double bbb;      // 6.1.4
+  double x1;    // 6.1.6 表面の中心座標x
+  double y1;    // 6.1.6 表面の中心座標y
+  double x2;    // 6.1.6 本質の中心座標x
+  double y2;    // 6.1.6 本質の中心座標y
   ShapePainter4({
     required this.gogyou,
     required this.nitiSi,
     required this.bbb,  // 6.1.4
+    required this.x1,    // 6.1.6 表面の中心座標x
+    required this.y1,    // 6.1.6 表面の中心座標y
+    required this.x2,    // 6.1.6 本質の中心座標x
+    required this.y2,    // 6.1.6 本質の中心座標y
   });
   @override
   void paint(Canvas canvas, Size size) {
-    var center1 = const Offset(150, 130); // 表面の中心座標
-    var center2 = const Offset(150, 384); // 本質の中心座標
+    var center1 = Offset(x1, y1,); // 表面の中心座標
+    var center2 = Offset(x2, y2,); // 本質の中心座標
     double bb = bbb;          // 6.1.4 縮小倍率
     var lineLength1 = 120.0/bb; // 6.1.4
     var lineLength2 = 130.0/bb; // 6.1.4
@@ -1358,14 +1404,22 @@ class ShapePainter5 extends CustomPainter {
   int tuhen; // 日干
   int gogyou;
   double bbb;      // 6.1.4
+  double x1;    // 6.1.6 表面の中心座標x
+  double y1;    // 6.1.6 表面の中心座標y
+  double x2;    // 6.1.6 本質の中心座標x
+  double y2;    // 6.1.6 本質の中心座標y
   ShapePainter5({
     required this.tuhen,
     required this.gogyou,
     required this.bbb,  // 6.1.4
+    required this.x1,    // 6.1.6 表面の中心座標x
+    required this.y1,    // 6.1.6 表面の中心座標y
+    required this.x2,    // 6.1.6 本質の中心座標x
+    required this.y2,    // 6.1.6 本質の中心座標y
   }); //
   @override
   void paint(Canvas canvas, Size size) {
-    var center1 = const Offset(150, 130); // 表面の中心座標
+    var center1 = Offset(x1, y1,); // 表面の中心座標
 
     double bb = bbb;          // 6.1.4 縮小倍率
     double rr1 = 18/bb;
@@ -1414,13 +1468,21 @@ class ShapePainter5 extends CustomPainter {
 class ShapePainter6 extends CustomPainter {
   String kei;
   double bbb;      // 6.1.4
+  double x1;    // 6.1.6 表面の中心座標x
+  double y1;    // 6.1.6 表面の中心座標y
+  double x2;    // 6.1.6 本質の中心座標x
+  double y2;    // 6.1.6 本質の中心座標y
   ShapePainter6({
     required this.kei,
     required this.bbb,  // 6.1.4
+    required this.x1,    // 6.1.6 表面の中心座標x
+    required this.y1,    // 6.1.6 表面の中心座標y
+    required this.x2,    // 6.1.6 本質の中心座標x
+    required this.y2,    // 6.1.6 本質の中心座標y
   });
   @override
   void paint(Canvas canvas, Size size) {
-    var center2 = const Offset(150, 384); // 本質の中心座標
+    var center2 = Offset(x2, y2,); // 本質の中心座標
 
     double bb = bbb;          // 6.1.4 縮小倍率
     double r6 = 36/bb; // 日支の１階の円の中心の半径
@@ -1519,13 +1581,21 @@ class ShapePainter6 extends CustomPainter {
 class ShapePainter7 extends CustomPainter {
   int sigo; // 日し
   double bbb;      // 6.1.4
+  double x1;    // 6.1.6 表面の中心座標x
+  double y1;    // 6.1.6 表面の中心座標y
+  double x2;    // 6.1.6 本質の中心座標x
+  double y2;    // 6.1.6 本質の中心座標y
   ShapePainter7({
     required this.sigo,
     required this.bbb,  // 6.1.4
+    required this.x1,    // 6.1.6 表面の中心座標x
+    required this.y1,    // 6.1.6 表面の中心座標y
+    required this.x2,    // 6.1.6 本質の中心座標x
+    required this.y2,    // 6.1.6 本質の中心座標y
   }); // ■■■■■■■■■受け取る値を上記変数に代入
   @override
   void paint(Canvas canvas, Size size) {
-    var center2 = const Offset(150, 384); // 本質の中心座標
+    var center2 = Offset(x2, y2,); // 本質の中心座標
 
     double bb = bbb;          // 6.1.4 縮小倍率
     double rr1 = 18/bb;
@@ -1561,14 +1631,22 @@ class ShapePainter8 extends CustomPainter {
   String kei;
   int sigo;
   double bbb;      // 6.1.4
+  double x1;    // 6.1.6 表面の中心座標x
+  double y1;    // 6.1.6 表面の中心座標y
+  double x2;    // 6.1.6 本質の中心座標x
+  double y2;    // 6.1.6 本質の中心座標y
   ShapePainter8({
     required this.kei,
     required this.sigo,
     required this.bbb,  // 6.1.4
+    required this.x1,    // 6.1.6 表面の中心座標x
+    required this.y1,    // 6.1.6 表面の中心座標y
+    required this.x2,    // 6.1.6 本質の中心座標x
+    required this.y2,    // 6.1.6 本質の中心座標y
   });
   @override
   void paint(Canvas canvas, Size size) {
-    var center2 = const Offset(150, 384); // 本質の中心座標
+    var center2 = Offset(x2, y2,); // 本質の中心座標
 
     double bb = bbb;          // 6.1.4 縮小倍率
     double r6 = 36/bb; // 日支の１階の円の中心の半径

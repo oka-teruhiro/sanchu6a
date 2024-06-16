@@ -179,7 +179,9 @@ class KyouUnseiModel extends ChangeNotifier {
     '',
     '',
     '',
-    ''
+    '',
+    '',
+    '',
   ];
   List<double> takasaMoji = [
     0.0,
@@ -241,7 +243,9 @@ class KyouUnseiModel extends ChangeNotifier {
     0.0,
     0.0,
     0.0,
-    0.0
+    0.0,
+    0.0,
+    0,0,
   ];
   int iroPink1 = 0xffffa0ff; //ピンク
   int iroGreen = 0xFFa0FFa0; //緑
@@ -305,7 +309,9 @@ class KyouUnseiModel extends ChangeNotifier {
     -1,
     -1,
     -1,
-    -1
+    -1,
+    -1,
+    -1,
   ];
   String kitiKyou = '平';
   int kitiPoint = 0;
@@ -438,30 +444,30 @@ class KyouUnseiModel extends ChangeNotifier {
       kangouMoji = '';
     }
     // 説明文１
-    moji[0] = '　上の円は日干による運勢、下の円は日支による運勢を表しています。'
-        'V印は鑑定者の持つ日干と日支の位置を表します。'
-        '日干が陽の人は、比肩・劫敗・食神・傷官・偏財・正財・偏官・正官・倒食・印綬、'
-        '日干が陰の人は、比肩・傷官・食神・正財・偏財・正官・偏官・印綬・倒食・劫敗、'
-        'の順に星が巡ります。'
+    moji[0] = '　左の円は日干による運勢、右の円は日支による運勢を表しています。'
+        'V印は鑑定者の持つ日干と日支の位置を表します。　'
+        '日干が陽の人は、比肩・劫敗・食神・傷官・・・・倒食・印綬、　'
+        '日干が陰の人は、比肩・傷官・食神・正財・・・・倒食・劫敗、　'
+        'の順に星が巡ります。　'
         '巡って来ている星の場所がピンクで表されています。';
-    moji[1] = '　日支も順に巡っていきます。こちらも支合・三合・支冲・害・刑が複雑に現れます。'
+    moji[1] = '　日支も順に巡っていきます。こちらも支合・三合・支冲・害・刑が複雑に現れます。　'
         'その現れるところがピンクで表されています。';
     moji[2] = '　さらに甲と己・ 丙と辛・ 戊と癸・ 庚と乙・ 壬と丁は干合関係にあり、'
         '運勢を押しあげます。'
         '';
-    moji[3] = '　おおよその運勢を示すと、'
-        '吉は、食神・偏財・正財・正官・倒食・印綬・干合・支合・三合、'
-        '凶は、劫敗・傷官・偏官・支冲・害・刑、'
-        '半吉半凶は、比肩です。'
-        'それをポイントにしておおよその鑑定日の運勢を、'
+    moji[3] = '　おおよその運勢を示すと、　'
+        '吉は、食神・偏財・正財・正官・倒食・印綬・干合・支合・三合、　'
+        '凶は、劫敗・傷官・偏官・支冲・害・刑、　'
+        '半吉半凶は、比肩です。　'
+        'それをポイントにしておおよその鑑定日の運勢を、　'
         '大吉・中吉・小吉・平・小凶・中凶・大凶の7段階で表示しています。'
         '';
     moji[4] = '　しかし、例えば、凶星の傷官ですが、よく感が働くという点では、感が要求される職場では、吉ともとれますし、'
-        '同様に、凶星の偏官も体を痛めるほど仕事が忙しいという点では、例えば水商売的なの職場の人にとっては吉ともとれます。'
-        '詳細は、各星の内容を見る必要があります。'
+        '同様に、凶星の偏官も体を痛めるほど仕事が忙しいという点では、例えば水商売的なの職場の人にとっては吉ともとれます。　'
+        '詳細は、各星の内容を見る必要があります。　'
         'また、総合で吉でも、支冲や害や刑がある場合は、'
         '売り上げは伸びてもトラブルがあるように吉凶両面含むので、気を付ける必要があります。';
-    moji[5] = '１．「日干」からみた $nowMoji の運勢';
+    moji[5] = '２．「日干」からみた $nowMoji の運勢';
     nitiKan = meisikiA(seinenInt, seigatuInt, seinitiInt).substring(4, 5); // 6.1.3 日干を算出
     nitikanYomi = juKanYomi(nitiKan);                                      // 6.1.3 日干のよみを算出
     moji[6] = '　　生年月日の日干：$nitiKan（$nitikanYomi）';                  // 6.1.3 日干を表示
@@ -1159,7 +1165,7 @@ class KyouUnseiModel extends ChangeNotifier {
     }
 //  支合・支冲等関係図を算出する
     // 解説２
-    moji[44] = '２．「日支」からみた $nowMoji の運勢';
+    moji[44] = '３．「日支」からみた $nowMoji の運勢';
     nitiSiMoji = meisikiA(seinenInt, seigatuInt, seinitiInt).substring(5, 6);  // 6.1.3 日支を算出
     nitiSiYomi = juuniSiYomi(nitiSiMoji);                                      // 6.1.3 日支のよみを算出
     moji[45] = '　　生年月日の日支：$nitiSiMoji（$nitiSiYomi）';                   // 6.1.3
@@ -1187,7 +1193,7 @@ class KyouUnseiModel extends ChangeNotifier {
       moji[51] = '■吉ポイントは、プラス20です。';
       takasaMoji[49] = 60;
       takasaMoji[50] = 50;
-      takasaMoji[51] = 80;
+      takasaMoji[51] = 120;
       kitiPointNissi = 20;
     } else if (sigouNow == '三') {
       moji[49] = '三合（さんごう）があります';
@@ -1296,7 +1302,7 @@ class KyouUnseiModel extends ChangeNotifier {
     }
 
     // 解説３
-    moji[52] = '３．総合ポイント';
+    moji[52] = '１．総合ポイント';
     moji[53] = '　　　　　　日干：　$kitiPointNikann';
     moji[54] = '　　　　　　干合：　$kitiPointKangou';
     moji[55] = '　　　　　　日支：　$kitiPointNissi';
@@ -1310,7 +1316,14 @@ class KyouUnseiModel extends ChangeNotifier {
     takasaMoji[55] = 25;
     takasaMoji[56] = 25;
     takasaMoji[57] = 25;
-    takasaMoji[59] = 400;
+    takasaMoji[59] = 60;
     iroMoji[59] = iroPink1;
+
+    // 解説4
+    moji[60] = '４．この円チャートの見方';
+    takasaMoji[60] = 40;
+    iroMoji[60] = iroGreen;
+    moji[61] = '　あなたの幸福を心よりお祈りいたします';
+    takasaMoji[61] = 100;
   }
 }
