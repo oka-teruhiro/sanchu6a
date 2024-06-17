@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:sanch6a/meisiki_page.dart';
+import 'package:sanch6a/tenun_page.dart';
 import '../meisiki_chart_page.dart';
 import 'kyou_unsei_page.dart';
 import 'page_a.dart';
 import 'page_c.dart';
-import 'page_d.dart';
 import 'page_g.dart';
 
 void main() {
@@ -31,12 +31,11 @@ class MyApp extends StatelessWidget {
       locale: const Locale('ja', 'JP'),
       // 日本語化ここまで
       title: '天運三柱推命',
-      theme: ThemeData.dark(
-          ),
+      theme: ThemeData.dark(),
       home: const MyHomePage(
         seinenInt: 2000, // 6.1.2
-        seigatuInt: 1,   // 6.1.2
-        seinitiInt: 1,   // 6.1.2
+        seigatuInt: 1, // 6.1.2
+        seinitiInt: 1, // 6.1.2
       ),
     );
   }
@@ -44,14 +43,14 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   final int currentIndex;
-  final int seinenInt;  // 6.1.2
+  final int seinenInt; // 6.1.2
   final int seigatuInt; // 6.1.2
   final int seinitiInt; // 6.1.2
 
   const MyHomePage({
     super.key,
     this.currentIndex = 0,
-    required this.seinenInt,  // 6.1.2
+    required this.seinenInt, // 6.1.2
     required this.seigatuInt, // 6.1.2
     required this.seinitiInt, // 6.1.2
   }); // currentIndexを追加
@@ -62,17 +61,17 @@ class MyHomePage extends StatefulWidget {
 
 class MyHomePageState extends State<MyHomePage> {
   late int _currentIndex;
-  late int _seinenInt;     // 6.1.2
-  late int _seigatuInt;    // 6.1.2
-  late int _seinitiInt;    // 6.1.2
+  late int _seinenInt; // 6.1.2
+  late int _seigatuInt; // 6.1.2
+  late int _seinitiInt; // 6.1.2
 
   @override
   void initState() {
     super.initState();
     _currentIndex = widget.currentIndex;
-    _seinenInt = widget.seinenInt;  // 6.1.2
+    _seinenInt = widget.seinenInt; // 6.1.2
     _seigatuInt = widget.seigatuInt; // 6.1.2
-    _seinitiInt =widget.seinitiInt;  // 6.1.2
+    _seinitiInt = widget.seinitiInt; // 6.1.2
   }
 
   void onTabTapped(int index) {
@@ -86,19 +85,25 @@ class MyHomePageState extends State<MyHomePage> {
     final List<Widget> children = [
       const PageA(),
       KyouUnseiPage(
-        seinenInt: _seinenInt,   // 6.1.2
+        seinenInt: _seinenInt, // 6.1.2
         seigatuInt: _seigatuInt, // 6.1.2
         seinitiInt: _seinitiInt, // 6.1.2
       ),
       const PageC(),
-      const PageD(),
-      MeisikiPage(                    // 6.1.9
-          seinen: _seinenInt,         // 6.1.9
-          seigatu: _seigatuInt,       // 6.1.9
-          seiniti: _seinitiInt,       // 6.1.9
-      ),      // 6.1.9
-      MeisikiChartPage(          // 6.1.8
-        seinenInt: _seinenInt,   // 6.1.8
+      TenunPage(
+        seinen: _seinenInt, // 6.1.12
+        seigatu: _seigatuInt, // 6.1.12
+        seiniti: _seinitiInt, // 6.1.12
+      ),
+      MeisikiPage(
+        // 6.1.9
+        seinen: _seinenInt, // 6.1.9
+        seigatu: _seigatuInt, // 6.1.9
+        seiniti: _seinitiInt, // 6.1.9
+      ), // 6.1.9
+      MeisikiChartPage(
+        // 6.1.8
+        seinenInt: _seinenInt, // 6.1.8
         seigatuInt: _seigatuInt, // 6.1.8
         seinitiInt: _seinitiInt, // 6.1.8
       ),
@@ -112,8 +117,8 @@ class MyHomePageState extends State<MyHomePage> {
           : BottomNavigationBar(
               type: BottomNavigationBarType.fixed,
               backgroundColor: Colors.black12,
-              selectedItemColor: Colors.white,
-              unselectedItemColor: Colors.pinkAccent,
+              selectedItemColor: Colors.pinkAccent,
+              unselectedItemColor: Colors.white30,
               onTap: onTabTapped,
               currentIndex: _currentIndex,
               items: const [

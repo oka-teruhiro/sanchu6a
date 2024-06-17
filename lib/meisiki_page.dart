@@ -15,7 +15,7 @@ import '../nikkan/nikkan_mizzunoto.dart';
 import '../nikkan/nikkan_tutinoe.dart';
 import '../nikkan/nikkan_tutinoto.dart';
 import 'kansuu.dart';
-import 'meisiki_chart_page.dart';
+//import 'meisiki_chart_page.dart';
 
 class MeisikiPage extends StatefulWidget {
   final int seinen; //生年
