@@ -69,14 +69,14 @@ class Sihei extends StatelessWidget {
                   '　四平とは、四旺（しおう）のような運勢の力持ちでもなく、四衰（しすい）のような運勢の力なしでもなく、中間の運勢を持っています。'),
             ),
             ListTile(
-              title: Image.asset('images/juuniun/大きい石小さい石.jpg'),
+              title: Image.asset('assets/images/juuniun/大きい石小さい石.jpg'),
             ),
             const ListTile(
               title: Text(
                   '　十二運のうち、胎・養・沐・墓　が四平に属します。基本はこの四つですが、ここに衰・絶も加えてもいいくらいです。'),
             ),
             ListTile(
-              title: Image.asset('images/juuniun/十二運の強弱.jpg'),
+              title: Image.asset('assets/images/juuniun/十二運の強弱.jpg'),
             ),
             ListTile(
               title: Text('　十二運は、$juuniUn　です'),

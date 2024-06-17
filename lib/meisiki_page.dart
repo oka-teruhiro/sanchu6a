@@ -1791,7 +1791,7 @@ class _MeisikiPageState extends State<MeisikiPage> {
                                   children: [
                                     SizedBox(
                                       height: 36,
-                                      width: w1 * 3,
+                                      width: w1 * 3 + w2,
                                       child: Container(
                                         decoration: BoxDecoration(
                                             borderRadius:
@@ -1819,7 +1819,7 @@ class _MeisikiPageState extends State<MeisikiPage> {
                                         ),
                                       ),
                                     ),
-                                    SizedBox(
+                                    /*SizedBox(
                                       height: 36,
                                       width: w2,
                                       child: Container(
@@ -1856,7 +1856,7 @@ class _MeisikiPageState extends State<MeisikiPage> {
                                           ),
                                         ),
                                       ),
-                                    ),
+                                    ),*/
                                   ],
                                 ),
                                 //■■■■■■■■■取説の行■■■■■■■■■

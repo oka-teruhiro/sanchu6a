@@ -23,7 +23,7 @@ class Sui extends StatelessWidget {
         child: ListView(
           children: <Widget>[
             ListTile(
-              title: Image.asset('images/juuniun/12衰.jpg'),
+              title: Image.asset('assets/images/juuniun/12衰.jpg'),
             ),
             const ListTile(
               title: Text('　衰退し始める状態を意味します。降り始めるが、それでもまだまだ強い。'),

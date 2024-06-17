@@ -68,14 +68,14 @@ class Sisui extends StatelessWidget {
               title: Text('　四衰とは、運勢の力なし,少しの荷物を持つのがやっと、といった運勢を持っています。'),
             ),
             ListTile(
-              title: Image.asset('images/juuniun/大きい石小さい石.jpg'),
+              title: Image.asset('assets/images/juuniun/大きい石小さい石.jpg'),
             ),
             const ListTile(
               title: Text(
                   '　十二運のうち、衰・病・死・絶が四衰に属します。基本はこの四つですが、実際には、衰や絶は、四平（しへい）レベルの運勢を持っています。'),
             ),
             ListTile(
-              title: Image.asset('images/juuniun/十二運の強弱.jpg'),
+              title: Image.asset('assets/images/juuniun/十二運の強弱.jpg'),
             ),
             const ListTile(
               title: Text(
@@ -96,14 +96,14 @@ class Sisui extends StatelessWidget {
               title: Text('　勢いがないので、川を上流から下流へ下るように少ない労力で大きな効果を狙います。流れに逆らいません。'),
             ),
             ListTile(
-              title: Image.asset('images/juuniun/上流下流.jpg'),
+              title: Image.asset('assets/images/juuniun/上流下流.jpg'),
             ),
             const ListTile(
               title: Text(
                   '　また、荷物をもってエレベータの前に立っている場合、階段を使うことはありません。エレベータが来るまで待ちます。'),
             ),
             ListTile(
-              title: Image.asset('images/juuniun/エレベータ階段.jpg'),
+              title: Image.asset('assets/images/juuniun/エレベータ階段.jpg'),
             ),
             const ListTile(
               title: Text(

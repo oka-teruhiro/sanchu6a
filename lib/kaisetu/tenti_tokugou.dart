@@ -34,7 +34,7 @@ class TentiTokugou extends StatelessWidget {
               height: 200,
               //color: Colors.white70,
               child: ListTile(
-                title: Image.asset('images/tentitokugou/anehaturu1.jpg'),
+                title: Image.asset('assets/images/tentitokugou/anehaturu1.jpg'),
               ),
             ),
           ),
@@ -51,7 +51,7 @@ class TentiTokugou extends StatelessWidget {
             ),
           ),
           ListTile(
-            title: Image.asset('images/tentitokugou/anehaturu.jpg'),
+            title: Image.asset('assets/images/tentitokugou/anehaturu.jpg'),
           ),
           const ListTile(
             title: Text(
@@ -88,7 +88,7 @@ class TentiTokugou extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: ListTile(
-              title: Image.asset('images/tentitokugou/anehaturu2.jpg'),
+              title: Image.asset('assets/images/tentitokugou/anehaturu2.jpg'),
             ),
           ),
           const ListTile(

@@ -23,7 +23,7 @@ class Kenroku extends StatelessWidget {
         child: ListView(
           children: <Widget>[
             ListTile(
-              title: Image.asset('images/juuniun/12建.jpg'),
+              title: Image.asset('assets/images/juuniun/12建.jpg'),
             ),
             const ListTile(
               title: Text(

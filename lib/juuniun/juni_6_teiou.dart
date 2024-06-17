@@ -23,7 +23,7 @@ class Teiou extends StatelessWidget {
         child: ListView(
           children: <Widget>[
             ListTile(
-              title: Image.asset('images/juuniun/12帝.jpg'),
+              title: Image.asset('assets/images/juuniun/12帝.jpg'),
             ),
             const ListTile(
               title: Text('　登り切って山の頂上にいる状態を意味します。　下を見るので、人間的に丸みを帯びます。'),

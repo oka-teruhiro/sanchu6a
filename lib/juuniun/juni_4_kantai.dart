@@ -23,7 +23,7 @@ class Kantai extends StatelessWidget {
         child: ListView(
           children: <Widget>[
             ListTile(
-              title: Image.asset('images/juuniun/12冠.jpg'),
+              title: Image.asset('assets/images/juuniun/12冠.jpg'),
             ),
             const ListTile(
               title: Text('　成人式で、冠と帯をつけ、大人として認められることを意味します。'),

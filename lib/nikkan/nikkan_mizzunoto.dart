@@ -31,7 +31,7 @@ class NikkanMizunoto extends StatelessWidget {
               ),
             ),
             ListTile(
-              title: Image.asset('images/nikkan/癸_雲雨.jpg'),
+              title: Image.asset('assets/images/nikkan/癸_雲雨.jpg'),
             ),
             const ListTile(
               title: Text(
@@ -55,7 +55,7 @@ class NikkanMizunoto extends StatelessWidget {
               ),
             ),
             ListTile(
-              title: Image.asset('images/nikkan/癸_潤う.jpg'),
+              title: Image.asset('assets/images/nikkan/癸_潤う.jpg'),
             ),
             const ListTile(
               title: Text(

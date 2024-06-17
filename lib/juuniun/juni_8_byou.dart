@@ -23,7 +23,7 @@ class Byou extends StatelessWidget {
         child: ListView(
           children: <Widget>[
             ListTile(
-              title: Image.asset('images/juuniun/12病.jpg'),
+              title: Image.asset('assets/images/juuniun/12病.jpg'),
             ),
             const ListTile(
               title: Text(

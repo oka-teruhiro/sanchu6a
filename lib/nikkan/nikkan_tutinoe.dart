@@ -30,7 +30,7 @@ class NikkanTutinoe extends StatelessWidget {
               ),
             ),
             ListTile(
-              title: Image.asset('images/nikkan/戊_岩山.jpg'),
+              title: Image.asset('assets/images/nikkan/戊_岩山.jpg'),
             ),
             const ListTile(
               title: Text(
@@ -52,7 +52,7 @@ class NikkanTutinoe extends StatelessWidget {
               ),
             ),
             ListTile(
-              title: Image.asset('images/nikkan/戊_石垣.jpg'),
+              title: Image.asset('assets/images/nikkan/戊_石垣.jpg'),
             ),
             const ListTile(
               title: Text(

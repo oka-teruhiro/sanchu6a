@@ -23,7 +23,7 @@ class Zetu extends StatelessWidget {
         child: ListView(
           children: <Widget>[
             ListTile(
-              title: Image.asset('images/juuniun/12絶.jpg'),
+              title: Image.asset('assets/images/juuniun/12絶.jpg'),
             ),
             const ListTile(
               title: Text(

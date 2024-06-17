@@ -37,7 +37,7 @@ class NikkanKanoe extends StatelessWidget {
               height: 250,
               //color: Colors.white70,
               child: ListTile(
-                title: Image.asset('images/nikkan/庚_剣.jpg'),
+                title: Image.asset('assets/images/nikkan/庚_剣.jpg'),
               ),
             ),
             const ListTile(
@@ -73,7 +73,7 @@ class NikkanKanoe extends StatelessWidget {
               ),
             ),
             ListTile(
-              title: Image.asset('images/nikkan/庚_鍛える.jpg'),
+              title: Image.asset('assets/images/nikkan/庚_鍛える.jpg'),
             ),
             const ListTile(
               title: Text(

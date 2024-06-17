@@ -23,7 +23,7 @@ class Tai extends StatelessWidget {
         child: ListView(
           children: <Widget>[
             ListTile(
-              title: Image.asset('images/juuniun/12胎.jpg'),
+              title: Image.asset('assets/images/juuniun/12胎.jpg'),
             ),
             const ListTile(
               title: Text('　受胎を意味します。新しい生命の出発。'),

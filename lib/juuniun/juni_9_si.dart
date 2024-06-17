@@ -23,7 +23,7 @@ class Si extends StatelessWidget {
         child: ListView(
           children: <Widget>[
             ListTile(
-              title: Image.asset('images/juuniun/12死.jpg'),
+              title: Image.asset('assets/images/juuniun/12死.jpg'),
             ),
             const ListTile(
               title: Text(

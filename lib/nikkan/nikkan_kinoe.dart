@@ -30,7 +30,7 @@ class NikkanKinoe extends StatelessWidget {
               ),
             ),
             ListTile(
-              title: Image.asset('images/nikkan/甲_大樹.jpg'),
+              title: Image.asset('assets/images/nikkan/甲_大樹.jpg'),
             ),
             const ListTile(
               title: Text(
@@ -64,7 +64,7 @@ class NikkanKinoe extends StatelessWidget {
               ),
             ),
             ListTile(
-              title: Image.asset('images/nikkan/甲_木陰.jpg'),
+              title: Image.asset('assets/images/nikkan/甲_木陰.jpg'),
             ),
             const ListTile(
               title: Text(
