@@ -234,6 +234,89 @@ class _TenunPageState extends State<TenunPage> {
           '${tenunNen[i]}（${tenunKansi[i]}）年（${tenunNenrei[i]}歳）：${tenunMeiMoji[i]}';
     }
 
+
+    List<String> zu = [
+      'assets/images/0.jpg', //1
+      'assets/images/tentitokugou/anehaturu1.jpg', //2
+      'assets/images/tentitokugou/anehaturu.jpg', //3
+      'assets/images/0.jpg', //4
+      'assets/images/tentitokugou/天運の期間.jpg', //5
+      'assets/images/0.jpg', //6
+      'assets/images/tentitokugou/anehaturu2.jpg', //7
+      'assets/images/0.jpg', //8
+      'assets/images/0.jpg', //9
+      'assets/images/0.jpg', //10
+      'assets/images/0.jpg', //11
+      'assets/images/0.jpg', //12
+    ];
+    List<double> takasaZu = [
+      0, //1
+      200, //2
+      250, //3
+      0, //4
+      220, //5
+      0, //6
+      350, //7
+      0, //8
+      0, //9
+      0, //10
+      0, //11
+      0, //12
+    ];
+    List<String> moji = [
+      '　人生における天の上昇気流(天の風)が吹き、大飛躍を遂げることが出来る時を示します。', //1
+      '　天の上昇気流はよく、アネハ鶴がヒマラヤ山脈を越えていく様子に例えられます。'
+          '繁殖を終えたアネハ鶴は、越冬のためにシベリアやチベットからインドへと渡る際、'
+          '8,000メートル級の山々が連なるヒマラヤ山脈を越えていかなければなりません。'
+          '鶴自身の力だけではとても不可能ですが、渓谷に発生する台風並の強い上昇気流を'
+          '巧みに利用して越えていきます。', //2
+      '　同じように、人の努力だけでは越えられない壁も、この時吹く天の上昇気流に'
+          'うまく乗ることによって、大きな飛躍を遂げることができるのです。', //3
+      '　天運の年は、天地徳合（てんちとくごう）の年と、干支併臨（かんしへいりん）の年で構成されます。'
+          '天地徳合は60年に一度、干支併臨は60年に三度存在し、この年と前後1年、'
+          '合わせた3年間がその期間になります。', //4
+      '　ところで易学の世界では、立春'
+          '（年の節入日：おおよそ2月4日）を一年の始まり、節分（立春の一日前の日）を'
+          '一年の終わりとみます。例えば天地徳合が2022年ならば、'
+          '2021年立春～2023年節分（2021/2/3～2024/2/3)が天運の期間となります。', //5
+      '　天の上昇気流が吹くからといって、自分の努力が不要になる訳ではありません。'
+          '準備なく飛び込んだ鶴は風の強さにたじろぎ、上昇気流に飛び込めず、'
+          'ケガをしてしまうこともあります。しかし、体力を蓄え再び挑戦し、'
+          '強い上昇気流の中をさらに羽ばたいて高度を上げていくのです。', //6
+      '　同様に、天運期間を迎えるにあたって、自身の準備を怠らないことが大切です。'
+          '天運期間には、自分の努力ではなんともし難い、環境の大きな変化が予想されます。'
+          'そこで躊躇することなく、チャンスととらえ、今までの苦労はこの時のためにあった'
+          'ぐらいの気持ちで果敢にチャレンジしましょう。'
+          'どこに天が準備した贈り物があるかわかりません。'
+          '身の回りの小さな変化も見逃さず、ここに天の意向があるかもしれないと思って'
+          '関心を持ちましょう。', //7
+      '　なお、表示されている年齢は、天地徳合/干支併臨の立春日の満年齢を示しています。', //8
+      '　あなたが、大飛躍を遂げることを、心からお祈りいたします。', //9
+      '', //10
+      '', //11
+      '', //12
+    ];
+
+    //-1407770 薄いピンク[300]
+    //-1294214 ピンク[400]
+    //-1407770 ピンク[500]
+    // -4056997 暗いピンク[700]
+
+    List<int> iroMoji = [
+      -1, //1
+      -1, //2
+      -1, //3
+      -1, //4
+      -1, //5
+      -1, //6
+      -1, //7
+      -1, //8
+      -1, //9
+      -1, //10
+      -1, //11
+      -1, //12
+    ];
+
     //■■　画面を生成する　■■
 
     return MediaQuery(
@@ -281,296 +364,100 @@ class _TenunPageState extends State<TenunPage> {
         ),
         body: Container(
           color: Colors.black,
-          child: SizedBox(
-            height: double.infinity,
-            width: double.infinity,
-            child: ListView(
-              children: [
-                ListTile(
-                  title: Center(
+          child: Column(
+            children: [
+              Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: Center(
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        /*Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(
-                                '$seinengappiMoji 生まれの',
-                                style: const TextStyle(
-                                  fontSize: 17,
-                                ),
-                              ),
-                              Text(
-                                'あなたの日干は、$jukkanNameYomiです。',
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: SizedBox(
-                                  width: 220,
-                                  height: 36,
-                                  child: ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor: Colors.blue,
-                                      alignment: Alignment.center,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(4.0),
-                                      ),
-                                    ),
-                                    onPressed: () {
-                                      if (nikkan == 0) {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const NikkanKinoe(),
-                                            ));
-                                      } else if (nikkan == 1) {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const NikkanKinoto(),
-                                            ));
-                                      } else if (nikkan == 2) {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const NikkanHinoe(),
-                                            ));
-                                      } else if (nikkan == 3) {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const NikkanHinoto(),
-                                            ));
-                                      } else if (nikkan == 4) {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const NikkanTutinoe(),
-                                            ));
-                                      } else if (nikkan == 5) {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const NikkanTutinoto(),
-                                            ));
-                                      } else if (nikkan == 6) {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const NikkanKanoe(),
-                                            ));
-                                      } else if (nikkan == 7) {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const NikkanKanoto(),
-                                            ));
-                                      } else if (nikkan == 8) {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const NikkanMizunoe(),
-                                            ));
-                                      } else {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const NikkanMizunoto(),
-                                            ));
-                                      }
-                                    },
-                                    child: const Text(
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
-                                      ),
-                                      '日干からみた性格は',
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),*/
-                        Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: Column(
-                            children: [
-                              /*const Text(
-                                '天運の年は、',
-                                style: TextStyle(
-                                  fontSize: 18,
-                                ),
-                              ),*/
-                              Text(
-                                tenunText[0],
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                ),
-                              ),
-                              Text(
-                                tenunText[1],
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                ),
-                              ),
-                              Text(
-                                tenunText[2],
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                ),
-                              ),
-                              Text(
-                                tenunText[3],
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                ),
-                              ),
-                              Text(
-                                tenunText[4],
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                ),
-                              ),
-                              Text(
-                                tenunText[5],
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                ),
-                              ),
-                              Text(
-                                tenunText[6],
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                ),
-                              ),
-                              /*Padding(
-                                padding: const EdgeInsets.all(4.0),
-                                child: SizedBox(
-                                  width: 220,
-                                  height: 36,
-                                  child: ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor: Colors.blue,
-                                      alignment: Alignment.center,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(4.0),
-                                      ),
-                                    ),
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              const TentiTokugou(),
-                                        ),
-                                      );
-                                    },
-                                    child: const Text(
-                                      style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white,
-                                    ),
-                                      '天地徳合/干支併臨とは',
-                                    ),
-                                  ),
-                                ),
-                              ),*/
-                            ],
+                        Text(
+                          tenunText[0],
+                          style: const TextStyle(
+                            fontSize: 16,
                           ),
                         ),
-                        /*Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: SizedBox(
-                            width: 220,
-                            height: 36,
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.blue,
-                                alignment: Alignment.center,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(4.0),
-                                ),
-                              ),
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => MeisikiPage(
-                                      //nenchu: nenchuS,
-                                      //gechu: gechuS,
-                                      //nichu: nichu,
-                                      seinen: seinen,
-                                      seigatu: seigatu,
-                                      seiniti: seiniti,
-                                      //setuirinen: setuirinen,
-                                      //setuirigatu: setuirigatu,
-                                      //setuiriniti: setuiriniti,
-                                     // setuiriji: setuiriji,
-                                      //setuirihun: setuirihun,
-                                      //setuirinitisuu: setuirinitisuu,
-                                    ),
-                                  ),
-                                );
-                              },
-                              child: const Text(
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
-                                  ),
-                                  '命式を表示する',
-                              ),
-                            ),
+                        Text(
+                          tenunText[1],
+                          style: const TextStyle(
+                            fontSize: 16,
                           ),
-                        ),*/
-                        /*Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: SizedBox(
-                            width: 220,
-                            height: 36,
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.blue,
-                                alignment: Alignment.center,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(4.0),
-                                ),
-                              ),
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                              child: const Text(
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
-                                '戻る',
-                              ),
-                            ),
+                        ),
+                        Text(
+                          tenunText[2],
+                          style: const TextStyle(
+                            fontSize: 16,
                           ),
-                        ),*/
+                        ),
+                        Text(
+                          tenunText[3],
+                          style: const TextStyle(
+                            fontSize: 16,
+                          ),
+                        ),
+                        Text(
+                          tenunText[4],
+                          style: const TextStyle(
+                            fontSize: 16,
+                          ),
+                        ),
+                        Text(
+                          tenunText[5],
+                          style: const TextStyle(
+                            fontSize: 16,
+                          ),
+                        ),
+                        Text(
+                          tenunText[6],
+                          style: const TextStyle(
+                            fontSize: 16,
+                          ),
+                        ),
                       ],
                     ),
                   ),
                 ),
-              ],
-            ),
+              const Divider(
+                color: Colors.blue,
+              ),
+              Expanded(
+                //height: 400,
+                child: ListView.builder(
+                  itemCount: 11,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Column(
+                      children: [
+                        SizedBox(
+                          height: takasaZu[index],
+                          child: ListTile(
+                            title: Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                              child: Image.asset(zu[index]),
+                            ),
+                            tileColor: Colors.black,
+                          ),
+                        ),
+                        ListTile(
+                          tileColor: Colors.black,
+                          title: Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                            child: Text(
+                              moji[index],
+                              style: TextStyle(
+                                height: 1.5,
+                                fontSize: 16,
+                                color: Color(iroMoji[index]),
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    );
+                  },
+                ),
+              ),
+            ],
           ),
         ),
       ),
