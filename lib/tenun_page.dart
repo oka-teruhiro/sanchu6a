@@ -1,21 +1,5 @@
-//import 'dart:ui';
-
 import 'package:flutter/material.dart';
-
-import '../kaisetu/tenti_tokugou.dart';
-import '../nikkan/nikkan_hinoe.dart';
-import '../nikkan/nikkan_hinoto.dart';
-import '../nikkan/nikkan_kanoe.dart';
-import '../nikkan/nikkan_kanoto.dart';
-import '../nikkan/nikkan_kinoe.dart';
-import '../nikkan/nikkan_kinoto.dart';
-import '../nikkan/nikkan_mizunoe.dart';
-import '../nikkan/nikkan_mizzunoto.dart';
-import '../nikkan/nikkan_tutinoe.dart';
-import '../nikkan/nikkan_tutinoto.dart';
 import 'kansuu.dart';
-//import 'meisiki_page.dart';
-//import 'meisiki_page4.dart';
 
 class TenunPage extends StatefulWidget {
   final int seinen; //生年
@@ -28,8 +12,6 @@ class TenunPage extends StatefulWidget {
     required this.seiniti,
   });
 
-  //final String titleSeinengappi;
-
   @override
   State<TenunPage> createState() => _TenunPageState();
 }
@@ -40,7 +22,6 @@ class _TenunPageState extends State<TenunPage> {
   int seigatuInt = 1;    // 6.1.12
   int seinitiInt = 1;    // 6.1.12
   String x ='';          //6.1.12
-  //String titleSeinengappi = '';
   int nikkan = -1;
   String jukkan = "甲乙丙丁戊己庚辛壬癸"; //十干リスト
   String jukkanYomi = "甲【きのえ】　乙【きのと】　丙【ひのえ】　丁【ひのと】　戊【つちのえ】"
@@ -99,7 +80,6 @@ class _TenunPageState extends State<TenunPage> {
   List<int> iroBotan = [-14575885, -12627531, -14575885];
   List<int> iroTitle = [-1294214, -5767189, -1294214];
   List<String> botanMoji = ['節入り時刻前', '節入り時刻後', '節入り時刻前'];
-  List<String> meisikiTitle = ['節入り時刻後の天運の年', '節入り時刻前の天運の年', 'あなたの天運の年は'];
   List<int> nenchuNo = [1, 0, 1];
   List<int> gechuNo = [1, 0, 1];
   int nenchuNoH = 0;
@@ -121,7 +101,6 @@ class _TenunPageState extends State<TenunPage> {
     seinenInt = widget.seinen;
     seigatuInt = widget.seigatu;
     seinitiInt = widget.seiniti;
-    //titleSeinengappi = widget.titleSeinengappi; //ToDo
 
 
     //■■画面生成のための各種データを生成する■■
@@ -234,6 +213,7 @@ class _TenunPageState extends State<TenunPage> {
           '${tenunNen[i]}（${tenunKansi[i]}）年（${tenunNenrei[i]}歳）：${tenunMeiMoji[i]}';
     }
 
+    List<String> meisikiTitle = ['節入り時刻後の天運の年', '節入り時刻前の天運の年', '$seinenInt.$seigatuInt.$seinitiInt 生　の天運の年'];
 
     List<String> zu = [
       'assets/images/0.jpg', //1
@@ -252,11 +232,11 @@ class _TenunPageState extends State<TenunPage> {
     List<double> takasaZu = [
       0, //1
       200, //2
-      250, //3
+      180, //3
       0, //4
-      220, //5
+      160, //5
       0, //6
-      350, //7
+      200, //7
       0, //8
       0, //9
       0, //10
@@ -264,7 +244,7 @@ class _TenunPageState extends State<TenunPage> {
       0, //12
     ];
     List<String> moji = [
-      '　人生における天の上昇気流(天の風)が吹き、大飛躍を遂げることが出来る時を示します。', //1
+      '　天運の年とは、人生における天の上昇気流(天の風)が吹き、大飛躍を遂げることが出来る大切な年を示します。', //1
       '　天の上昇気流はよく、アネハ鶴がヒマラヤ山脈を越えていく様子に例えられます。'
           '繁殖を終えたアネハ鶴は、越冬のためにシベリアやチベットからインドへと渡る際、'
           '8,000メートル級の山々が連なるヒマラヤ山脈を越えていかなければなりません。'
@@ -456,6 +436,9 @@ class _TenunPageState extends State<TenunPage> {
                     );
                   },
                 ),
+              ),
+              const Divider(
+                color: Colors.blue,
               ),
             ],
           ),
