@@ -115,6 +115,7 @@ class _MeisikiPageState extends State<MeisikiPage> {
   int iroPink = 0xFFEC407A;
   int iroWhite = 0xFFFFFFFF;
   int iroTeal = 0xFF80CBC4;
+  int iroGreenAccent = 0xFF69F0AE;
   int iroSetuiri = -1;
   int seinenInt = 1900;
   int seigatuInt = 1;
@@ -127,7 +128,7 @@ class _MeisikiPageState extends State<MeisikiPage> {
   int setuirinitisuuInt = 2;
   int zenGo = 2; //0:節入り時刻後　1:節入り時刻前 2:節入り日以外
   List<int> iroBotan = [-14575885, -12627531, -14575885];
-  List<int> iroTitle = [-1294214, -5767189, -1294214];
+  List<int> iroTitle = [-5767189, -1294214, -5767189];
   List<String> botanMoji = ['節入り時刻前', '節入り時刻後', '節入り時刻前'];
   List<String> meisikiTitle = ['節入り時刻後の命式', '節入り時刻前の命式', 'あなたの命式は'];
   List<int> nenchuNo = [1, 0, 1];
@@ -191,7 +192,7 @@ class _MeisikiPageState extends State<MeisikiPage> {
         rokujukkansi.substring(nichuNo[zenGo] * 2, (nichuNo[zenGo]) * 2 + 2);
 
     //節入り日の時節入り時刻前ボタンを表示する
-    if (setuirinitisuuInt == 1) {
+    if (setuirinitisuu == 1) {   // 6.1.17
       setuiriButtonWidth = 80;
       iroSetuiri = iroPink;
     } else {
@@ -247,6 +248,7 @@ class _MeisikiPageState extends State<MeisikiPage> {
             style: TextStyle(
               color: Color(iroTitle[zenGo]),
               fontWeight: FontWeight.bold,
+              fontSize: 20, // 6.1.17
             ),
           ),
           actions: [
@@ -259,11 +261,20 @@ class _MeisikiPageState extends State<MeisikiPage> {
                     backgroundColor: Color(iroBotan[zenGo]),
                     elevation: 0,
                     shadowColor: Colors.red,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
                   ),
                   onPressed: () {
                     _incrementCounter();
                   },
-                  child: Text(botanMoji[zenGo]),
+                  child: Text(botanMoji[zenGo],
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 11,
+                    ),
+                  ),
                 ),
               ),
             )
@@ -1803,7 +1814,7 @@ class _MeisikiPageState extends State<MeisikiPage> {
                                         child: Center(
                                           child: TextButton(
                                             child: Text(
-                                              '節入り日（ $setuirigatuInt/$setuirinitiInt $setuirijiInt:$setuirihunInt ）から$setuirinitisuuInt日目',
+                                              '節入り日（ $setuirigatuInt/$setuirinitiInt $setuirijiInt:$setuirihunInt ）から$setuirinitisuu日目',
                                               style: TextStyle(
                                                 fontSize: fs - 8,
                                                 color: Color(iroWhite),
@@ -1819,44 +1830,6 @@ class _MeisikiPageState extends State<MeisikiPage> {
                                         ),
                                       ),
                                     ),
-                                    /*SizedBox(
-                                      height: 36,
-                                      width: w2,
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                            color: Colors.blue,
-                                            borderRadius:
-                                                BorderRadius.circular(12),
-                                            border: Border.all(
-                                              color: Colors.black,
-                                              width: 1,
-                                            )),
-                                        child: Center(
-                                          child: TextButton(
-                                            child: Text(
-                                              'チャート', //チャート
-                                              style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: fs - 12,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                            ),
-                                            onPressed: () {
-                                              Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        MeisikiChartPage(
-                                                      seinitiInt: seinitiInt,
-                                                      seigatuInt: seigatuInt,
-                                                      seinenInt: seinenInt,
-                                                    ),
-                                                  ));
-                                            },
-                                          ),
-                                        ),
-                                      ),
-                                    ),*/
                                   ],
                                 ),
                                 //■■■■■■■■■取説の行■■■■■■■■■
@@ -1872,7 +1845,7 @@ class _MeisikiPageState extends State<MeisikiPage> {
                                             '赤ワクのところを、タップすると、さらに詳しい説明をみることができます。',
                                             style: TextStyle(
                                               fontSize: fs - 6,
-                                              color: Colors.white70,
+                                              color: Colors.greenAccent,
                                               fontWeight: FontWeight.bold,
                                             ),
                                           ),
