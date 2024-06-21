@@ -196,7 +196,7 @@ class _PageAState extends State<PageA> {
         backgroundColor: Colors.black,
         appBar: AppBar(
           backgroundColor: Colors.black12,
-          title: const Text('天運三柱推命 ver.6.1.15',
+          title: const Text('天運三柱推命 ver.6.1.16',
               style: TextStyle(
                 color: Colors.greenAccent,
                 fontWeight: FontWeight.bold,
@@ -368,6 +368,7 @@ class _PageAState extends State<PageA> {
                                                 seinenInt: seiNen,   // 6.1.2
                                                 seigatuInt: seiGatu, // 6.1.2
                                                 seinitiInt: seiNiti, // 6.1.2
+                                                aiteInt: index,  //6.1.16
                                               )),
                                     );
                                     /*Navigator.push(

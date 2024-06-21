@@ -1,41 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:sanch6a/kansuu.dart';
+
+import 'niti_kan.dart';
 
 class SeikakuPage extends StatefulWidget {
   final int seinenInt;
   final int seigatuInt;
   final int seinitiInt;
+  final int aiteInt;  //6.1.16
+
   const SeikakuPage({
     super.key,
     required this.seinenInt,
     required this.seigatuInt,
     required this.seinitiInt,
+    required this.aiteInt,  //6.1.16
   });
 
   @override
-  _SeikakuPageState createState() => _SeikakuPageState();
+  SeikakuPageState createState() => SeikakuPageState();
 }
 
-class _SeikakuPageState extends State<SeikakuPage> {
+class SeikakuPageState extends State<SeikakuPage> {
   late int seinenInt = 2000; // 6.1.15
   late int seigatuInt = 1; //   6.1.15
   late int seinitiInt = 1; //   6.1.15
-  /*bool _isExpanded0 = true; // タイル0の開閉状態
-  bool _isExpanded1 = false; // タイル1の開閉状態
-  bool _isExpanded2 = false; // タイル1の開閉状態
-
-  // ExpansionPanelの開閉状態を管理するメソッド
-  void _togglePanel(int panelIndex) {
-    setState(() {
-      if (panelIndex == 0) {
-        _isExpanded0 = !_isExpanded0;
-      } else if (panelIndex == 1) {
-        _isExpanded1 = !_isExpanded1;
-      } else if (panelIndex == 2) {
-        _isExpanded2 = !_isExpanded2;
-      }
-    });
-  }*/
-  final _listExpanded = [true, false,false];
+  late int aiteInt = 0;   //6.1.16
+  final _listExpanded = [true, false, false];
 
   void _togglePanel(int index) {
     setState(() {
@@ -43,9 +34,9 @@ class _SeikakuPageState extends State<SeikakuPage> {
       //  _listExpanded[i] = i == index ? !_listExpanded[i] : false;
       if (index == 0) {
         _listExpanded[0] = !_listExpanded[0];
-      }else if (index == 1) {
+      } else if (index == 1) {
         _listExpanded[1] = !_listExpanded[1];
-      }else{
+      } else {
         _listExpanded[2] = !_listExpanded[2];
       }
     });
@@ -59,9 +50,35 @@ class _SeikakuPageState extends State<SeikakuPage> {
 
   @override
   Widget build(BuildContext context) {
-    seinenInt = widget.seinenInt;   // 6.1.15
+    seinenInt = widget.seinenInt; // 6.1.15
     seigatuInt = widget.seigatuInt; // 6.1.15
     seinitiInt = widget.seinitiInt; // 6.1.15
+    aiteInt = widget.aiteInt; // 6.1.16
+
+    List<Widget> nks = [  // 日干からみた性質リスト
+      nks0,
+      nks1,
+      nks2,
+      nks3,
+      nks4,
+      nks5,
+      nks6,
+      nks7,
+      nks8,
+      nks9,
+    ];
+    String aiteMoji = '相手';
+
+    if (aiteInt == 0) {
+      aiteMoji = 'あなた';
+    } else {
+      aiteMoji = '相手';
+    }
+
+    // 生年月日から日干No.を算出する
+    var nkMoji = meisikiA(seinenInt, seigatuInt, seinitiInt).substring(4, 5);
+    var nk = juKanNo(nkMoji);
+    var nkYomi = juKanYomi(nkMoji);
 
     return MediaQuery(
       data: MediaQuery.of(context)
@@ -69,7 +86,7 @@ class _SeikakuPageState extends State<SeikakuPage> {
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            '$seinenInt.$seigatuInt.$seinitiInt 生　の性格',
+            '$seinenInt.$seigatuInt.$seinitiInt 生　$aiteMojiの性格',
             style: const TextStyle(
               fontSize: 20,
               color: Colors.greenAccent,
@@ -89,120 +106,29 @@ class _SeikakuPageState extends State<SeikakuPage> {
                   isExpanded: _listExpanded[0],
                   headerBuilder: (BuildContext context, bool isExpanded) {
                     return const ListTile(
-                      title: Text('日干からみた性格',
-                          style: TextStyle(
-                            color: Colors.greenAccent,
-                            fontWeight: FontWeight.normal,
-                          ),
+                      title: Text(
+                        '日干からみた性格',
+                        style: TextStyle(
+                          color: Colors.greenAccent,
+                          fontWeight: FontWeight.normal,
+                        ),
                       ),
                     );
                   },
                   body: Column(
-                    children: <Widget>[
-                      const ListTile(
+                    children: [
+                      ListTile(
                         title: Text(
-                          '　日干が甲の人は、樹木にたとえられる性質を持っています。',
-                          style: TextStyle(height: 1.5),
+                          '　$aiteMojiの日干は、$nkMoji（$nkYomi）です。',
+                          style: const TextStyle(
+                            height: 1.5,
+                          ),
                         ),
                       ),
-                      const ListTile(
-                        title: Text(
-                          '　樹木は天に向かって伸びるように、向上心にあふれ、新しいことをしようと'
-                              'する気持ちが強く、現在おかれている境遇よりもさらに成長しようと努'
-                              '力します。',
-                          style: TextStyle(height: 1.5),
-                        ),
-                      ),
-                      const ListTile(
-                        title: Text(
-                          '　日干が甲の人は、樹木にたとえられる性質を持っています。',
-                          style: TextStyle(height: 1.5),
-                        ),
-                      ),
-                      const ListTile(
-                        title: Text(
-                          '　樹木は天に向かって伸びるように、向上心にあふれ、新しいことをしようと'
-                              'する気持ちが強く、現在おかれている境遇よりもさらに成長しようと努'
-                              '力します。',
-                          style: TextStyle(height: 1.5),
-                        ),
-                      ),
-                      const ListTile(
-                        title: Text(
-                          '　日干が甲の人は、樹木にたとえられる性質を持っています。',
-                          style: TextStyle(height: 1.5),
-                        ),
-                      ),
-                      const ListTile(
-                        title: Text(
-                          '　樹木は天に向かって伸びるように、向上心にあふれ、新しいことをしようと'
-                              'する気持ちが強く、現在おかれている境遇よりもさらに成長しようと努'
-                              '力します。',
-                          style: TextStyle(height: 1.5),
-                        ),
-                      ),
-                      const ListTile(
-                        title: Text(
-                          '　日干が甲の人は、樹木にたとえられる性質を持っています。',
-                          style: TextStyle(height: 1.5),
-                        ),
-                      ),
-                      const ListTile(
-                        title: Text(
-                          '　樹木は天に向かって伸びるように、向上心にあふれ、新しいことをしようと'
-                              'する気持ちが強く、現在おかれている境遇よりもさらに成長しようと努'
-                              '力します。',
-                          style: TextStyle(height: 1.5),
-                        ),
-                      ),
-                      const ListTile(
-                        title: Text(
-                          '　日干が甲の人は、樹木にたとえられる性質を持っています。',
-                          style: TextStyle(height: 1.5),
-                        ),
-                      ),
-                      const ListTile(
-                        title: Text(
-                          '　樹木は天に向かって伸びるように、向上心にあふれ、新しいことをしようと'
-                              'する気持ちが強く、現在おかれている境遇よりもさらに成長しようと努'
-                              '力します。',
-                          style: TextStyle(height: 1.5),
-                        ),
-                      ),
-                      const ListTile(
-                        title: Text(
-                          '　日干が甲の人は、樹木にたとえられる性質を持っています。',
-                          style: TextStyle(height: 1.5),
-                        ),
-                      ),
-                      const ListTile(
-                        title: Text(
-                          '　樹木は天に向かって伸びるように、向上心にあふれ、新しいことをしようと'
-                              'する気持ちが強く、現在おかれている境遇よりもさらに成長しようと努'
-                              '力します。',
-                          style: TextStyle(height: 1.5),
-                        ),
-                      ),
-                      const ListTile(
-                        title: Text(
-                          '　日干が甲の人は、樹木にたとえられる性質を持っています。',
-                          style: TextStyle(height: 1.5),
-                        ),
-                      ),
-                      const ListTile(
-                        title: Text(
-                          '　樹木は天に向かって伸びるように、向上心にあふれ、新しいことをしようと'
-                              'する気持ちが強く、現在おかれている境遇よりもさらに成長しようと努'
-                              '力します。',
-                          style: TextStyle(height: 1.5),
-                        ),
-                      ),
+                      nks[nk], // Todo: 日干No.を計算していれる
                       ListTile(
                         trailing: const Icon(Icons.expand_less),
-
                         onTap: () => _closePanel(0),
-                        //child: const Text('閉じる'),
-
                       ),
                     ],
                   ),
@@ -212,241 +138,46 @@ class _SeikakuPageState extends State<SeikakuPage> {
                   isExpanded: _listExpanded[1],
                   headerBuilder: (BuildContext context, bool isExpanded) {
                     return const ListTile(
-                      title: Text('日支からみた運勢',
+                      title: Text(
+                        '日支からみた運勢',
                         style: TextStyle(
                           color: Colors.greenAccent,
                           fontWeight: FontWeight.normal,
-                        ),),
+                        ),
+                      ),
                     );
                   },
                   body: Column(
                     children: <Widget>[
-                      const ListTile(
-                        title: Text(
-                          '　日干が甲の人は、樹木にたとえられる性質を持っています。',
-                          style: TextStyle(height: 1.5),
-                        ),
-                      ),
-                      const ListTile(
-                        title: Text(
-                          '　樹木は天に向かって伸びるように、向上心にあふれ、新しいことをしようと'
-                              'する気持ちが強く、現在おかれている境遇よりもさらに成長しようと努'
-                              '力します。',
-                          style: TextStyle(height: 1.5),
-                        ),
-                      ),
-                      const ListTile(
-                        title: Text(
-                          '　日干が甲の人は、樹木にたとえられる性質を持っています。',
-                          style: TextStyle(height: 1.5),
-                        ),
-                      ),
-                      const ListTile(
-                        title: Text(
-                          '　樹木は天に向かって伸びるように、向上心にあふれ、新しいことをしようと'
-                              'する気持ちが強く、現在おかれている境遇よりもさらに成長しようと努'
-                              '力します。',
-                          style: TextStyle(height: 1.5),
-                        ),
-                      ),
-                      const ListTile(
-                        title: Text(
-                          '　日干が甲の人は、樹木にたとえられる性質を持っています。',
-                          style: TextStyle(height: 1.5),
-                        ),
-                      ),
-                      const ListTile(
-                        title: Text(
-                          '　樹木は天に向かって伸びるように、向上心にあふれ、新しいことをしようと'
-                              'する気持ちが強く、現在おかれている境遇よりもさらに成長しようと努'
-                              '力します。',
-                          style: TextStyle(height: 1.5),
-                        ),
-                      ),
-                      const ListTile(
-                        title: Text(
-                          '　日干が甲の人は、樹木にたとえられる性質を持っています。',
-                          style: TextStyle(height: 1.5),
-                        ),
-                      ),
-                      const ListTile(
-                        title: Text(
-                          '　樹木は天に向かって伸びるように、向上心にあふれ、新しいことをしようと'
-                              'する気持ちが強く、現在おかれている境遇よりもさらに成長しようと努'
-                              '力します。',
-                          style: TextStyle(height: 1.5),
-                        ),
-                      ),
-                      const ListTile(
-                        title: Text(
-                          '　日干が甲の人は、樹木にたとえられる性質を持っています。',
-                          style: TextStyle(height: 1.5),
-                        ),
-                      ),
-                      const ListTile(
-                        title: Text(
-                          '　樹木は天に向かって伸びるように、向上心にあふれ、新しいことをしようと'
-                              'する気持ちが強く、現在おかれている境遇よりもさらに成長しようと努'
-                              '力します。',
-                          style: TextStyle(height: 1.5),
-                        ),
-                      ),
-                      const ListTile(
-                        title: Text(
-                          '　日干が甲の人は、樹木にたとえられる性質を持っています。',
-                          style: TextStyle(height: 1.5),
-                        ),
-                      ),
-                      const ListTile(
-                        title: Text(
-                          '　樹木は天に向かって伸びるように、向上心にあふれ、新しいことをしようと'
-                              'する気持ちが強く、現在おかれている境遇よりもさらに成長しようと努'
-                              '力します。',
-                          style: TextStyle(height: 1.5),
-                        ),
-                      ),
-                      const ListTile(
-                        title: Text(
-                          '　日干が甲の人は、樹木にたとえられる性質を持っています。',
-                          style: TextStyle(height: 1.5),
-                        ),
-                      ),
-                      const ListTile(
-                        title: Text(
-                          '　樹木は天に向かって伸びるように、向上心にあふれ、新しいことをしようと'
-                              'する気持ちが強く、現在おかれている境遇よりもさらに成長しようと努'
-                              '力します。',
-                          style: TextStyle(height: 1.5),
-                        ),
-                      ),
+                      nks[8],
                       ListTile(
                         trailing: const Icon(Icons.expand_less),
-
                         onTap: () => _closePanel(1),
-                        //child: const Text('閉じる'),
-
                       ),
                     ],
                   ),
-                  //isExpanded: _isExpanded1,
                 ),
                 ExpansionPanel(
                   isExpanded: _listExpanded[2],
                   headerBuilder: (BuildContext context, bool isExpanded) {
                     return const ListTile(
-                      title: Text('日支からみた運勢詳細',
+                      title: Text(
+                        '日支からみた運勢詳細',
                         style: TextStyle(
                           color: Colors.greenAccent,
                           fontWeight: FontWeight.normal,
-                        ),),
+                        ),
+                      ),
                     );
                   },
                   body: Column(
                     children: <Widget>[
-                      const ListTile(
-                        title: Text(
-                          '　日干が甲の人は、樹木にたとえられる性質を持っています。',
-                          style: TextStyle(height: 1.5),
-                        ),
-                      ),
-                      const ListTile(
-                        title: Text(
-                          '　樹木は天に向かって伸びるように、向上心にあふれ、新しいことをしようと'
-                              'する気持ちが強く、現在おかれている境遇よりもさらに成長しようと努'
-                              '力します。',
-                          style: TextStyle(height: 1.5),
-                        ),
-                      ),
-                      const ListTile(
-                        title: Text(
-                          '　日干が甲の人は、樹木にたとえられる性質を持っています。',
-                          style: TextStyle(height: 1.5),
-                        ),
-                      ),
-                      const ListTile(
-                        title: Text(
-                          '　樹木は天に向かって伸びるように、向上心にあふれ、新しいことをしようと'
-                              'する気持ちが強く、現在おかれている境遇よりもさらに成長しようと努'
-                              '力します。',
-                          style: TextStyle(height: 1.5),
-                        ),
-                      ),
-                      const ListTile(
-                        title: Text(
-                          '　日干が甲の人は、樹木にたとえられる性質を持っています。',
-                          style: TextStyle(height: 1.5),
-                        ),
-                      ),
-                      const ListTile(
-                        title: Text(
-                          '　樹木は天に向かって伸びるように、向上心にあふれ、新しいことをしようと'
-                              'する気持ちが強く、現在おかれている境遇よりもさらに成長しようと努'
-                              '力します。',
-                          style: TextStyle(height: 1.5),
-                        ),
-                      ),
-                      const ListTile(
-                        title: Text(
-                          '　日干が甲の人は、樹木にたとえられる性質を持っています。',
-                          style: TextStyle(height: 1.5),
-                        ),
-                      ),
-                      const ListTile(
-                        title: Text(
-                          '　樹木は天に向かって伸びるように、向上心にあふれ、新しいことをしようと'
-                              'する気持ちが強く、現在おかれている境遇よりもさらに成長しようと努'
-                              '力します。',
-                          style: TextStyle(height: 1.5),
-                        ),
-                      ),
-                      const ListTile(
-                        title: Text(
-                          '　日干が甲の人は、樹木にたとえられる性質を持っています。',
-                          style: TextStyle(height: 1.5),
-                        ),
-                      ),
-                      const ListTile(
-                        title: Text(
-                          '　樹木は天に向かって伸びるように、向上心にあふれ、新しいことをしようと'
-                              'する気持ちが強く、現在おかれている境遇よりもさらに成長しようと努'
-                              '力します。',
-                          style: TextStyle(height: 1.5),
-                        ),
-                      ),
-                      const ListTile(
-                        title: Text(
-                          '　日干が甲の人は、樹木にたとえられる性質を持っています。',
-                          style: TextStyle(height: 1.5),
-                        ),
-                      ),
-                      const ListTile(
-                        title: Text(
-                          '　樹木は天に向かって伸びるように、向上心にあふれ、新しいことをしようと'
-                              'する気持ちが強く、現在おかれている境遇よりもさらに成長しようと努'
-                              '力します。',
-                          style: TextStyle(height: 1.5),
-                        ),
-                      ),
-                      const ListTile(
-                        title: Text(
-                          '　日干が甲の人は、樹木にたとえられる性質を持っています。',
-                          style: TextStyle(height: 1.5),
-                        ),
-                      ),
-                      const ListTile(
-                        title: Text(
-                          '　樹木は天に向かって伸びるように、向上心にあふれ、新しいことをしようと'
-                              'する気持ちが強く、現在おかれている境遇よりもさらに成長しようと努'
-                              '力します。',
-                          style: TextStyle(height: 1.5),
-                        ),
-                      ),
+                      nks[9],
                       ListTile(
                         trailing: const Icon(Icons.expand_less),
 
                         onTap: () => _closePanel(2),
                         //child: const Text('閉じる'),
-
                       ),
                     ],
                   ),

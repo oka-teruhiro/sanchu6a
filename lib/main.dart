@@ -37,6 +37,7 @@ class MyApp extends StatelessWidget {
         seinenInt: 2000, // 6.1.2
         seigatuInt: 1, // 6.1.2
         seinitiInt: 1, // 6.1.2
+        aiteInt: 0, //6.1.16
       ),
     );
   }
@@ -47,6 +48,7 @@ class MyHomePage extends StatefulWidget {
   final int seinenInt; // 6.1.2
   final int seigatuInt; // 6.1.2
   final int seinitiInt; // 6.1.2
+  final int aiteInt;   // 6.1.16
 
   const MyHomePage({
     super.key,
@@ -54,6 +56,7 @@ class MyHomePage extends StatefulWidget {
     required this.seinenInt, // 6.1.2
     required this.seigatuInt, // 6.1.2
     required this.seinitiInt, // 6.1.2
+    required this.aiteInt,    // 6.1.16
   }); // currentIndexを追加
 
   @override
@@ -65,6 +68,7 @@ class MyHomePageState extends State<MyHomePage> {
   late int _seinenInt; // 6.1.2
   late int _seigatuInt; // 6.1.2
   late int _seinitiInt; // 6.1.2
+  late int _aiteInt;   // 6.1.16
 
   @override
   void initState() {
@@ -73,6 +77,7 @@ class MyHomePageState extends State<MyHomePage> {
     _seinenInt = widget.seinenInt; // 6.1.2
     _seigatuInt = widget.seigatuInt; // 6.1.2
     _seinitiInt = widget.seinitiInt; // 6.1.2
+    _aiteInt = widget.aiteInt;   // 6.1.16
   }
 
   void onTabTapped(int index) {
@@ -89,11 +94,13 @@ class MyHomePageState extends State<MyHomePage> {
         seinenInt: _seinenInt, // 6.1.2
         seigatuInt: _seigatuInt, // 6.1.2
         seinitiInt: _seinitiInt, // 6.1.2
+        aiteInt: _aiteInt,     // 6.1.16
       ),
       SeikakuPage(
         seinenInt: _seinenInt, // 6.1.15
         seigatuInt: _seigatuInt, // 6.1.15
         seinitiInt: _seinitiInt, // 6.1.15
+        aiteInt: _aiteInt,     // 6.1.16
       ),
       TenunPage(
         seinen: _seinenInt, // 6.1.12

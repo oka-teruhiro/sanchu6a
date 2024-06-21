@@ -7,16 +7,29 @@ class KyouUnseiPage extends StatelessWidget {
   final int seinenInt;
   final int seigatuInt;
   final int seinitiInt;
+  final int aiteInt;  //6.1.16
 
   const KyouUnseiPage({
     super.key,
     required this.seinenInt,
     required this.seigatuInt,
     required this.seinitiInt,
+    required this.aiteInt,  //6.1.16
   });
+
+
 
   @override
   Widget build(BuildContext context) {
+
+    String aiteMoji = '相手';
+
+    if (aiteInt == 0) {
+      aiteMoji = 'あなた';
+    } else {
+      aiteMoji = '相手';
+    }
+    //aiteInt = widget.aiteInt; // 6.1.16
     List<int> indexA = [
       52,53,54,55,56,57,58,59,5,6,
       7,8,9,10,11,12,13,14,15,16,
@@ -156,7 +169,7 @@ class KyouUnseiPage extends StatelessWidget {
               backgroundColor: Colors.black,
               appBar: AppBar(
                 title: Text(
-                  '$seinenInt.$seigatuInt.$seinitiInt 生　の運勢',
+                  '$seinenInt.$seigatuInt.$seinitiInt 生　$aiteMojiの運勢',
                   style: const TextStyle(
                     fontSize: 20,
                     color: Colors.greenAccent,
