@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:sanch6a/meisiki_page.dart';
+import 'package:sanch6a/seikaku_page.dart';
 import 'package:sanch6a/tenun_page.dart';
 import '../meisiki_chart_page.dart';
 import 'kyou_unsei_page.dart';
 import 'page_a.dart';
-import 'page_c.dart';
+//import 'page_c.dart';
 import 'page_g.dart';
 
 void main() {
@@ -89,7 +90,11 @@ class MyHomePageState extends State<MyHomePage> {
         seigatuInt: _seigatuInt, // 6.1.2
         seinitiInt: _seinitiInt, // 6.1.2
       ),
-      const PageC(),
+      SeikakuPage(
+        seinenInt: _seinenInt, // 6.1.15
+        seigatuInt: _seigatuInt, // 6.1.15
+        seinitiInt: _seinitiInt, // 6.1.15
+      ),
       TenunPage(
         seinen: _seinenInt, // 6.1.12
         seigatu: _seigatuInt, // 6.1.12
@@ -117,7 +122,7 @@ class MyHomePageState extends State<MyHomePage> {
           : BottomNavigationBar(
               type: BottomNavigationBarType.fixed,
               backgroundColor: Colors.black12,
-              selectedItemColor: Colors.pinkAccent,
+              selectedItemColor: Colors.greenAccent,
               unselectedItemColor: Colors.white30,
               onTap: onTabTapped,
               currentIndex: _currentIndex,

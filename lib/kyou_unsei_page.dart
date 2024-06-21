@@ -27,9 +27,9 @@ class KyouUnseiPage extends StatelessWidget {
       4,61,
     ];
     const double h1 = 25;
-    const double h2 = 200; // ToDo: 図の部分の高さ・// 530
+    const double h2 = 174; // ToDo: 図の部分の高さ・// 530
     const double w2 = 312; // ToDo: 図の部分の幅・// 312
-    const double h3 = 300; // 説明の部分の高さ
+    const double h3 = 400; // 説明の部分の高さ
     const int c2 = -1; // 白
     const int c3 = -1407770; // ピンク
 
@@ -159,7 +159,7 @@ class KyouUnseiPage extends StatelessWidget {
                   '$seinenInt.$seigatuInt.$seinitiInt 生　の運勢',
                   style: const TextStyle(
                     fontSize: 20,
-                    color: Colors.redAccent,
+                    color: Colors.greenAccent,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -883,7 +883,7 @@ class KyouUnseiPage extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Transform.translate(
+                          /*Transform.translate(
                             offset: const Offset(30, h2 - 18),
                             child: const Text(
                               '■■■■■■■■　解説　■■■■■■■■',
@@ -893,7 +893,7 @@ class KyouUnseiPage extends StatelessWidget {
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                          ),
+                          ),*/
                         ],
                       ),
                     ],
