@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sanch6a/kansuu.dart';
 
 import 'niti_kan.dart';
+import 'niti_si.dart';
 
 class SeikakuPage extends StatefulWidget {
   final int seinenInt;
@@ -67,6 +68,20 @@ class SeikakuPageState extends State<SeikakuPage> {
       nks8,
       nks9,
     ];
+    List<Widget> nsu = [
+      nsu0,
+      nsu1,
+      nsu2,
+      nsu3,
+      nsu4,
+      nsu5,
+      nsu6,
+      nsu7,
+      nsu8,
+      nsu9,
+      nsu10,
+      nsu11,
+    ];
     String aiteMoji = '相手';
 
     if (aiteInt == 0) {
@@ -79,6 +94,14 @@ class SeikakuPageState extends State<SeikakuPage> {
     var nkMoji = meisikiA(seinenInt, seigatuInt, seinitiInt).substring(4, 5);
     var nk = juKanNo(nkMoji);
     var nkYomi = juKanYomi(nkMoji);
+    // 生年月日から日支No.を算出する
+    var nsMoji = meisikiA(seinenInt, seigatuInt, seinitiInt).substring(5, 6);
+    var ns = juuniSiNo(nsMoji);
+    var nsYomi = juuniSiYomi(nsMoji);
+    var jnuMoji = juuNiUnMoji(nkMoji, nsMoji);
+    var jnuNo = juuNiUnNo(jnuMoji);
+    var jnuMojiA = juuNiUnMojiA(jnuMoji);
+    var jnuYomi = juuNiUnYomi(jnuMoji);
 
     return MediaQuery(
       data: MediaQuery.of(context)
@@ -172,10 +195,17 @@ class SeikakuPageState extends State<SeikakuPage> {
                   },
                   body: Column(
                     children: <Widget>[
-                      nks[9],
+                      ListTile(
+                        title: Text(
+                          '　$aiteMojiの日支は、$jnuMojiA（$jnuYomi）です。',
+                          style: const TextStyle(
+                            height: 1.5,
+                          ),
+                        ),
+                      ),
+                      nsu[jnuNo],
                       ListTile(
                         trailing: const Icon(Icons.expand_less),
-
                         onTap: () => _closePanel(2),
                         //child: const Text('閉じる'),
                       ),

@@ -20,7 +20,7 @@ class Tyousei extends StatelessWidget {
       body: SizedBox(
         height: double.infinity,
         //color: Colors.white70,
-        child: ListView(
+        child: Column(
           children: <Widget>[
             ListTile(
               title: Image.asset('assets/images/juuniun/12長.jpg'),

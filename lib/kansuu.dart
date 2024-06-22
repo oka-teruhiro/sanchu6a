@@ -128,6 +128,133 @@ juuniSiYomi(String a) {
   return b;
 }
 
+// 関数定義　日干の文字列と日支の文字列から十二運の文字列を算出する
+// c = juuNiUnMoji(a,b)
+// a: 日干の文字列
+// b: 日支の文字列
+String juuNiUnMoji(String a, String b){
+  String juuniUn = //12運
+      '沐冠建帝衰病死墓絶胎養長' //甲
+      '病衰帝建冠沐長養胎絶墓死' //乙
+      '胎養長沐冠建帝衰病死墓絶' //丙
+      '絶墓死病衰帝建冠沐長養胎' //丁
+      '胎養長沐冠建帝衰病死墓絶' //戊
+      '絶墓死病衰帝建冠沐長養胎' //己
+      '死墓絶胎養長沐冠建帝衰病' //庚
+      '長養胎絶墓死病衰帝建冠沐' //辛
+      '帝衰病死墓絶胎養長沐冠建' //壬
+      '建冠沐長養胎絶墓死病衰帝'; //癸
+  int kanNo = juKanNo(a);
+  int siNo = juuniSiNo(b);
+  String c = juuniUn.substring(
+      kanNo * 12 + siNo, kanNo * 12 + siNo + 1);
+  print('$a:$b:$c');
+  return c;
+}
+
+// 関数定義　十二運の文字から十二運の数字を算出する
+// b = juuNiUnNo(a)
+// a: 十二運の文字列・１文字
+// b: 十二運を表す整数・（ 0 から 11 ）
+juuNiUnNo(String a){
+  int b = 11;
+  if (a == '胎') {
+    b = 0;
+  } else if (a == '養') {
+    b = 1;
+  } else if (a == '長') {
+    b = 2;
+  } else if (a == '沐') {
+    b = 3;
+  } else if (a == '冠') {
+    b = 4;
+  } else if (a == '建') {
+    b = 5;
+  } else if (a == '帝') {
+    b = 6;
+  } else if (a == '衰') {
+    b = 7;
+  } else if (a == '病') {
+    b = 8;
+  } else if (a == '死') {
+    b = 9;
+  } else if (a == '墓') {
+    b = 10;
+  } else if (a == '絶') {
+    b = 11;
+  } else {}
+  return b;
+}
+
+// 関数定義　十二運の文字から正しい十二運の文字を算出する
+// b = juuNiUnMojiA(a)
+// a: 十二運の文字列・１文字
+// b: 十二運を表す文字・（ ２文字もあり）
+juuNiUnMojiA(String a){
+  String b = '絶';
+  if (a == '胎') {
+    b = '胎';
+  } else if (a == '養') {
+    b = '養';
+  } else if (a == '長') {
+    b = '長生';
+  } else if (a == '沐') {
+    b = '沐浴';
+  } else if (a == '冠') {
+    b = '冠帯';
+  } else if (a == '建') {
+    b = '建禄';
+  } else if (a == '帝') {
+    b = '帝旺';
+  } else if (a == '衰') {
+    b = '衰';
+  } else if (a == '病') {
+    b = '病';
+  } else if (a == '死') {
+    b = '死';
+  } else if (a == '墓') {
+    b = '墓';
+  } else if (a == '絶') {
+    b = '絶';
+  } else {}
+  return b;
+}
+// 関数定義　十二運の文字から正しい十二運のよみがなを算出する
+// b = juuNiUnYomi(a)
+// a: 十二運の文字列・１文字
+// b: 十二運のよみがなを表す文字・（文字数いろいろ）
+juuNiUnYomi(String a){
+  String b = 'ぜつ';
+  if (a == '胎') {
+    b = 'たい';
+  } else if (a == '養') {
+    b = 'よう';
+  } else if (a == '長') {
+    b = 'ちょうせい';
+  } else if (a == '沐') {
+    b = 'もくよく';
+  } else if (a == '冠') {
+    b = 'かんたい';
+  } else if (a == '建') {
+    b = 'けんろく';
+  } else if (a == '帝') {
+    b = 'ていおう';
+  } else if (a == '衰') {
+    b = 'すい';
+  } else if (a == '病') {
+    b = 'びょう';
+  } else if (a == '死') {
+    b = 'し';
+  } else if (a == '墓') {
+    b = 'ぼ';
+  } else if (a == '絶') {
+    b = 'ぜつ';
+  } else {}
+  return b;
+}
+
+
+
 // 関数定義　文字列リストから検索文字列が先頭から何文字目にあるか返す
 //  c = nanmojime(a,b)
 //  a:　120文字（2文字×60組）の文字列リスト
