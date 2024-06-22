@@ -78,7 +78,7 @@ class _TenunPageState extends State<TenunPage> {
   double setuiriButtonWidth = 0;
   int zenGo = 2; //0:節入り時刻後　1:節入り時刻前 2:節入り日以外
   List<int> iroBotan = [-14575885, -12627531, -14575885];
-  List<int> iroTitle = [-1294214, -5767189, -1294214];
+  List<int> iroTitle = [-5767189, -1294214, -5767189];
   List<String> botanMoji = ['節入り時刻前', '節入り時刻後', '節入り時刻前'];
   List<int> nenchuNo = [1, 0, 1];
   List<int> gechuNo = [1, 0, 1];
