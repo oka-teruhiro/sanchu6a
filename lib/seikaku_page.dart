@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sanch6a/kansuu.dart';
+import 'package:sanch6a/niti_si2.dart';
 
 import 'niti_kan.dart';
 import 'niti_si.dart';
@@ -82,8 +83,13 @@ class SeikakuPageState extends State<SeikakuPage> {
       nsu10,
       nsu11,
     ];
-    String aiteMoji = '相手';
+    List<Widget> nss = [
+      nss0,
+      nss1,
+      nss2,
+    ];
 
+    String aiteMoji = '相手';
     if (aiteInt == 0) {
       aiteMoji = 'あなた';
     } else {
@@ -96,12 +102,13 @@ class SeikakuPageState extends State<SeikakuPage> {
     var nkYomi = juKanYomi(nkMoji);
     // 生年月日から日支No.を算出する
     var nsMoji = meisikiA(seinenInt, seigatuInt, seinitiInt).substring(5, 6);
-    var ns = juuniSiNo(nsMoji);
-    var nsYomi = juuniSiYomi(nsMoji);
     var jnuMoji = juuNiUnMoji(nkMoji, nsMoji);
     var jnuNo = juuNiUnNo(jnuMoji);
     var jnuMojiA = juuNiUnMojiA(jnuMoji);
     var jnuYomi = juuNiUnYomi(jnuMoji);
+    // 四旺・四平・四衰を算出する
+    var siouSisui = juuNiUnSiou(jnuMoji);
+    var siouSisuiNo = juuNiUnSiouNo(jnuMoji);
 
     return MediaQuery(
       data: MediaQuery.of(context)
@@ -172,7 +179,15 @@ class SeikakuPageState extends State<SeikakuPage> {
                   },
                   body: Column(
                     children: <Widget>[
-                      nks[8],
+                      ListTile(
+                        title: Text(
+                          '　$aiteMojiの運勢の強さは、$siouSisuiです。',
+                          style: const TextStyle(
+                            height: 1.5,
+                          ),
+                        ),
+                      ),
+                      nss[siouSisuiNo],
                       ListTile(
                         trailing: const Icon(Icons.expand_less),
                         onTap: () => _closePanel(1),
@@ -197,7 +212,7 @@ class SeikakuPageState extends State<SeikakuPage> {
                     children: <Widget>[
                       ListTile(
                         title: Text(
-                          '　$aiteMojiの日支は、$jnuMojiA（$jnuYomi）です。',
+                          '　$aiteMojiの十二運は、$jnuMojiA（$jnuYomi）です。',
                           style: const TextStyle(
                             height: 1.5,
                           ),

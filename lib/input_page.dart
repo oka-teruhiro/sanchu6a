@@ -4,14 +4,14 @@ import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'main.dart';
 
-class PageA extends StatefulWidget {
-  const PageA({super.key});
+class InputPage extends StatefulWidget {
+  const InputPage({super.key});
 
   @override
-  State<PageA> createState() => _PageAState();
+  State<InputPage> createState() => _InputPageState();
 }
 
-class _PageAState extends State<PageA> {
+class _InputPageState extends State<InputPage> {
 
 
   // 鑑定ボタンの色
@@ -196,7 +196,7 @@ class _PageAState extends State<PageA> {
         backgroundColor: Colors.black,
         appBar: AppBar(
           backgroundColor: Colors.black12,
-          title: const Text('天運三柱推命 ver.6.1.19',
+          title: const Text('天運三柱推命 ver.6.1.20',
               style: TextStyle(
                 color: Colors.greenAccent,
                 fontWeight: FontWeight.bold,

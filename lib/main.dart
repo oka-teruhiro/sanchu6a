@@ -5,7 +5,7 @@ import 'package:sanch6a/seikaku_page.dart';
 import 'package:sanch6a/tenun_page.dart';
 import '../meisiki_chart_page.dart';
 import 'kyou_unsei_page.dart';
-import 'page_a.dart';
+import 'input_page.dart';
 //import 'page_c.dart';
 import 'page_g.dart';
 
@@ -89,7 +89,7 @@ class MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     final List<Widget> children = [
-      const PageA(),
+      const InputPage(),
       KyouUnseiPage(
         seinenInt: _seinenInt, // 6.1.2
         seigatuInt: _seigatuInt, // 6.1.2

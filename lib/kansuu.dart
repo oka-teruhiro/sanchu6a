@@ -148,7 +148,6 @@ String juuNiUnMoji(String a, String b){
   int siNo = juuniSiNo(b);
   String c = juuniUn.substring(
       kanNo * 12 + siNo, kanNo * 12 + siNo + 1);
-  print('$a:$b:$c');
   return c;
 }
 
@@ -249,6 +248,74 @@ juuNiUnYomi(String a){
     b = 'ぼ';
   } else if (a == '絶') {
     b = 'ぜつ';
+  } else {}
+  return b;
+}
+
+// 関数定義　十二運の文字から四旺・四平・四衰を算出する
+// b = juuNiUnSiou(a)
+// a: 十二運の文字列・１文字
+// b: 四旺・四平・四衰を表す文字・（ ２文字もあり）
+juuNiUnSiou(String a){
+  String b = '四衰';
+  if (a == '胎') {
+    b = '四平（しへい）';
+  } else if (a == '養') {
+    b = '四平（しへい）';
+  } else if (a == '長') {
+    b = '四旺（しおう）';
+  } else if (a == '沐') {
+    b = '四平（しへい）';
+  } else if (a == '冠') {
+    b = '四旺（しおう）';
+  } else if (a == '建') {
+    b = '四旺（しおう）';
+  } else if (a == '帝') {
+    b = '四旺（しおう）';
+  } else if (a == '衰') {
+    b = '四衰（しすい）';
+  } else if (a == '病') {
+    b = '四衰（しすい）';
+  } else if (a == '死') {
+    b = '四衰（しすい）';
+  } else if (a == '墓') {
+    b = '四平（しへい）';
+  } else if (a == '絶') {
+    b = '四衰（しすい）';
+  } else {}
+  return b;
+}
+
+// 関数定義　十二運の文字から四旺・四平・四衰を算出する
+// b = juuNiUnSiou(a)
+// a: 十二運の文字列・１文字
+// b: 四旺・四平・四衰を表す数字（0:四旺・1:四平・2:四衰）
+juuNiUnSiouNo(String a){
+  int b = 2;
+  if (a == '胎') {
+    b = 1;
+  } else if (a == '養') {
+    b = 1;
+  } else if (a == '長') {
+    b = 0;
+  } else if (a == '沐') {
+    b = 1;
+  } else if (a == '冠') {
+    b = 0;
+  } else if (a == '建') {
+    b = 0;
+  } else if (a == '帝') {
+    b = 0;
+  } else if (a == '衰') {
+    b = 2;
+  } else if (a == '病') {
+    b = 2;
+  } else if (a == '死') {
+    b = 2;
+  } else if (a == '墓') {
+    b = 1;
+  } else if (a == '絶') {
+    b = 2;
   } else {}
   return b;
 }
