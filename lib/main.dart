@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:sanch6a/meisiki/meisiki_juuniun.dart';
 import 'package:sanch6a/meisiki_page.dart';
 import 'package:sanch6a/seikaku_page.dart';
 import 'package:sanch6a/tenun_page.dart';
@@ -7,7 +8,7 @@ import '../meisiki_chart_page.dart';
 import 'kyou_unsei_page.dart';
 import 'input_page.dart';
 //import 'page_c.dart';
-import 'page_g.dart';
+//import 'page_g.dart';
 
 void main() {
   runApp(const MyApp());
@@ -120,8 +121,13 @@ class MyHomePageState extends State<MyHomePage> {
         seigatuInt: _seigatuInt, // 6.1.8
         seinitiInt: _seinitiInt, // 6.1.8
       ),
-      //const PageF(),
-      const PageG(),
+      //const PageG(),//todo 相性ページはここに追加
+      MeisikiJuuniun(
+        seinenInt: _seinenInt, // 6.1.15
+        seigatuInt: _seigatuInt, // 6.1.15
+        seinitiInt: _seinitiInt, // 6.1.15
+        aiteInt: _aiteInt,     // 6.1.16
+      ),
     ];
     return Scaffold(
       body: children[_currentIndex],
@@ -159,7 +165,7 @@ class MyHomePageState extends State<MyHomePage> {
                   icon: Icon(Icons.pie_chart),
                   label: 'ﾁｬｰﾄ',
                 ),
-                BottomNavigationBarItem(
+                BottomNavigationBarItem(  //todo 相性ページはここに追加
                   icon: Icon(Icons.supervisor_account),
                   label: '相性',
                 ),

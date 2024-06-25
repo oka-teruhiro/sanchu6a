@@ -48,7 +48,7 @@ class MeisikiNitikan extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          '$seinenInt.$seigatuInt.$seinitiInt 生　$aiteMojiの日干からみた性格',
+          '$seinenInt.$seigatuInt.$seinitiInt 生　の$aiteMoji',
           style: const TextStyle(
             fontSize: 20,
             color: Colors.greenAccent,
@@ -78,6 +78,8 @@ class MeisikiNitikan extends StatelessWidget {
                     '戻る',
                     style: TextStyle(
                       color: Colors.greenAccent,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
                     ),
                   ),
                   onPressed: () {
