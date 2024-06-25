@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sanch6a/meisiki/meisiki_nitikan.dart';
 import '../tuuhenbosi/tuhen_kaisetu.dart';
 import '../juuniun/juni_juuniun.dart';
 import '../juuniun/juni_sihei.dart';
@@ -21,11 +22,13 @@ class MeisikiPage extends StatefulWidget {
   final int seinen; //生年
   final int seigatu; //生月
   final int seiniti; //生日
+  final int aiteInt; //相手
   const MeisikiPage({
     super.key,
     required this.seinen,
     required this.seigatu,
     required this.seiniti,
+    required this.aiteInt,
   });
 
   @override
@@ -134,6 +137,7 @@ class _MeisikiPageState extends State<MeisikiPage> {
   List<int> nenchuNo = [1, 0, 1];
   List<int> gechuNo = [1, 0, 1];
   List<int> nichuNo = [1, 0, 1];
+  int aiteInt = 0;
 
   void _incrementCounter() {
     setState(() {
@@ -148,6 +152,7 @@ class _MeisikiPageState extends State<MeisikiPage> {
     seinenInt = widget.seinen;
     seigatuInt = widget.seigatu;
     seinitiInt = widget.seiniti;
+    aiteInt = widget.aiteInt;
     
     nenchuW = meisikiA(seinenInt, seigatuInt, seinitiInt).substring(0, 2);      //6.1.10
     gechuW = meisikiA(seinenInt, seigatuInt, seinitiInt).substring(2, 4);       //6.1.10
@@ -478,7 +483,15 @@ class _MeisikiPageState extends State<MeisikiPage> {
                                                   fontSize: fs,
                                                 ),
                                               ),
-                                              onPressed: () {
+                                              onPressed: (){
+                                                Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (context) =>
+                                                      MeisikiNitikan(seinenInt: seinenInt, seigatuInt: seigatuInt, seinitiInt: seinitiInt, aiteInt: aiteInt),
+                                                    ));
+                                              },
+                                              /*onPressed: () {
                                                 if (nitikan == '甲') {
                                                   Navigator.push(
                                                       context,
@@ -550,7 +563,7 @@ class _MeisikiPageState extends State<MeisikiPage> {
                                                             const NikkanMizunoto(),
                                                       ));
                                                 }
-                                              },
+                                              },*/
                                             ),
                                           ),
                                         ),

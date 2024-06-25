@@ -23,7 +23,6 @@ class KyouUnseiPage extends StatelessWidget {
   Widget build(BuildContext context) {
 
     String aiteMoji = '相手';
-
     if (aiteInt == 0) {
       aiteMoji = 'あなた';
     } else {

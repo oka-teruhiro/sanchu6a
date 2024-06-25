@@ -111,7 +111,8 @@ class MyHomePageState extends State<MyHomePage> {
         // 6.1.9
         seinen: _seinenInt, // 6.1.9
         seigatu: _seigatuInt, // 6.1.9
-        seiniti: _seinitiInt, // 6.1.9
+        seiniti: _seinitiInt,
+        aiteInt: _aiteInt, // 6.1.9
       ), // 6.1.9
       MeisikiChartPage(
         // 6.1.8
