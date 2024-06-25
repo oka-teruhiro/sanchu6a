@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../kansuu.dart';
@@ -9,6 +8,7 @@ class MeisikiNitikan extends StatelessWidget {
   final int seigatuInt;
   final int seinitiInt;
   final int aiteInt;
+
   const MeisikiNitikan({
     super.key,
     required this.seinenInt,
@@ -17,10 +17,8 @@ class MeisikiNitikan extends StatelessWidget {
     required this.aiteInt,
   });
 
-
   @override
   Widget build(BuildContext context) {
-
     String aiteMoji = '相手';
     if (aiteInt == 0) {
       aiteMoji = 'あなた';
@@ -28,7 +26,8 @@ class MeisikiNitikan extends StatelessWidget {
       aiteMoji = '相手';
     }
 
-    List<Widget> nks = [  // 日干からみた性質リスト
+    List<Widget> nks = [
+      // 日干からみた性質リスト
       nks0,
       nks1,
       nks2,
@@ -46,7 +45,6 @@ class MeisikiNitikan extends StatelessWidget {
     var nk = juKanNo(nkMoji);
     var nkYomi = juKanYomi(nkMoji);
 
-
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -60,65 +58,40 @@ class MeisikiNitikan extends StatelessWidget {
       ),
       body: ListView(
         children: [
-         // ExpansionPanelList(
-            /*expansionCallback: (int panelIndex, bool isExpanded) {
-              //_togglePanel(panelIndex);
-            },*/
-            //animationDuration: const Duration(seconds: 1),
-           // children: [
-           //   ExpansionPanel(
-                //isExpanded: _listExpanded[0],
-               // isExpanded: true,
-                /*headerBuilder: (BuildContext context, bool isExpanded) {
-                  return const ListTile(
-                    title: Text(
-                      '日干からみた性格',
-                      style: TextStyle(
-                        color: Colors.greenAccent,
-                        fontWeight: FontWeight.normal,
-                      ),
-                    ),
-                  );
-                },*/
-                Column(
-                  children: [
-                    ListTile(
-                      title: Text(
-                        '　$aiteMojiの日干は、$nkMoji（$nkYomi）です。',
-                        style: const TextStyle(
-                          height: 1.5,
-                        ),
-                      ),
-                    ),
-                    nks[nk], // Todo: 日干No.を計算していれる
-                    const ListTile(
-                      title: Text(''),
-                    ),
-                    ListTile(
-                      title: ElevatedButton(
-                        child: const Text(
-                          '戻る',
-                          style: TextStyle(
-                            color: Colors.greenAccent,
-                          ),
-                        ),
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                      ),
-                    ),
-                    const ListTile(
-                      title: Text(''),
-                    ),
-                  ],
+          Column(
+            children: [
+              ListTile(
+                title: Text(
+                  '　$aiteMojiの日干は、$nkMoji（$nkYomi）です。',
+                  style: const TextStyle(
+                    height: 1.5,
+                  ),
                 ),
-                //isExpanded: _isExpanded0,
-             // ),//todo
-           // ],//todo
-         // ),//todo
+              ),
+              nks[nk],
+              const ListTile(
+                title: Text(''),
+              ),
+              ListTile(
+                title: ElevatedButton(
+                  child: const Text(
+                    '戻る',
+                    style: TextStyle(
+                      color: Colors.greenAccent,
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+              ),
+              const ListTile(
+                title: Text(''),
+              ),
+            ],
+          ),
         ],
       ),
-
     );
   }
 }

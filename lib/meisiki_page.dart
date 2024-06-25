@@ -5,18 +5,7 @@ import '../juuniun/juni_juuniun.dart';
 import '../juuniun/juni_sihei.dart';
 import '../juuniun/juni_siou.dart';
 import '../juuniun/juni_sisui.dart';
-import '../nikkan/nikkan_hinoe.dart';
-import '../nikkan/nikkan_hinoto.dart';
-import '../nikkan/nikkan_kanoe.dart';
-import '../nikkan/nikkan_kanoto.dart';
-import '../nikkan/nikkan_kinoe.dart';
-import '../nikkan/nikkan_kinoto.dart';
-import '../nikkan/nikkan_mizunoe.dart';
-import '../nikkan/nikkan_mizzunoto.dart';
-import '../nikkan/nikkan_tutinoe.dart';
-import '../nikkan/nikkan_tutinoto.dart';
 import 'kansuu.dart';
-//import 'meisiki_chart_page.dart';
 
 class MeisikiPage extends StatefulWidget {
   final int seinen; //生年
@@ -153,25 +142,34 @@ class _MeisikiPageState extends State<MeisikiPage> {
     seigatuInt = widget.seigatu;
     seinitiInt = widget.seiniti;
     aiteInt = widget.aiteInt;
-    
-    nenchuW = meisikiA(seinenInt, seigatuInt, seinitiInt).substring(0, 2);      //6.1.10
-    gechuW = meisikiA(seinenInt, seigatuInt, seinitiInt).substring(2, 4);       //6.1.10
-    nichuW = meisikiA(seinenInt, seigatuInt, seinitiInt).substring(4, 6);       //6.1.10
-    setuirinenW = meisikiA(seinenInt, seigatuInt, seinitiInt).substring(6, 10); //6.1.10
-    setuirigatuW = meisikiA(seinenInt, seigatuInt, seinitiInt).substring(10, 12); //6.1.10
-    setuirinitiW = meisikiA(seinenInt, seigatuInt, seinitiInt).substring(12, 14); //6.1.10
-    setuirijiW = meisikiA(seinenInt, seigatuInt, seinitiInt).substring(14, 16); //6.1.10
-    setuirihunW = meisikiA(seinenInt, seigatuInt, seinitiInt).substring(17, 19); //6.1.10
-    setuirinitisuuW = meisikiA(seinenInt, seigatuInt, seinitiInt).substring(19, 21); //6.1.10
-    nenchu = nenchuW;                                                           // 6.1.10
-    gechu = gechuW;                                                             // 6.1.10
-    nichu = nichuW;                                                             // 6.1.10
-    setuirinenInt = int.parse(setuirinenW);                                     // 6.1.10
-    setuirigatuInt = int.parse(setuirigatuW);                                   // 6.1.10
-    setuirinitiInt = int.parse(setuirinitiW);                                   // 6.1.10
-    setuirijiInt = int.parse(setuirijiW);                                       // 6.1.10
-    setuirihunInt = int.parse(setuirihunW);                                     // 6.1.10
-    setuirinitisuu = int.parse(setuirinitisuuW);                                // 6.1.10
+
+    nenchuW =
+        meisikiA(seinenInt, seigatuInt, seinitiInt).substring(0, 2); //6.1.10
+    gechuW =
+        meisikiA(seinenInt, seigatuInt, seinitiInt).substring(2, 4); //6.1.10
+    nichuW =
+        meisikiA(seinenInt, seigatuInt, seinitiInt).substring(4, 6); //6.1.10
+    setuirinenW =
+        meisikiA(seinenInt, seigatuInt, seinitiInt).substring(6, 10); //6.1.10
+    setuirigatuW =
+        meisikiA(seinenInt, seigatuInt, seinitiInt).substring(10, 12); //6.1.10
+    setuirinitiW =
+        meisikiA(seinenInt, seigatuInt, seinitiInt).substring(12, 14); //6.1.10
+    setuirijiW =
+        meisikiA(seinenInt, seigatuInt, seinitiInt).substring(14, 16); //6.1.10
+    setuirihunW =
+        meisikiA(seinenInt, seigatuInt, seinitiInt).substring(17, 19); //6.1.10
+    setuirinitisuuW =
+        meisikiA(seinenInt, seigatuInt, seinitiInt).substring(19, 21); //6.1.10
+    nenchu = nenchuW; // 6.1.10
+    gechu = gechuW; // 6.1.10
+    nichu = nichuW; // 6.1.10
+    setuirinenInt = int.parse(setuirinenW); // 6.1.10
+    setuirigatuInt = int.parse(setuirigatuW); // 6.1.10
+    setuirinitiInt = int.parse(setuirinitiW); // 6.1.10
+    setuirijiInt = int.parse(setuirijiW); // 6.1.10
+    setuirihunInt = int.parse(setuirihunW); // 6.1.10
+    setuirinitisuu = int.parse(setuirinitisuuW); // 6.1.10
 
     nenchuNo[0] = rokujuKansiNoA(nenchu);
     if (seigatuInt == 2) {
@@ -197,7 +195,8 @@ class _MeisikiPageState extends State<MeisikiPage> {
         rokujukkansi.substring(nichuNo[zenGo] * 2, (nichuNo[zenGo]) * 2 + 2);
 
     //節入り日の時節入り時刻前ボタンを表示する
-    if (setuirinitisuu == 1) {   // 6.1.17
+    if (setuirinitisuu == 1) {
+      // 6.1.17
       setuiriButtonWidth = 80;
       iroSetuiri = iroPink;
     } else {
@@ -273,7 +272,8 @@ class _MeisikiPageState extends State<MeisikiPage> {
                   onPressed: () {
                     _incrementCounter();
                   },
-                  child: Text(botanMoji[zenGo],
+                  child: Text(
+                    botanMoji[zenGo],
                     style: const TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.normal,
@@ -483,87 +483,21 @@ class _MeisikiPageState extends State<MeisikiPage> {
                                                   fontSize: fs,
                                                 ),
                                               ),
-                                              onPressed: (){
+                                              onPressed: () {
                                                 Navigator.push(
                                                     context,
                                                     MaterialPageRoute(
                                                       builder: (context) =>
-                                                      MeisikiNitikan(seinenInt: seinenInt, seigatuInt: seigatuInt, seinitiInt: seinitiInt, aiteInt: aiteInt),
+                                                          MeisikiNitikan(
+                                                              seinenInt:
+                                                                  seinenInt,
+                                                              seigatuInt:
+                                                                  seigatuInt,
+                                                              seinitiInt:
+                                                                  seinitiInt,
+                                                              aiteInt: aiteInt),
                                                     ));
                                               },
-                                              /*onPressed: () {
-                                                if (nitikan == '甲') {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            const NikkanKinoe(),
-                                                      ));
-                                                } else if (nitikan == '乙') {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            const NikkanKinoto(),
-                                                      ));
-                                                } else if (nitikan == '丙') {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            const NikkanHinoe(),
-                                                      ));
-                                                } else if (nitikan == '丁') {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            const NikkanHinoto(),
-                                                      ));
-                                                } else if (nitikan == '戊') {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            const NikkanTutinoe(),
-                                                      ));
-                                                } else if (nitikan == '己') {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            const NikkanTutinoto(),
-                                                      ));
-                                                } else if (nitikan == '庚') {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            const NikkanKanoe(),
-                                                      ));
-                                                } else if (nitikan == '辛') {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            const NikkanKanoto(),
-                                                      ));
-                                                } else if (nitikan == '壬') {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            const NikkanMizunoe(),
-                                                      ));
-                                                } else {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            const NikkanMizunoto(),
-                                                      ));
-                                                }
-                                              },*/
                                             ),
                                           ),
                                         ),
