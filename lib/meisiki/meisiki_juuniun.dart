@@ -61,7 +61,7 @@ class MeisikiJuuniunState extends State<MeisikiJuuniun> {
     seinitiInt = widget.seinitiInt; // 6.1.15
     aiteInt = widget.aiteInt; // 6.1.16
 
-    List<Widget> nks = [  // 日干からみた性質リスト
+    /*List<Widget> nks = [  // 日干からみた性質リスト
       nks0,
       nks1,
       nks2,
@@ -72,7 +72,7 @@ class MeisikiJuuniunState extends State<MeisikiJuuniun> {
       nks7,
       nks8,
       nks9,
-    ];
+    ];*/
     List<Widget> nsu = [
       nsu0,
       nsu1,
@@ -101,18 +101,35 @@ class MeisikiJuuniunState extends State<MeisikiJuuniun> {
     }
 
     // 生年月日から日干No.を算出する
-    var nkMoji = meisikiA(seinenInt, seigatuInt, seinitiInt).substring(4, 5);
-    var nk = juKanNo(nkMoji);
-    var nkYomi = juKanYomi(nkMoji);
+    var nkMoji = meisikiA(seinenInt, seigatuInt, seinitiInt).substring(4, 5); // 日干を取り出す
+    var gkMoji = meisikiA(seinenInt, seigatuInt, seinitiInt).substring(2, 3); // 月干を取り出す
+    var ykMoji = meisikiA(seinenInt, seigatuInt, seinitiInt).substring(0, 1); // 年干を取り出す
     // 生年月日から日支No.を算出する
-    var nsMoji = meisikiA(seinenInt, seigatuInt, seinitiInt).substring(5, 6);
+    var nsMoji = meisikiA(seinenInt, seigatuInt, seinitiInt).substring(5, 6); // 日支を取り出す
+    var gsMoji = meisikiA(seinenInt, seigatuInt, seinitiInt).substring(3, 4); // 月支を取り出す
+    var ysMoji = meisikiA(seinenInt, seigatuInt, seinitiInt).substring(1, 2); // 月支を取り出す
     var jnuMoji = juuNiUnMoji(nkMoji, nsMoji);
+    var jnuMojiG = juuNiUnMoji(nkMoji, gsMoji);
+    var jnuMojiY = juuNiUnMoji(nkMoji, ysMoji);
     var jnuNo = juuNiUnNo(jnuMoji);
+    var jnuNoG = juuNiUnNo(jnuMojiG);
+    var jnuNoY = juuNiUnNo(jnuMojiY);
     var jnuMojiA = juuNiUnMojiA(jnuMoji);
+    var jnuMojiAG = juuNiUnMojiA(jnuMojiG);
+    var jnuMojiAY = juuNiUnMojiA(jnuMojiY);
     var jnuYomi = juuNiUnYomi(jnuMoji);
+    var jnuYomiG = juuNiUnYomi(jnuMojiG);
+    var jnuYomiY = juuNiUnYomi(jnuMojiY);
     // 四旺・四平・四衰を算出する
     var siouSisui = juuNiUnSiou(jnuMoji);
+    var siouSisuiG = juuNiUnSiou(jnuMojiG);
+    var siouSisuiY = juuNiUnSiou(jnuMojiY);
     var siouSisuiNo = juuNiUnSiouNo(jnuMoji);
+    var siouSisuiNoG = juuNiUnSiouNo(jnuMojiG);
+    var siouSisuiNoY = juuNiUnSiouNo(jnuMojiY);
+    var siouSisuiA = juuNiUnSiouA(jnuMoji);
+    var siouSisuiAG = juuNiUnSiouA(jnuMojiG);
+    var siouSisuiAY = juuNiUnSiouA(jnuMojiY);
 
     return MediaQuery(
       data: MediaQuery.of(context)
@@ -136,15 +153,15 @@ class MeisikiJuuniunState extends State<MeisikiJuuniun> {
                 fontSize: 16,
               ),
             ),
-            const Text(
-              '運勢の特徴　　 病　　　死　　　沐 ',
-              style: TextStyle(
+            Text(
+              '運勢の特徴　　 $jnuMoji　　　$jnuMojiG　　　$jnuMojiY ',
+              style: const TextStyle(
                 fontSize: 16,
               ),
             ),
-            const Text(
-              '運勢の強さ　　四衰　　四衰　　四平',
-              style: TextStyle(
+            Text(
+              '運勢の強さ　　$siouSisuiA　　$siouSisuiAG　　$siouSisuiAY',
+              style: const TextStyle(
                 fontSize: 16,
               ),
             ),
@@ -166,6 +183,7 @@ class MeisikiJuuniunState extends State<MeisikiJuuniun> {
                     },
                     animationDuration: const Duration(seconds: 1),
                     children: [
+                      // ToDo:■■■■■　日柱の十二運　■■■■■
                       ExpansionPanel(
                         isExpanded: _listExpanded[0],
                         headerBuilder: (BuildContext context, bool isExpanded) {
@@ -183,13 +201,13 @@ class MeisikiJuuniunState extends State<MeisikiJuuniun> {
                           children: [
                             ListTile(
                               title: Text(
-                                '　$aiteMojiの日干は、$nkMoji（$nkYomi）です。',
+                                '　日柱の十二運は、$jnuMoji（$jnuYomi）です。',
                                 style: const TextStyle(
                                   height: 1.5,
                                 ),
                               ),
                             ),
-                            nks[nk], // Todo: 日干No.を計算していれる
+                            nsu[jnuNo], // Todo: 十二運No.を計算していれる
                             ListTile(
                               trailing: const Icon(Icons.expand_less),
                               onTap: () => _closePanel(0),
@@ -198,6 +216,7 @@ class MeisikiJuuniunState extends State<MeisikiJuuniun> {
                         ),
                         //isExpanded: _isExpanded0,
                       ),
+                      // ToDo:■■■■■　月柱の十二運　■■■■■
                       ExpansionPanel(
                         isExpanded: _listExpanded[1],
                         headerBuilder: (BuildContext context, bool isExpanded) {
@@ -215,13 +234,13 @@ class MeisikiJuuniunState extends State<MeisikiJuuniun> {
                           children: <Widget>[
                             ListTile(
                               title: Text(
-                                '　$aiteMojiの運勢の強さは、$siouSisuiです。',
+                                '　月柱の十二運は、$jnuMojiG（$jnuYomiG）です。',
                                 style: const TextStyle(
                                   height: 1.5,
                                 ),
                               ),
                             ),
-                            nss[siouSisuiNo],
+                            nsu[jnuNoG],
                             ListTile(
                               trailing: const Icon(Icons.expand_less),
                               onTap: () => _closePanel(1),
@@ -229,6 +248,7 @@ class MeisikiJuuniunState extends State<MeisikiJuuniun> {
                           ],
                         ),
                       ),
+                      // Todo:■■■■■　年柱の十二運　■■■■■
                       ExpansionPanel(
                         isExpanded: _listExpanded[2],
                         headerBuilder: (BuildContext context, bool isExpanded) {
@@ -246,13 +266,13 @@ class MeisikiJuuniunState extends State<MeisikiJuuniun> {
                           children: <Widget>[
                             ListTile(
                               title: Text(
-                                '　$aiteMojiの十二運は、$jnuMojiA（$jnuYomi）です。',
+                                '　年柱の十二運は、$jnuMojiY（$jnuYomiY）です。',
                                 style: const TextStyle(
                                   height: 1.5,
                                 ),
                               ),
                             ),
-                            nsu[jnuNo],
+                            nsu[jnuNoY],
                             ListTile(
                               trailing: const Icon(Icons.expand_less),
                               onTap: () => _closePanel(2),
@@ -262,6 +282,7 @@ class MeisikiJuuniunState extends State<MeisikiJuuniun> {
                         ),
                         //isExpanded: _isExpanded1,
                       ),
+                      // ToDo:■■■■■　運勢の強さ　■■■■■
                       ExpansionPanel(
                         isExpanded: _listExpanded[3],
                         headerBuilder: (BuildContext context, bool isExpanded) {
@@ -279,13 +300,13 @@ class MeisikiJuuniunState extends State<MeisikiJuuniun> {
                           children: <Widget>[
                             ListTile(
                               title: Text(
-                                '　$aiteMojiの十二運は、$jnuMojiA（$jnuYomi）です。',
+                                '　運勢の強さは、$siouSisuiです。',
                                 style: const TextStyle(
                                   height: 1.5,
                                 ),
                               ),
                             ),
-                            nsu[jnuNo],
+                            nss[siouSisuiNo],
                             ListTile(
                               trailing: const Icon(Icons.expand_less),
                               onTap: () => _closePanel(3),
@@ -295,6 +316,7 @@ class MeisikiJuuniunState extends State<MeisikiJuuniun> {
                         ),
                         //isExpanded: _isExpanded1,
                       ),
+                      // ToDo:■■■■■　十二運の解説　■■■■■
                       ExpansionPanel(
                         isExpanded: _listExpanded[4],
                         headerBuilder: (BuildContext context, bool isExpanded) {

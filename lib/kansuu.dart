@@ -289,6 +289,40 @@ juuNiUnSiou(String a){
 // 関数定義　十二運の文字から四旺・四平・四衰を算出する
 // b = juuNiUnSiou(a)
 // a: 十二運の文字列・１文字
+// b: 四旺・四平・四衰を表す文字・（ ２文字もあり）
+juuNiUnSiouA(String a){
+  String b = '四衰';
+  if (a == '胎') {
+    b = '四平';
+  } else if (a == '養') {
+    b = '四平';
+  } else if (a == '長') {
+    b = '四旺';
+  } else if (a == '沐') {
+    b = '四平';
+  } else if (a == '冠') {
+    b = '四旺';
+  } else if (a == '建') {
+    b = '四旺';
+  } else if (a == '帝') {
+    b = '四旺';
+  } else if (a == '衰') {
+    b = '四衰';
+  } else if (a == '病') {
+    b = '四衰';
+  } else if (a == '死') {
+    b = '四衰';
+  } else if (a == '墓') {
+    b = '四平';
+  } else if (a == '絶') {
+    b = '四衰';
+  } else {}
+  return b;
+}
+
+// 関数定義　十二運の文字から四旺・四平・四衰を算出する
+// b = juuNiUnSiou(a)
+// a: 十二運の文字列・１文字
 // b: 四旺・四平・四衰を表す数字（0:四旺・1:四平・2:四衰）
 juuNiUnSiouNo(String a){
   int b = 2;
