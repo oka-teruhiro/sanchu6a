@@ -726,6 +726,7 @@ class JuniJuuniun extends StatelessWidget {
         ),
       ),
       body: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           Expanded(
             //height: 400,

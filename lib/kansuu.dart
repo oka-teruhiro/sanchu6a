@@ -354,6 +354,26 @@ juuNiUnSiouNo(String a){
   return b;
 }
 
+// 関数定義四旺四衰No.から運勢ポイントを算出する
+// d = unseiPoint(a, b, c)
+// a: 日柱の四旺四衰No.(0:四旺、1:四平、2:四衰）
+// b: 月柱の四旺四衰No.(0:四旺、1:四平、2:四衰）
+// c: 年柱の四旺四衰No.(0:四旺、1:四平、2:四衰）
+// d: 運勢ポイント（10-100)
+unseiPoint(int a, int b, int c) {
+  int d = 100;
+  int ed = 10;
+  int em = 10;
+  int ey = 10;
+  if(a == 0){ed = 10;} else if(a == 1){ed = 3;}else{ed = 1;}
+  if(b == 0){em = 10;} else if(b == 1){em = 3;}else{em = 1;}
+  if(c == 0){ey = 10;} else if(c == 1){ey = 3;}else{ey = 1;}
+  d = 6 * ed + 3 * em + 1 * ey ;
+  print('a:$a b:$b c:$c ed:$ed em:$em ey:$ey d:$d');
+  return d;
+}
+
+
 
 
 // 関数定義　文字列リストから検索文字列が先頭から何文字目にあるか返す

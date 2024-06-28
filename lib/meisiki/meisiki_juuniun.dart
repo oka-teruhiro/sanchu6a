@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sanch6a/kaisetu/kaisetu_juuniun.dart';
 import 'package:sanch6a/kansuu.dart';
 import 'package:sanch6a/niti_si2.dart';
 
@@ -92,6 +93,12 @@ class MeisikiJuuniunState extends State<MeisikiJuuniun> {
       nss1,
       nss2,
     ];
+    List<Widget> nsss = [
+      nsss0,
+      nsss1,
+      nsss2,
+    ];
+    int unLevel = 0;
 
     String aiteMoji = '相手';
     if (aiteInt == 0) {
@@ -131,6 +138,17 @@ class MeisikiJuuniunState extends State<MeisikiJuuniun> {
     var siouSisuiAG = juuNiUnSiouA(jnuMojiG);
     var siouSisuiAY = juuNiUnSiouA(jnuMojiY);
 
+    // 運勢の強さをポイントとして算出する
+    var unPoint = unseiPoint(siouSisuiNo, siouSisuiNoG, siouSisuiNoY);
+    if(unPoint > 69){
+      unLevel = 0;
+    }else if(unPoint > 20){
+      unLevel = 1;
+    }else {
+      unLevel = 2;
+    }
+    //var xxxMoji = xxx.toString();
+
     return MediaQuery(
       data: MediaQuery.of(context)
           .copyWith(textScaler: const TextScaler.linear(1.0)),
@@ -146,6 +164,7 @@ class MeisikiJuuniunState extends State<MeisikiJuuniun> {
           ),
         ),
         body: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             const Text(
               '　　　　　　　日柱　　月柱　　年柱',
@@ -187,10 +206,10 @@ class MeisikiJuuniunState extends State<MeisikiJuuniun> {
                       ExpansionPanel(
                         isExpanded: _listExpanded[0],
                         headerBuilder: (BuildContext context, bool isExpanded) {
-                          return const ListTile(
+                          return ListTile(
                             title: Text(
-                              '日柱の十二運',
-                              style: TextStyle(
+                              '日柱の十二運　$jnuMojiA の特徴',
+                              style: const TextStyle(
                                 color: Colors.greenAccent,
                                 fontWeight: FontWeight.normal,
                               ),
@@ -220,10 +239,10 @@ class MeisikiJuuniunState extends State<MeisikiJuuniun> {
                       ExpansionPanel(
                         isExpanded: _listExpanded[1],
                         headerBuilder: (BuildContext context, bool isExpanded) {
-                          return const ListTile(
+                          return ListTile(
                             title: Text(
-                              '月柱の十二運',
-                              style: TextStyle(
+                              '月柱の十二運　$jnuMojiAG の特徴',
+                              style: const TextStyle(
                                 color: Colors.greenAccent,
                                 fontWeight: FontWeight.normal,
                               ),
@@ -252,10 +271,10 @@ class MeisikiJuuniunState extends State<MeisikiJuuniun> {
                       ExpansionPanel(
                         isExpanded: _listExpanded[2],
                         headerBuilder: (BuildContext context, bool isExpanded) {
-                          return const ListTile(
+                          return ListTile(
                             title: Text(
-                              '年柱の十二運',
-                              style: TextStyle(
+                              '年柱の十二運　$jnuMojiAY の特徴',
+                              style: const TextStyle(
                                 color: Colors.greenAccent,
                                 fontWeight: FontWeight.normal,
                               ),
@@ -286,10 +305,10 @@ class MeisikiJuuniunState extends State<MeisikiJuuniun> {
                       ExpansionPanel(
                         isExpanded: _listExpanded[3],
                         headerBuilder: (BuildContext context, bool isExpanded) {
-                          return const ListTile(
+                          return  ListTile(
                             title: Text(
-                              '運勢の強さ',
-                              style: TextStyle(
+                              '運勢の強さ $unPointポイント',
+                              style: const TextStyle(
                                 color: Colors.greenAccent,
                                 fontWeight: FontWeight.normal,
                               ),
@@ -298,9 +317,10 @@ class MeisikiJuuniunState extends State<MeisikiJuuniun> {
                         },
                         body: Column(
                           children: <Widget>[
+                            nsss[unLevel],
                             ListTile(
                               title: Text(
-                                '　運勢の強さは、$siouSisuiです。',
+                                 '　運勢の強さは、で$siouSisuiです。',
                                 style: const TextStyle(
                                   height: 1.5,
                                 ),
@@ -310,40 +330,6 @@ class MeisikiJuuniunState extends State<MeisikiJuuniun> {
                             ListTile(
                               trailing: const Icon(Icons.expand_less),
                               onTap: () => _closePanel(3),
-                              //child: const Text('閉じる'),
-                            ),
-                          ],
-                        ),
-                        //isExpanded: _isExpanded1,
-                      ),
-                      // ToDo:■■■■■　十二運の解説　■■■■■
-                      ExpansionPanel(
-                        isExpanded: _listExpanded[4],
-                        headerBuilder: (BuildContext context, bool isExpanded) {
-                          return const ListTile(
-                            title: Text(
-                              '十二運の算出方法（鑑定士を目指す方へ）',
-                              style: TextStyle(
-                                color: Colors.greenAccent,
-                                fontWeight: FontWeight.normal,
-                              ),
-                            ),
-                          );
-                        },
-                        body: Column(
-                          children: <Widget>[
-                            ListTile(
-                              title: Text(
-                                '　$aiteMojiの十二運は、$jnuMojiA（$jnuYomi）です。',
-                                style: const TextStyle(
-                                  height: 1.5,
-                                ),
-                              ),
-                            ),
-                            nsu[jnuNo],
-                            ListTile(
-                              trailing: const Icon(Icons.expand_less),
-                              onTap: () => _closePanel(4),
                               //child: const Text('閉じる'),
                             ),
                           ],
