@@ -7,8 +7,6 @@ import 'package:sanch6a/tenun_page.dart';
 import '../meisiki_chart_page.dart';
 import 'kyou_unsei_page.dart';
 import 'input_page.dart';
-//import 'page_c.dart';
-//import 'page_g.dart';
 
 void main() {
   runApp(const MyApp());
@@ -126,7 +124,8 @@ class MyHomePageState extends State<MyHomePage> {
         seinenInt: _seinenInt, // 6.1.15
         seigatuInt: _seigatuInt, // 6.1.15
         seinitiInt: _seinitiInt, // 6.1.15
-        aiteInt: _aiteInt,     // 6.1.16
+        aiteInt: _aiteInt,      // 6.1.16
+        hasira: 0,   // todo 後で削除が必要
       ),
     ];
     return Scaffold(

@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:sanch6a/kaisetu/kaisetu_juuniun.dart';
 import 'package:sanch6a/kansuu.dart';
-import 'package:sanch6a/niti_si2.dart';
-
-import '../niti_kan.dart';
-import '../niti_si.dart';
+import 'package:sanch6a/meisiki/meisiki_juuniun_kyoujaku.dart';
+import 'meisiki_juuniun_syousai.dart';
 
 class MeisikiJuuniun extends StatefulWidget {
   final int seinenInt;
   final int seigatuInt;
   final int seinitiInt;
   final int aiteInt;  //6.1.16
+  final int hasira;   // 0:日柱 1:月柱 2:年柱 // 6.1.26
 
   const MeisikiJuuniun({
     super.key,
@@ -18,6 +16,7 @@ class MeisikiJuuniun extends StatefulWidget {
     required this.seigatuInt,
     required this.seinitiInt,
     required this.aiteInt,  //6.1.16
+    required this.hasira    //6.1.26
   });
 
   @override
@@ -29,10 +28,12 @@ class MeisikiJuuniunState extends State<MeisikiJuuniun> {
   late int seigatuInt = 1; //   6.1.15
   late int seinitiInt = 1; //   6.1.15
   late int aiteInt = 0;   //6.1.16
-  final _listExpanded = [true, false, false, false, false];
+  late int hasira = 0;
+  late final  List<bool> _listExpanded = [false, false, false, false];
 
   void _togglePanel(int index) {
     setState(() {
+      //_initPanel(hasira);
       //for (int i = 0; i < _listExpanded.length; i++ ) {
       //  _listExpanded[i] = i == index ? !_listExpanded[i] : false;
       if (index == 0) {
@@ -41,10 +42,8 @@ class MeisikiJuuniunState extends State<MeisikiJuuniun> {
         _listExpanded[1] = !_listExpanded[1];
       } else if (index == 2) {
         _listExpanded[2] = !_listExpanded[2];
-      } else if (index == 3) {
+      } else  {
         _listExpanded[3] = !_listExpanded[3];
-      } else {
-        _listExpanded[4] = !_listExpanded[4];
       }
     });
   }
@@ -55,25 +54,27 @@ class MeisikiJuuniunState extends State<MeisikiJuuniun> {
     });
   }
 
+  // どの柱から呼ばれたかによってExpasionPanelを開くための状態を変化させる関数・使い方がわからない
+  void _initPanel(int hasira) {
+    setState(() {
+  if (hasira == 0) {
+  _listExpanded[0] = true;
+  } else if (hasira == 1) {
+  _listExpanded[1] = true;
+  } else {
+  _listExpanded[2] = true;
+  }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     seinenInt = widget.seinenInt; // 6.1.15
     seigatuInt = widget.seigatuInt; // 6.1.15
     seinitiInt = widget.seinitiInt; // 6.1.15
     aiteInt = widget.aiteInt; // 6.1.16
+    hasira = widget.hasira; //6.1.26
 
-    /*List<Widget> nks = [  // 日干からみた性質リスト
-      nks0,
-      nks1,
-      nks2,
-      nks3,
-      nks4,
-      nks5,
-      nks6,
-      nks7,
-      nks8,
-      nks9,
-    ];*/
     List<Widget> nsu = [
       nsu0,
       nsu1,
@@ -109,9 +110,6 @@ class MeisikiJuuniunState extends State<MeisikiJuuniun> {
 
     // 生年月日から日干No.を算出する
     var nkMoji = meisikiA(seinenInt, seigatuInt, seinitiInt).substring(4, 5); // 日干を取り出す
-    var gkMoji = meisikiA(seinenInt, seigatuInt, seinitiInt).substring(2, 3); // 月干を取り出す
-    var ykMoji = meisikiA(seinenInt, seigatuInt, seinitiInt).substring(0, 1); // 年干を取り出す
-    // 生年月日から日支No.を算出する
     var nsMoji = meisikiA(seinenInt, seigatuInt, seinitiInt).substring(5, 6); // 日支を取り出す
     var gsMoji = meisikiA(seinenInt, seigatuInt, seinitiInt).substring(3, 4); // 月支を取り出す
     var ysMoji = meisikiA(seinenInt, seigatuInt, seinitiInt).substring(1, 2); // 月支を取り出す
@@ -147,7 +145,6 @@ class MeisikiJuuniunState extends State<MeisikiJuuniun> {
     }else {
       unLevel = 2;
     }
-    //var xxxMoji = xxx.toString();
 
     return MediaQuery(
       data: MediaQuery.of(context)
@@ -233,7 +230,6 @@ class MeisikiJuuniunState extends State<MeisikiJuuniun> {
                             ),
                           ],
                         ),
-                        //isExpanded: _isExpanded0,
                       ),
                       // ToDo:■■■■■　月柱の十二運　■■■■■
                       ExpansionPanel(
@@ -299,7 +295,6 @@ class MeisikiJuuniunState extends State<MeisikiJuuniun> {
                             ),
                           ],
                         ),
-                        //isExpanded: _isExpanded1,
                       ),
                       // ToDo:■■■■■　運勢の強さ　■■■■■
                       ExpansionPanel(
@@ -334,11 +329,28 @@ class MeisikiJuuniunState extends State<MeisikiJuuniun> {
                             ),
                           ],
                         ),
-                        //isExpanded: _isExpanded1,
                       ),
                     ],
                   ),
                 ],
+              ),
+            ),
+            const Divider(
+              color: Colors.blue,
+            ),
+            ListTile(
+              title: ElevatedButton(
+                child: const Text(
+                  '戻る',
+                  style: TextStyle(
+                    color: Colors.greenAccent,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
               ),
             ),
           ],

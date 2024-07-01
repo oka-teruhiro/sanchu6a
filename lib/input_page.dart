@@ -196,7 +196,7 @@ class _InputPageState extends State<InputPage> {
         backgroundColor: Colors.black,
         appBar: AppBar(
           backgroundColor: Colors.black12,
-          title: const Text('天運三柱推命 ver.6.1.25',
+          title: const Text('天運三柱推命 ver.6.1.26',
               style: TextStyle(
                 color: Colors.greenAccent,
                 fontWeight: FontWeight.bold,
@@ -371,59 +371,10 @@ class _InputPageState extends State<InputPage> {
                                                 aiteInt: index,  //6.1.16
                                               )),
                                     );
-                                    /*Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => const PageB(
-                                          //seinenInt: seiNen,
-                                          //seigatuInt: seiGatu,
-                                          //seinitiInt: seiNiti,
-                                        ),
-                                      ),
-                                    );*/
                                   }
                                 },
                               ),
                             ),
-
-                            // 性格・天地徳合　ボタン
-                            /*SizedBox(
-                              height: 30,
-                              width: 40,
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  seinengappiMojia = _birthD[index];
-                                  if (seinengappiMojia == '生年月日') {
-                                  } else {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => const PageC(
-                                          //titleSeinengappi: seinengappiMojia,
-                                        ),
-                                      ),
-                                    );
-                                  }
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.blue, //背景色
-                                  padding: const EdgeInsets.all(4), //パディング
-                                  alignment: Alignment.center,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(4.0),
-                                  ),
-                                ),
-                                child: const Text(
-                                  style: TextStyle(
-                                    height: -0.2,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
-                                    fontSize: 12,
-                                  ),
-                                  '性格',
-                                ),
-                              ),
-                            ),*/
                             const SizedBox(
                               width: 0,
                             ),

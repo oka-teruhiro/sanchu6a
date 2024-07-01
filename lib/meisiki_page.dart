@@ -6,6 +6,7 @@ import '../juuniun/juni_sihei.dart';
 import '../juuniun/juni_siou.dart';
 import '../juuniun/juni_sisui.dart';
 import 'kansuu.dart';
+import 'meisiki/meisiki_juuniun.dart';
 
 class MeisikiPage extends StatefulWidget {
   final int seinen; //生年
@@ -1110,187 +1111,17 @@ class _MeisikiPageState extends State<MeisikiPage> {
                                                 ),
                                               ),
                                               onPressed: () {
-                                                if (juuniUnNiti == '胎') {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            Sihei(
-                                                          hasira: '日',
-                                                          juuniUnNiti:
-                                                              juuniUnNiti,
-                                                          juuniUnGatu:
-                                                              juuniUnGetu,
-                                                          juuniUnNen:
-                                                              juuniUnNen,
-                                                        ),
-                                                      ));
-                                                } else if (juuniUnNiti == '養') {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            Sihei(
-                                                          hasira: '日',
-                                                          juuniUnNiti:
-                                                              juuniUnNiti,
-                                                          juuniUnGatu:
-                                                              juuniUnGetu,
-                                                          juuniUnNen:
-                                                              juuniUnNen,
-                                                        ),
-                                                      ));
-                                                } else if (juuniUnNiti == '長') {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            Siou(
-                                                          hasira: '日',
-                                                          juuniUnNiti:
-                                                              juuniUnNiti,
-                                                          juuniUnGatu:
-                                                              juuniUnGetu,
-                                                          juuniUnNen:
-                                                              juuniUnNen,
-                                                        ),
-                                                      ));
-                                                } else if (juuniUnNiti == '沐') {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            Sihei(
-                                                          hasira: '日',
-                                                          juuniUnNiti:
-                                                              juuniUnNiti,
-                                                          juuniUnGatu:
-                                                              juuniUnGetu,
-                                                          juuniUnNen:
-                                                              juuniUnNen,
-                                                        ),
-                                                      ));
-                                                } else if (juuniUnNiti == '冠') {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            Siou(
-                                                          hasira: '日',
-                                                          juuniUnNiti:
-                                                              juuniUnNiti,
-                                                          juuniUnGatu:
-                                                              juuniUnGetu,
-                                                          juuniUnNen:
-                                                              juuniUnNen,
-                                                        ),
-                                                      ));
-                                                } else if (juuniUnNiti == '建') {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            Siou(
-                                                          hasira: '日',
-                                                          juuniUnNiti:
-                                                              juuniUnNiti,
-                                                          juuniUnGatu:
-                                                              juuniUnGetu,
-                                                          juuniUnNen:
-                                                              juuniUnNen,
-                                                        ),
-                                                      ));
-                                                } else if (juuniUnNiti == '帝') {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            Siou(
-                                                          hasira: '日',
-                                                          juuniUnNiti:
-                                                              juuniUnNiti,
-                                                          juuniUnGatu:
-                                                              juuniUnGetu,
-                                                          juuniUnNen:
-                                                              juuniUnNen,
-                                                        ),
-                                                      ));
-                                                } else if (juuniUnNiti == '衰') {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            Sisui(
-                                                          hasira: '日',
-                                                          juuniUnNiti:
-                                                              juuniUnNiti,
-                                                          juuniUnGatu:
-                                                              juuniUnGetu,
-                                                          juuniUnNen:
-                                                              juuniUnNen,
-                                                        ),
-                                                      ));
-                                                } else if (juuniUnNiti == '病') {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            Sisui(
-                                                          hasira: '日',
-                                                          juuniUnNiti:
-                                                              juuniUnNiti,
-                                                          juuniUnGatu:
-                                                              juuniUnGetu,
-                                                          juuniUnNen:
-                                                              juuniUnNen,
-                                                        ),
-                                                      ));
-                                                } else if (juuniUnNiti == '死') {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            Sisui(
-                                                          hasira: '日',
-                                                          juuniUnNiti:
-                                                              juuniUnNiti,
-                                                          juuniUnGatu:
-                                                              juuniUnGetu,
-                                                          juuniUnNen:
-                                                              juuniUnNen,
-                                                        ),
-                                                      ));
-                                                } else if (juuniUnNiti == '墓') {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            Sihei(
-                                                          hasira: '日',
-                                                          juuniUnNiti:
-                                                              juuniUnNiti,
-                                                          juuniUnGatu:
-                                                              juuniUnGetu,
-                                                          juuniUnNen:
-                                                              juuniUnNen,
-                                                        ),
-                                                      ));
-                                                } else {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            Sisui(
-                                                          hasira: '日',
-                                                          juuniUnNiti:
-                                                              juuniUnNiti,
-                                                          juuniUnGatu:
-                                                              juuniUnGetu,
-                                                          juuniUnNen:
-                                                              juuniUnNen,
-                                                        ),
-                                                      ));
-                                                }
+                                                Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          MeisikiJuuniun(
+                                                            seinenInt: seinenInt,
+                                                            seigatuInt: seigatuInt,
+                                                            seinitiInt: seinitiInt,
+                                                            aiteInt: aiteInt,
+                                                            hasira: 0,),
+                                                    ));
                                               },
                                             ),
                                           ),
@@ -1316,187 +1147,17 @@ class _MeisikiPageState extends State<MeisikiPage> {
                                                 ),
                                               ),
                                               onPressed: () {
-                                                if (juuniUnGetu == '胎') {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            Sihei(
-                                                          hasira: '月',
-                                                          juuniUnNiti:
-                                                              juuniUnNiti,
-                                                          juuniUnGatu:
-                                                              juuniUnGetu,
-                                                          juuniUnNen:
-                                                              juuniUnNen,
-                                                        ),
-                                                      ));
-                                                } else if (juuniUnGetu == '養') {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            Sihei(
-                                                          hasira: '月',
-                                                          juuniUnNiti:
-                                                              juuniUnNiti,
-                                                          juuniUnGatu:
-                                                              juuniUnGetu,
-                                                          juuniUnNen:
-                                                              juuniUnNen,
-                                                        ),
-                                                      ));
-                                                } else if (juuniUnGetu == '長') {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            Siou(
-                                                          hasira: '月',
-                                                          juuniUnNiti:
-                                                              juuniUnNiti,
-                                                          juuniUnGatu:
-                                                              juuniUnGetu,
-                                                          juuniUnNen:
-                                                              juuniUnNen,
-                                                        ),
-                                                      ));
-                                                } else if (juuniUnGetu == '沐') {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            Sihei(
-                                                          hasira: '月',
-                                                          juuniUnNiti:
-                                                              juuniUnNiti,
-                                                          juuniUnGatu:
-                                                              juuniUnGetu,
-                                                          juuniUnNen:
-                                                              juuniUnNen,
-                                                        ),
-                                                      ));
-                                                } else if (juuniUnGetu == '冠') {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            Siou(
-                                                          hasira: '月',
-                                                          juuniUnNiti:
-                                                              juuniUnNiti,
-                                                          juuniUnGatu:
-                                                              juuniUnGetu,
-                                                          juuniUnNen:
-                                                              juuniUnNen,
-                                                        ),
-                                                      ));
-                                                } else if (juuniUnGetu == '建') {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            Siou(
-                                                          hasira: '月',
-                                                          juuniUnNiti:
-                                                              juuniUnNiti,
-                                                          juuniUnGatu:
-                                                              juuniUnGetu,
-                                                          juuniUnNen:
-                                                              juuniUnNen,
-                                                        ),
-                                                      ));
-                                                } else if (juuniUnGetu == '帝') {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            Siou(
-                                                          hasira: '月',
-                                                          juuniUnNiti:
-                                                              juuniUnNiti,
-                                                          juuniUnGatu:
-                                                              juuniUnGetu,
-                                                          juuniUnNen:
-                                                              juuniUnNen,
-                                                        ),
-                                                      ));
-                                                } else if (juuniUnGetu == '衰') {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            Sisui(
-                                                          hasira: '月',
-                                                          juuniUnNiti:
-                                                              juuniUnNiti,
-                                                          juuniUnGatu:
-                                                              juuniUnGetu,
-                                                          juuniUnNen:
-                                                              juuniUnNen,
-                                                        ),
-                                                      ));
-                                                } else if (juuniUnGetu == '病') {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            Sisui(
-                                                          hasira: '月',
-                                                          juuniUnNiti:
-                                                              juuniUnNiti,
-                                                          juuniUnGatu:
-                                                              juuniUnGetu,
-                                                          juuniUnNen:
-                                                              juuniUnNen,
-                                                        ),
-                                                      ));
-                                                } else if (juuniUnGetu == '死') {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            Sisui(
-                                                          hasira: '月',
-                                                          juuniUnNiti:
-                                                              juuniUnNiti,
-                                                          juuniUnGatu:
-                                                              juuniUnGetu,
-                                                          juuniUnNen:
-                                                              juuniUnNen,
-                                                        ),
-                                                      ));
-                                                } else if (juuniUnGetu == '墓') {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            Sihei(
-                                                          hasira: '月',
-                                                          juuniUnNiti:
-                                                              juuniUnNiti,
-                                                          juuniUnGatu:
-                                                              juuniUnGetu,
-                                                          juuniUnNen:
-                                                              juuniUnNen,
-                                                        ),
-                                                      ));
-                                                } else {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            Sisui(
-                                                          hasira: '月',
-                                                          juuniUnNiti:
-                                                              juuniUnNiti,
-                                                          juuniUnGatu:
-                                                              juuniUnGetu,
-                                                          juuniUnNen:
-                                                              juuniUnNen,
-                                                        ),
-                                                      ));
-                                                }
+                                                Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          MeisikiJuuniun(
+                                                            seinenInt: seinenInt,
+                                                            seigatuInt: seigatuInt,
+                                                            seinitiInt: seinitiInt,
+                                                            aiteInt: aiteInt,
+                                                            hasira: 1,),
+                                                    ));
                                               },
                                             ),
                                           ),
@@ -1522,187 +1183,17 @@ class _MeisikiPageState extends State<MeisikiPage> {
                                                 ),
                                               ),
                                               onPressed: () {
-                                                if (juuniUnNen == '胎') {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            Sihei(
-                                                          hasira: '年',
-                                                          juuniUnNiti:
-                                                              juuniUnNiti,
-                                                          juuniUnGatu:
-                                                              juuniUnGetu,
-                                                          juuniUnNen:
-                                                              juuniUnNen,
-                                                        ),
-                                                      ));
-                                                } else if (juuniUnNen == '養') {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            Sihei(
-                                                          hasira: '年',
-                                                          juuniUnNiti:
-                                                              juuniUnNiti,
-                                                          juuniUnGatu:
-                                                              juuniUnGetu,
-                                                          juuniUnNen:
-                                                              juuniUnNen,
-                                                        ),
-                                                      ));
-                                                } else if (juuniUnNen == '長') {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            Siou(
-                                                          hasira: '年',
-                                                          juuniUnNiti:
-                                                              juuniUnNiti,
-                                                          juuniUnGatu:
-                                                              juuniUnGetu,
-                                                          juuniUnNen:
-                                                              juuniUnNen,
-                                                        ),
-                                                      ));
-                                                } else if (juuniUnNen == '沐') {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            Sihei(
-                                                          hasira: '年',
-                                                          juuniUnNiti:
-                                                              juuniUnNiti,
-                                                          juuniUnGatu:
-                                                              juuniUnGetu,
-                                                          juuniUnNen:
-                                                              juuniUnNen,
-                                                        ),
-                                                      ));
-                                                } else if (juuniUnNen == '冠') {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            Siou(
-                                                          hasira: '年',
-                                                          juuniUnNiti:
-                                                              juuniUnNiti,
-                                                          juuniUnGatu:
-                                                              juuniUnGetu,
-                                                          juuniUnNen:
-                                                              juuniUnNen,
-                                                        ),
-                                                      ));
-                                                } else if (juuniUnNen == '建') {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            Siou(
-                                                          hasira: '年',
-                                                          juuniUnNiti:
-                                                              juuniUnNiti,
-                                                          juuniUnGatu:
-                                                              juuniUnGetu,
-                                                          juuniUnNen:
-                                                              juuniUnNen,
-                                                        ),
-                                                      ));
-                                                } else if (juuniUnNen == '帝') {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            Siou(
-                                                          hasira: '年',
-                                                          juuniUnNiti:
-                                                              juuniUnNiti,
-                                                          juuniUnGatu:
-                                                              juuniUnGetu,
-                                                          juuniUnNen:
-                                                              juuniUnNen,
-                                                        ),
-                                                      ));
-                                                } else if (juuniUnNen == '衰') {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            Sisui(
-                                                          hasira: '年',
-                                                          juuniUnNiti:
-                                                              juuniUnNiti,
-                                                          juuniUnGatu:
-                                                              juuniUnGetu,
-                                                          juuniUnNen:
-                                                              juuniUnNen,
-                                                        ),
-                                                      ));
-                                                } else if (juuniUnNen == '病') {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            Sisui(
-                                                          hasira: '年',
-                                                          juuniUnNiti:
-                                                              juuniUnNiti,
-                                                          juuniUnGatu:
-                                                              juuniUnGetu,
-                                                          juuniUnNen:
-                                                              juuniUnNen,
-                                                        ),
-                                                      ));
-                                                } else if (juuniUnNen == '死') {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            Sisui(
-                                                          hasira: '年',
-                                                          juuniUnNiti:
-                                                              juuniUnNiti,
-                                                          juuniUnGatu:
-                                                              juuniUnGetu,
-                                                          juuniUnNen:
-                                                              juuniUnNen,
-                                                        ),
-                                                      ));
-                                                } else if (juuniUnNen == '墓') {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            Sihei(
-                                                          hasira: '年',
-                                                          juuniUnNiti:
-                                                              juuniUnNiti,
-                                                          juuniUnGatu:
-                                                              juuniUnGetu,
-                                                          juuniUnNen:
-                                                              juuniUnNen,
-                                                        ),
-                                                      ));
-                                                } else {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            Sisui(
-                                                          hasira: '年',
-                                                          juuniUnNiti:
-                                                              juuniUnNiti,
-                                                          juuniUnGatu:
-                                                              juuniUnGetu,
-                                                          juuniUnNen:
-                                                              juuniUnNen,
-                                                        ),
-                                                      ));
-                                                }
+                                                Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          MeisikiJuuniun(
+                                                            seinenInt: seinenInt,
+                                                            seigatuInt: seigatuInt,
+                                                            seinitiInt: seinitiInt,
+                                                            aiteInt: aiteInt,
+                                                            hasira: 2,),
+                                                    ));
                                               },
                                             ),
                                           ),

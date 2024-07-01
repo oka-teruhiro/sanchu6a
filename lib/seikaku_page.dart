@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sanch6a/kansuu.dart';
-import 'package:sanch6a/niti_si2.dart';
+import 'package:sanch6a/meisiki/meisiki_juuniun_kyoujaku.dart';
 
-import 'niti_kan.dart';
-import 'niti_si.dart';
+import 'meisiki/meisiki_nitikan_syousai.dart';
+import 'meisiki/meisiki_juuniun_syousai.dart';
 
 class SeikakuPage extends StatefulWidget {
   final int seinenInt;
@@ -32,8 +32,6 @@ class SeikakuPageState extends State<SeikakuPage> {
 
   void _togglePanel(int index) {
     setState(() {
-      //for (int i = 0; i < _listExpanded.length; i++ ) {
-      //  _listExpanded[i] = i == index ? !_listExpanded[i] : false;
       if (index == 0) {
         _listExpanded[0] = !_listExpanded[0];
       } else if (index == 1) {
@@ -162,7 +160,6 @@ class SeikakuPageState extends State<SeikakuPage> {
                       ),
                     ],
                   ),
-                  //isExpanded: _isExpanded0,
                 ),
                 ExpansionPanel(
                   isExpanded: _listExpanded[1],

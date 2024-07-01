@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
 import '../kansuu.dart';
-import '../niti_kan.dart';
+import 'meisiki_nitikan_syousai.dart';
 
 class MeisikiNitikan extends StatelessWidget {
   final int seinenInt;
