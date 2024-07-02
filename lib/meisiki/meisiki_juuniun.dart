@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sanch6a/kansuu.dart';
 import 'package:sanch6a/meisiki/meisiki_juuniun_kyoujaku.dart';
+import 'meisiki_juuniun_kaisetu.dart';
 import 'meisiki_juuniun_syousai.dart';
+//import 'meisiki_juuniun_kaisetu.dart';
 
 class MeisikiJuuniun extends StatefulWidget {
   final int seinenInt;
@@ -29,7 +31,7 @@ class MeisikiJuuniunState extends State<MeisikiJuuniun> {
   late int seinitiInt = 1; //   6.1.15
   late int aiteInt = 0;   //6.1.16
   late int hasira = 0;
-  late final  List<bool> _listExpanded = [false, false, false, false];
+  late final  List<bool> _listExpanded = [false, false, false, false, false];
 
   void _togglePanel(int index) {
     setState(() {
@@ -42,8 +44,10 @@ class MeisikiJuuniunState extends State<MeisikiJuuniun> {
         _listExpanded[1] = !_listExpanded[1];
       } else if (index == 2) {
         _listExpanded[2] = !_listExpanded[2];
-      } else  {
+      } else if (index == 3) {
         _listExpanded[3] = !_listExpanded[3];
+      } else  {
+        _listExpanded[4] = !_listExpanded[4];
       }
     });
   }
@@ -127,8 +131,8 @@ class MeisikiJuuniunState extends State<MeisikiJuuniun> {
     var jnuYomiY = juuNiUnYomi(jnuMojiY);
     // 四旺・四平・四衰を算出する
     var siouSisui = juuNiUnSiou(jnuMoji);
-    var siouSisuiG = juuNiUnSiou(jnuMojiG);
-    var siouSisuiY = juuNiUnSiou(jnuMojiY);
+    //var siouSisuiG = juuNiUnSiou(jnuMojiG);
+    //var siouSisuiY = juuNiUnSiou(jnuMojiY);
     var siouSisuiNo = juuNiUnSiouNo(jnuMoji);
     var siouSisuiNoG = juuNiUnSiouNo(jnuMojiG);
     var siouSisuiNoY = juuNiUnSiouNo(jnuMojiY);
@@ -321,10 +325,43 @@ class MeisikiJuuniunState extends State<MeisikiJuuniun> {
                                 ),
                               ),
                             ),
+                            ListTile(
+                              title: Text(
+                                  '　一番影響を与える日柱の通変星が「$siouSisuiA」、'
+                                      '多少影響を与える月柱の通変星が「$siouSisuiAG」、'
+                                      'わずかに影響を与える年柱の通変星が「$siouSisuiAY」なので、'
+                                      '総合的には、「$siouSisui」になります。',
+                              ),
+                            ),
                             nss[siouSisuiNo],
                             ListTile(
                               trailing: const Icon(Icons.expand_less),
                               onTap: () => _closePanel(3),
+                              //child: const Text('閉じる'),
+                            ),
+                          ],
+                        ),
+                      ),
+                      // ToDo:■■■■■　通変星解説　■■■■■
+                      ExpansionPanel(
+                        isExpanded: _listExpanded[4],
+                        headerBuilder: (BuildContext context, bool isExpanded) {
+                          return  const ListTile(
+                            title: Text(
+                              '通変星解説',
+                              style: TextStyle(
+                                color: Colors.greenAccent,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          );
+                        },
+                        body: Column(
+                          children: <Widget>[
+                            jnuk,
+                            ListTile(
+                              trailing: const Icon(Icons.expand_less),
+                              onTap: () => _closePanel(4),
                               //child: const Text('閉じる'),
                             ),
                           ],

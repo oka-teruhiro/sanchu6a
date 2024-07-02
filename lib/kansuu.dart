@@ -369,7 +369,7 @@ unseiPoint(int a, int b, int c) {
   if(b == 0){em = 10;} else if(b == 1){em = 3;}else{em = 1;}
   if(c == 0){ey = 10;} else if(c == 1){ey = 3;}else{ey = 1;}
   d = 6 * ed + 3 * em + 1 * ey ;
-  print('a:$a b:$b c:$c ed:$ed em:$em ey:$ey d:$d');
+  //print('a:$a b:$b c:$c ed:$ed em:$em ey:$ey d:$d');
   return d;
 }
 
