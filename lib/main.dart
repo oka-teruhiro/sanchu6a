@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:sanch6a/meisiki/meisiki_juuniun.dart';
+//import 'package:sanch6a/meisiki/meisiki_juuniun.dart';
 import 'package:sanch6a/meisiki_page.dart';
+import 'package:sanch6a/page_g.dart';
 import 'package:sanch6a/seikaku_page.dart';
 import 'package:sanch6a/tenun_page.dart';
 import '../meisiki_chart_page.dart';
@@ -119,14 +120,14 @@ class MyHomePageState extends State<MyHomePage> {
         seigatuInt: _seigatuInt, // 6.1.8
         seinitiInt: _seinitiInt, // 6.1.8
       ),
-      //const PageG(),//todo 相性ページはここに追加
-      MeisikiJuuniun(
+      const PageG(),//todo 相性ページはここに追加
+      /*MeisikiJuuniun(
         seinenInt: _seinenInt, // 6.1.15
         seigatuInt: _seigatuInt, // 6.1.15
         seinitiInt: _seinitiInt, // 6.1.15
         aiteInt: _aiteInt,      // 6.1.16
         hasira: 0,   // todo 後で削除が必要
-      ),
+      ),*/
     ];
     return Scaffold(
       body: children[_currentIndex],

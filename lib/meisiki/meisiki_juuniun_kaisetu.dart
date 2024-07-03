@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 
-// 十二運解説
-var jnuk = Column(
+// 十二運解説はじめに
+var jnuk0 = const Column(
   children: <Widget>[
-    const ListTile(
+    ListTile(
       title: Text('　本内容は、自分でも鑑定してみたいという人向けの内容です。理解を深めてい'
           'ただくために、表現が、少し上から目線なところがあります。また、今の時'
           '代に合っていないところがあります。ご了承ください。'), //1
     ),
+  ],
+);
+
+// 十二運解説
+var jnuk = Column(
+  children: <Widget>[
     const ListTile(
       title: Text('　十二運のの出し方は、十二運表を用います。'), //2
     ),
@@ -683,9 +689,6 @@ var jnuk = Column(
     ),
     const ListTile(
       title: Text('　　　　　　　　　以上'), //119
-    ),
-    const ListTile(
-      title: Text('　　　　　　お疲れ様でした'), //120
     ),
   ],
 );

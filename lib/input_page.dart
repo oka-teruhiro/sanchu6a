@@ -196,9 +196,9 @@ class _InputPageState extends State<InputPage> {
         backgroundColor: Colors.black,
         appBar: AppBar(
           backgroundColor: Colors.black12,
-          title: const Text('天運三柱推命 ver.6.1.29',
+          title: const Text('天運三柱推命 ver.6.1.30',
               style: TextStyle(
-                color: Colors.greenAccent,
+                color: Colors.pinkAccent,
                 fontWeight: FontWeight.bold,
               )),
           actions: [

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:sanch6a/kaisetu/kaisetu_hajimeni.dart';
+import 'package:sanch6a/kaisetu/kaisetu_tuuhenbosi.dart';
+import 'package:sanch6a/kaisetu/kaisetu_zoukan.dart';
 import '../meisiki/meisiki_juuniun_kaisetu.dart';
 class KaisetuPage extends StatefulWidget {
 
@@ -81,18 +84,7 @@ class KaisetuPageState extends State<KaisetuPage> {
                         },
                         body: Column(
                           children: [
-                            const ListTile(
-                              title: Text(
-                                '　私はもともと占い師ではありませんが、師匠より鑑定を許された立場で、'
-                                    '200名以上相談にのりました。本人の鑑定結果をお伝えすると、'
-                                    '更に身近な家族の方のことも鑑定してほしいということで、'
-                                    '瞬く間に2,000名以上の鑑定を行いました。',
-                                style: TextStyle(
-                                  height: 1.5,
-                                ),
-                              ),
-                            ),
-                            //nsu[jnuNo], // Todo: 十二運No.を計算していれる
+                            kaisetuHajimeni,
                             ListTile(
                               trailing: const Icon(Icons.expand_less),
                               onTap: () => _closePanel(0),
@@ -140,15 +132,7 @@ class KaisetuPageState extends State<KaisetuPage> {
                         },
                         body: Column(
                           children: <Widget>[
-                            const ListTile(
-                              title: Text(
-                                '　工事中',
-                                style: TextStyle(
-                                  height: 1.5,
-                                ),
-                              ),
-                            ),
-                            //nsu[jnuNoY],
+                            kaisetuZoukan,
                             ListTile(
                               trailing: const Icon(Icons.expand_less),
                               onTap: () => _closePanel(2),
@@ -172,15 +156,7 @@ class KaisetuPageState extends State<KaisetuPage> {
                         },
                         body: Column(
                           children: <Widget>[
-                            //nsss[unLevel],
-                            const ListTile(
-                              title: Text(
-                                '　工事中',
-                                style: TextStyle(
-                                  height: 1.5,
-                                ),
-                              ),
-                            ),
+                            kaisetuTuuhenbosi,
                             ListTile(
                               trailing: const Icon(Icons.expand_less),
                               onTap: () => _closePanel(3),

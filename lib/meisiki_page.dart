@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sanch6a/kaisetu/kaisetu_page.dart';
 import 'package:sanch6a/meisiki/meisiki_nitikan.dart';
-import '../tuuhenbosi/tuhen_kaisetu.dart';
+//import '../tuuhenbosi/tuhen_kaisetu.dart';
 import 'kansuu.dart';
 import 'meisiki/meisiki_juuniun.dart';
 
@@ -856,15 +856,26 @@ class _MeisikiPageState extends State<MeisikiPage> {
                                               borderRadius:
                                                   BorderRadius.circular(12),
                                               border: Border.all(
-                                                color: Colors.tealAccent,
-                                                width: 1,
+                                                color: Colors.pinkAccent,
+                                                width: 2,
                                               )),
                                           child: Center(
-                                            child: Text(
-                                              '蔵干',
-                                              style: TextStyle(
-                                                fontSize: fs - 2,
-                                                color: Colors.cyanAccent,
+                                            child: TextButton(
+                                              onPressed: () {
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                    builder: (context) =>
+                                                    const KaisetuPage(),
+                                                  ),
+                                                );
+                                              },
+                                              child: Text(
+                                                '蔵干',
+                                                style: TextStyle(
+                                                  fontSize: fs - 4,
+                                                  color: Colors.cyanAccent,
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -1053,7 +1064,7 @@ class _MeisikiPageState extends State<MeisikiPage> {
                                                       context,
                                                       MaterialPageRoute(
                                                         builder: (context) =>
-                                                            const TuhenKaisetu(),
+                                                            const KaisetuPage(),
                                                       ),
                                                     );
                                                   },
@@ -1251,7 +1262,7 @@ class _MeisikiPageState extends State<MeisikiPage> {
                                             child: Text(
                                               '節入り日（ $setuirigatuInt/$setuirinitiInt $setuirijiInt:$setuirihunInt ）から$setuirinitisuu日目',
                                               style: TextStyle(
-                                                fontSize: fs - 8,
+                                                fontSize: fs - 6,
                                                 color: Color(iroWhite),
                                                 fontWeight: FontWeight.bold,
                                               ),

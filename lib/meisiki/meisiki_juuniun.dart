@@ -342,6 +342,7 @@ class MeisikiJuuniunState extends State<MeisikiJuuniun> {
                         },
                         body: Column(
                           children: <Widget>[
+                            jnuk0,
                             jnuk,
                             ListTile(
                               trailing: const Icon(Icons.expand_less),
