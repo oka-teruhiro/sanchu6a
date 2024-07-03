@@ -196,7 +196,7 @@ class _InputPageState extends State<InputPage> {
         backgroundColor: Colors.black,
         appBar: AppBar(
           backgroundColor: Colors.black12,
-          title: const Text('天運三柱推命 ver.6.1.28',
+          title: const Text('天運三柱推命 ver.6.1.29',
               style: TextStyle(
                 color: Colors.greenAccent,
                 fontWeight: FontWeight.bold,
@@ -426,26 +426,6 @@ class _InputPageState extends State<InputPage> {
             ],
           ),
         ),
-        /*Container(
-          color: Colors.amberAccent,
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text('This is PageA'),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => const MyHomePage(currentIndex: 1)),
-                    );
-                  },
-                  child: const Text('鑑定結果'),
-                ),
-              ],
-            ),
-          ),
-        ),*/
       ),
     );
   }

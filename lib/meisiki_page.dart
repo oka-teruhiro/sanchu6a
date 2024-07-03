@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:sanch6a/kaisetu/kaisetu_page.dart';
 import 'package:sanch6a/meisiki/meisiki_nitikan.dart';
 import '../tuuhenbosi/tuhen_kaisetu.dart';
-import '../juuniun/juni_juuniun.dart';
-//import '../juuniun/juni_sihei.dart';
-//import '../juuniun/juni_siou.dart';
-//import '../juuniun/juni_sisui.dart';
 import 'kansuu.dart';
 import 'meisiki/meisiki_juuniun.dart';
 
@@ -1225,7 +1222,7 @@ class _MeisikiPageState extends State<MeisikiPage> {
                                                     context,
                                                     MaterialPageRoute(
                                                       builder: (context) =>
-                                                          const JuniJuuniun(),
+                                                          const KaisetuPage(),
                                                     ));
                                               },
                                             ),

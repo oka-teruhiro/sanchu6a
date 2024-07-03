@@ -3,7 +3,6 @@ import 'package:sanch6a/kansuu.dart';
 import 'package:sanch6a/meisiki/meisiki_juuniun_kyoujaku.dart';
 import 'meisiki_juuniun_kaisetu.dart';
 import 'meisiki_juuniun_syousai.dart';
-//import 'meisiki_juuniun_kaisetu.dart';
 
 class MeisikiJuuniun extends StatefulWidget {
   final int seinenInt;
@@ -35,9 +34,6 @@ class MeisikiJuuniunState extends State<MeisikiJuuniun> {
 
   void _togglePanel(int index) {
     setState(() {
-      //_initPanel(hasira);
-      //for (int i = 0; i < _listExpanded.length; i++ ) {
-      //  _listExpanded[i] = i == index ? !_listExpanded[i] : false;
       if (index == 0) {
         _listExpanded[0] = !_listExpanded[0];
       } else if (index == 1) {
@@ -58,18 +54,6 @@ class MeisikiJuuniunState extends State<MeisikiJuuniun> {
     });
   }
 
-  // どの柱から呼ばれたかによってExpasionPanelを開くための状態を変化させる関数・使い方がわからない
-  void _initPanel(int hasira) {
-    setState(() {
-  if (hasira == 0) {
-  _listExpanded[0] = true;
-  } else if (hasira == 1) {
-  _listExpanded[1] = true;
-  } else {
-  _listExpanded[2] = true;
-  }
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -362,7 +346,6 @@ class MeisikiJuuniunState extends State<MeisikiJuuniun> {
                             ListTile(
                               trailing: const Icon(Icons.expand_less),
                               onTap: () => _closePanel(4),
-                              //child: const Text('閉じる'),
                             ),
                           ],
                         ),
