@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:sanch6a/manual_page.dart';
+import 'package:sanch6a/side_menu.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'main.dart';
 
@@ -190,14 +191,18 @@ class _InputPageState extends State<InputPage> {
 
   @override
   Widget build(BuildContext context) {
+    const drawer = Drawer(
+      child: SideMenu(),
+    );
     return MediaQuery(
       data: MediaQuery.of(context)
           .copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
         backgroundColor: Colors.black,
+        drawer: drawer,
         appBar: AppBar(
           backgroundColor: Colors.black12,
-          title: const Text('天運三柱推命 ver.6.1.31',
+          title: const Text('天運三柱推命 ver.6.1.32',
               style: TextStyle(
                 color: Colors.pinkAccent,
                 fontWeight: FontWeight.bold,
