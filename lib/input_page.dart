@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:sanch6a/manual_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'main.dart';
 
@@ -196,7 +197,7 @@ class _InputPageState extends State<InputPage> {
         backgroundColor: Colors.black,
         appBar: AppBar(
           backgroundColor: Colors.black12,
-          title: const Text('天運三柱推命 ver.6.1.30',
+          title: const Text('天運三柱推命 ver.6.1.31',
               style: TextStyle(
                 color: Colors.pinkAccent,
                 fontWeight: FontWeight.bold,
@@ -247,12 +248,12 @@ class _InputPageState extends State<InputPage> {
                     ),
                   ),
                   onPressed: () {
-                    /*Navigator.push(
+                    Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) =>   const DougaKaisetu3(),
+                        builder: (context) =>   const ManualPage(),
                       ),
-                    );*/
+                    );
                   },
                 ),
               ),
