@@ -202,7 +202,7 @@ class _InputPageState extends State<InputPage> {
         drawer: drawer,
         appBar: AppBar(
           backgroundColor: Colors.black12,
-          title: const Text('天運三柱推命 ver.6.1.32',
+          title: const Text('天運三柱推命 ver.6.1.33',
               style: TextStyle(
                 color: Colors.pinkAccent,
                 fontWeight: FontWeight.bold,
