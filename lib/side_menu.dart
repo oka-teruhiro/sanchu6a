@@ -10,7 +10,9 @@ class SideMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const header = DrawerHeader(
-      child: Text('メニュー'),
+      child: Text('天運三柱推命',
+
+      ),
     );
     final tileA = ListTile(
       title: const Text('プロフィール'),

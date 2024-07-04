@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 //import '../osirase/profile.dart';
 import '../osirase/update1.dart';
 import '../osirase/update2.dart';
@@ -282,7 +283,14 @@ class Update extends StatelessWidget {
                   ),
                 ),*/
                 ElevatedButton(
-                  child: const Text('戻る'),
+                  child: const Text(
+                    '戻る',
+                    style: TextStyle(
+                      color: Colors.greenAccent,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
+                  ),
                   onPressed: () {
                     Navigator.pop(context);
                   },

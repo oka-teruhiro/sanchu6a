@@ -20,7 +20,7 @@ class Profile extends StatelessWidget {
       body: ListView(
         children: <Widget>[
           ListTile(
-            title: Image.asset('images/main/taxi.png'),
+            title: Image.asset('assets/images/main/taxi.png'),
           ),
           const ListTile(
             title: Text(
@@ -121,7 +121,12 @@ class Profile extends StatelessWidget {
             title: Text(''),
           ),
           ElevatedButton(
-            child: const Text('戻る'),
+            child: const Text('戻る',
+              style: TextStyle(
+                color: Colors.greenAccent,
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),),
             onPressed: () {
               Navigator.pop(context);
             },
