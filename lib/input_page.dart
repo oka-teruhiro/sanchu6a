@@ -7,7 +7,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'main.dart';
 
 class InputPage extends StatefulWidget {
-  const InputPage({super.key});
+  const InputPage({
+    super.key,
+    required this.apptitle, // 6.1.35
+  });
+
+  final String apptitle;
 
   @override
   State<InputPage> createState() => _InputPageState();
@@ -191,8 +196,10 @@ class _InputPageState extends State<InputPage> {
 
   @override
   Widget build(BuildContext context) {
-    const drawer = Drawer(
-      child: SideMenu(),
+     var drawer = Drawer(
+      child: SideMenu(
+        apptitle: widget.apptitle, // todo 6.1.35
+      ),
     );
     return MediaQuery(
       data: MediaQuery.of(context)
@@ -202,24 +209,11 @@ class _InputPageState extends State<InputPage> {
         drawer: drawer,
         appBar: AppBar(
           backgroundColor: Colors.black12,
-          title: const Text('天運三柱推命 ver.6.1.34',
-              style: TextStyle(
+          title: Text(widget.apptitle,
+              style: const TextStyle(
                 color: Colors.pinkAccent,
                 fontWeight: FontWeight.bold,
               )),
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.navigate_next),
-              tooltip: 'Next page',
-              onPressed: () {
-                /*Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const Update(),
-                    ));*/
-              },
-            ),
-          ],
         ),
         body: Center(
           child: Column(
@@ -371,6 +365,7 @@ class _InputPageState extends State<InputPage> {
                                           builder: (context) =>
                                               MyHomePage(
                                                   currentIndex: 1,
+                                                apptitle: widget.apptitle, // todo
                                                 seinenInt: seiNen,   // 6.1.2
                                                 seigatuInt: seiGatu, // 6.1.2
                                                 seinitiInt: seiNiti, // 6.1.2

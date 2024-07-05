@@ -56,6 +56,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
+    - assets/images/icon/icon_uranai_x512.png
     - assets/images/main/gogyou1.png
     - assets/images/main/gogyou2.jpg
     - assets/images/main/gogyou3.jpg

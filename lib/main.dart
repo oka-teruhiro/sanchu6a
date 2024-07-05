@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-//import 'package:sanch6a/meisiki/meisiki_juuniun.dart';
 import 'package:sanch6a/meisiki_page.dart';
 import 'package:sanch6a/page_g.dart';
 import 'package:sanch6a/seikaku_page.dart';
@@ -34,6 +33,7 @@ class MyApp extends StatelessWidget {
       title: '天運三柱推命',
       theme: ThemeData.dark(),
       home: const MyHomePage(
+        apptitle:'天運三柱推命ver.6.1.35', // Todo: 修正したらバージョンをあげる
         seinenInt: 2000, // 6.1.2
         seigatuInt: 1, // 6.1.2
         seinitiInt: 1, // 6.1.2
@@ -45,6 +45,7 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   final int currentIndex;
+  final String apptitle; //6.1.35
   final int seinenInt; // 6.1.2
   final int seigatuInt; // 6.1.2
   final int seinitiInt; // 6.1.2
@@ -53,6 +54,7 @@ class MyHomePage extends StatefulWidget {
   const MyHomePage({
     super.key,
     this.currentIndex = 0,
+    required this.apptitle, // 6.1.35
     required this.seinenInt, // 6.1.2
     required this.seigatuInt, // 6.1.2
     required this.seinitiInt, // 6.1.2
@@ -89,7 +91,9 @@ class MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     final List<Widget> children = [
-      const InputPage(),
+      InputPage(
+        apptitle: widget.apptitle, // 6.1.35
+      ),
       KyouUnseiPage(
         seinenInt: _seinenInt, // 6.1.2
         seigatuInt: _seigatuInt, // 6.1.2
@@ -121,13 +125,6 @@ class MyHomePageState extends State<MyHomePage> {
         seinitiInt: _seinitiInt, // 6.1.8
       ),
       const PageG(),//todo 相性ページはここに追加
-      /*MeisikiJuuniun(
-        seinenInt: _seinenInt, // 6.1.15
-        seigatuInt: _seigatuInt, // 6.1.15
-        seinitiInt: _seinitiInt, // 6.1.15
-        aiteInt: _aiteInt,      // 6.1.16
-        hasira: 0,   // todo 後で削除が必要
-      ),*/
     ];
     return Scaffold(
       body: children[_currentIndex],
