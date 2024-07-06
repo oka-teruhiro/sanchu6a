@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:sanch6a/manual_page.dart';
+import 'package:sanch6a/quiz/quiz_page_001.dart';
 import 'package:sanch6a/side_menu.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'main.dart';
@@ -412,12 +413,14 @@ class _InputPageState extends State<InputPage> {
                   ),
                   onPressed: () {
                     //TODO: 易占検定画面へ飛ぶ
-                    /*Navigator.push(
+                    Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => QuizPage001(),
+                        builder: (context) => QuizPage001(
+                          apptitle: widget.apptitle,
+                        ),
                       ),
-                    );*/
+                    );
                   },
                 ),
               ),

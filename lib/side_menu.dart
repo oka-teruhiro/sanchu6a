@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sanch6a/manual_page.dart';
 import 'package:sanch6a/osirase/profile.dart';
+import 'package:sanch6a/quiz/quiz_page_001.dart';
 import 'osirase/update.dart';
 
 class SideMenu extends StatelessWidget {
@@ -62,10 +63,21 @@ class SideMenu extends StatelessWidget {
              ));
        },
      );
+     final tileD = ListTile(
+       title: const Text('易占クイズ'),
+       onTap: () {
+         Navigator.push(
+             context,
+             MaterialPageRoute(
+               builder: (context) => QuizPage001(apptitle: apptitle),
+             ));
+       },
+     );
     final list = ListView(
       children: [
         header,
         tileC,
+        tileD,
         tileB,
         tileA,
       ],
