@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:sanch6a/quiz/quiz_page_002.dart';
 import '../input_page.dart';
 //import '../main.dart';
 //import '../quiz/quiz_page_002.dart';
 
 class AnswerPage001 extends StatelessWidget {
-  const AnswerPage001({super.key});
+  final String apptitle;
+  const AnswerPage001({
+    super.key,
+    required this.apptitle,
+  });
 
   final bool quizLast = false;
 
@@ -37,33 +42,46 @@ class AnswerPage001 extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.blue,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(4.0),
+                                  ),
+                                ),
                                 child: const Text('<< ホームページ'),
                                 onPressed: () {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => const InputPage(
-                                           apptitle: '',
+                                        builder: (context) => InputPage(
+                                           apptitle: apptitle,
                                         ),
                                       ));
                                 },
                               ),
                               ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.blue,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(4.0),
+                                  ),
+                                ),
                                 child: const Text('次の問題 >'),
                                 onPressed: () {
                                   if (quizLast == true) {
                                     //_showQuizLast(context);
                                   } else {
                                     //quizNoMoji = (quizNo + 2).toString();
-                                    /*Navigator.push(
+                                    Navigator.push(
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) => QuizPage002(
+                                          apptitle: apptitle,
                                             //quizNoMoji: quizNoMoji,
                                             //bestQuizNoMoji: bestQuizNoMoji,
                                             ),
                                       ),
-                                    );*/
+                                    );
                                   }
                                 },
                               ),
