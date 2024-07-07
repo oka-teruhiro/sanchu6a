@@ -1,34 +1,31 @@
 import 'package:flutter/material.dart';
 import '../input_page.dart';
-import '../quiz/quiz_page_002.dart';
-import '../quiz/answer_page_001.dart';
+import '../quiz/answer_page_007.dart';
 
 // ignore: must_be_immutable
-class QuizPage001 extends StatelessWidget {
-  final String apptitle; // 6.1.36
-
-  QuizPage001({
+class QuizPage007 extends StatelessWidget {
+  final String apptitle;
+  QuizPage007({
     super.key,
-    required this.apptitle, // 6.1.36
+    required this.apptitle,
   });
 
-  bool quizLast = false;
+  bool quizLast = true;
   int seikai = 2;
   String kotae = 'x';
-  String kotaeMoji = 'a';
+  String kotaeMoji = '全問終了しました。次のアップデートでさらに問題を追加しますので、またチャレンジしてください。お疲れ様でした。';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('1. 易とは'),
+          title: const Text('7. 季節と五行'),
         ),
         body: Container(
             color: Colors.black,
-            child: Column(children: [
+            child: ListView(children: <Widget>[
               ListTile(
-                title:
-                    Image.asset('assets/images/quiz/Q001/Q001.png'), // 6.1.37
+                title: Image.asset('assets/images/quiz/Q007/Q007.png'),
               ),
               SizedBox(
                 height: 60,
@@ -51,12 +48,10 @@ class QuizPage001 extends StatelessWidget {
                           }
                           _showKotae(context);
                         },
-                        child: const Text(
-                          '1',
+                        child: const Text('1',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                          ),
-                        )),
+                          ),)),
                     ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.blue,
@@ -72,12 +67,10 @@ class QuizPage001 extends StatelessWidget {
                           }
                           _showKotae(context);
                         },
-                        child: const Text(
-                          '2',
+                        child: const Text('2',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                          ),
-                        )),
+                          ),)),
                     ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.blue,
@@ -93,12 +86,10 @@ class QuizPage001 extends StatelessWidget {
                           }
                           _showKotae(context);
                         },
-                        child: const Text(
-                          '3',
+                        child: const Text('3',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                          ),
-                        )),
+                          ),)),
                   ],
                 ),
               ),
@@ -118,12 +109,10 @@ class QuizPage001 extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(4.0),
                                 ),
                               ),
-                              child: const Text(
-                                '<< ホームページ',
+                              child: const Text('<< ホームページ',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                ),
-                              ),
+                                ),),
                               onPressed: () {
                                 Navigator.push(
                                     context,
@@ -141,27 +130,24 @@ class QuizPage001 extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(4.0),
                                 ),
                               ),
+                              child: const Text('次の問題 >',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),),
                               onPressed: () {
                                 if (quizLast == true) {
-                                  //_showQuizLast(context);
+                                  _showQuizLast(context);
                                 } else {
-                                  //quizNoMoji = (quizNo + 2).toString();
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => QuizPage002(
+                                      builder: (context) => QuizPage007(
                                         apptitle: apptitle,
-                                      ),
+                                          ),
                                     ),
                                   );
                                 }
                               },
-                              child: const Text(
-                                '次の問題 >',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
                             ),
                           ])))
             ])));
@@ -200,9 +186,9 @@ class QuizPage001 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => AnswerPage001(
+                                builder: (context) => AnswerPage007(
                                   apptitle: apptitle,
-                                ),
+                                    ),
                               ),
                             );
                           } else {
@@ -223,14 +209,75 @@ class QuizPage001 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => AnswerPage001(
+                                builder: (context) => AnswerPage007(
                                   apptitle: apptitle,
-                                ),
+                                    ),
                               ),
                             );
                           } else {
                             Navigator.of(context).pop();
                           }
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          );
+        });
+  }
+
+  void _showQuizLast(BuildContext context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext context) {
+          return Container(
+            color: Colors.blue,
+            height: 250,
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 230,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      TextButton(
+                        child: Text(
+                          kotaeMoji,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                          ),
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => InputPage(
+                                apptitle: apptitle,
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                      TextButton(
+                        child: const Text(
+                          'OK',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                          ),
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => InputPage(
+                                apptitle: apptitle,
+                              ),
+                            ),
+                          );
                         },
                       ),
                     ],

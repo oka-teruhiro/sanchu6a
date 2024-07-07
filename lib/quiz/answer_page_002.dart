@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:sanch6a/quiz/quiz_page_002.dart';
 import '../input_page.dart';
+import '../quiz/quiz_page_003.dart';
 
-class AnswerPage001 extends StatelessWidget {
+class AnswerPage002 extends StatelessWidget {
   final String apptitle;
-  const AnswerPage001({
+  const AnswerPage002({
     super.key,
     required this.apptitle,
   });
@@ -15,20 +15,14 @@ class AnswerPage001 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('1. 易とは'),
+          title: const Text('2. 占いとは'),
         ),
         body: Container(
             color: Colors.black,
             child: ListView(children: <Widget>[
               Column(children: [
                 ListTile(
-                  title: Image.asset('assets/images/quiz/Q001/A0010.png'),
-                ),
-                ListTile(
-                  title: Image.asset('assets/images/quiz/Q001/A0011.png'),
-                ),
-                ListTile(
-                  title: Image.asset('assets/images/quiz/Q001/A0012.png'),
+                  title: Image.asset('assets/images/quiz/Q002/A0020.png'),
                 ),
                 SizedBox(
                     height: 60,
@@ -55,7 +49,7 @@ class AnswerPage001 extends StatelessWidget {
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) => InputPage(
-                                           apptitle: apptitle,
+                                          apptitle: apptitle,
                                         ),
                                       ));
                                 },
@@ -74,11 +68,10 @@ class AnswerPage001 extends StatelessWidget {
                                 onPressed: () {
                                   if (quizLast == true) {
                                   } else {
-                                    //quizNoMoji = (quizNo + 2).toString();
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => QuizPage002(
+                                        builder: (context) => QuizPage003(
                                           apptitle: apptitle,
                                             ),
                                       ),

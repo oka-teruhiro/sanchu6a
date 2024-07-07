@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import '../input_page.dart';
-import '../quiz/quiz_page_002.dart';
-import '../quiz/answer_page_001.dart';
+import '../quiz/quiz_page_003.dart';
+import 'answer_page_002.dart';
 
 // ignore: must_be_immutable
-class QuizPage001 extends StatelessWidget {
-  final String apptitle; // 6.1.36
+class QuizPage002 extends StatelessWidget {
+  final String apptitle; // 6.1.37
 
-  QuizPage001({
+  QuizPage002({
     super.key,
-    required this.apptitle, // 6.1.36
+    required this.apptitle, // 6.1.37
   });
 
   bool quizLast = false;
-  int seikai = 2;
+  int seikai = 3;
   String kotae = 'x';
   String kotaeMoji = 'a';
 
@@ -21,14 +21,13 @@ class QuizPage001 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('1. 易とは'),
+          title: const Text('2. 占いとは'),
         ),
         body: Container(
             color: Colors.black,
             child: Column(children: [
               ListTile(
-                title:
-                    Image.asset('assets/images/quiz/Q001/Q001.png'), // 6.1.37
+                title: Image.asset('assets/images/quiz/Q002/Q002.png'), // 6.1.37
               ),
               SizedBox(
                 height: 60,
@@ -51,12 +50,10 @@ class QuizPage001 extends StatelessWidget {
                           }
                           _showKotae(context);
                         },
-                        child: const Text(
-                          '1',
+                        child: const Text('1',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                          ),
-                        )),
+                          ),)),
                     ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.blue,
@@ -72,12 +69,10 @@ class QuizPage001 extends StatelessWidget {
                           }
                           _showKotae(context);
                         },
-                        child: const Text(
-                          '2',
+                        child: const Text('2',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                          ),
-                        )),
+                          ),)),
                     ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.blue,
@@ -93,12 +88,10 @@ class QuizPage001 extends StatelessWidget {
                           }
                           _showKotae(context);
                         },
-                        child: const Text(
-                          '3',
+                        child: const Text('3',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                          ),
-                        )),
+                          ),)),
                   ],
                 ),
               ),
@@ -118,12 +111,10 @@ class QuizPage001 extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(4.0),
                                 ),
                               ),
-                              child: const Text(
-                                '<< ホームページ',
+                              child: const Text('<< ホームページ',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                ),
-                              ),
+                                ),),
                               onPressed: () {
                                 Navigator.push(
                                     context,
@@ -141,33 +132,32 @@ class QuizPage001 extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(4.0),
                                 ),
                               ),
+                              child: const Text('次の問題 >',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),),
                               onPressed: () {
                                 if (quizLast == true) {
-                                  //_showQuizLast(context);
                                 } else {
                                   //quizNoMoji = (quizNo + 2).toString();
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => QuizPage002(
+                                      builder: (context) => QuizPage003(
                                         apptitle: apptitle,
-                                      ),
+                                          ),
                                     ),
                                   );
                                 }
                               },
-                              child: const Text(
-                                '次の問題 >',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
                             ),
                           ])))
             ])));
   }
 
   _showKotae(BuildContext context) {
+    //var kotae = 'o';
+    //var kotaeMoji = '?';
     if (kotae == 'o') {
       kotaeMoji = 'すばらしい！正解です。';
     } else {
@@ -200,9 +190,8 @@ class QuizPage001 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => AnswerPage001(
-                                  apptitle: apptitle,
-                                ),
+                                builder: (context) => AnswerPage002(apptitle: apptitle,
+                                    ),
                               ),
                             );
                           } else {
@@ -223,9 +212,9 @@ class QuizPage001 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => AnswerPage001(
+                                builder: (context) => AnswerPage002(
                                   apptitle: apptitle,
-                                ),
+                                    ),
                               ),
                             );
                           } else {
