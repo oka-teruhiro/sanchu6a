@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
       title: '天運三柱推命',
       theme: ThemeData.dark(),
       home: const MyHomePage(
-        apptitle:'天運三柱推命 ver6.1.40', // Todo: 修正したらバージョンをあげる
+        apptitle:'天運三柱推命 ver6.1.41', // Todo: 修正したらバージョンをあげる
         seinenInt: 2000, // 6.1.2
         seigatuInt: 1, // 6.1.2
         seinitiInt: 1, // 6.1.2
@@ -124,7 +124,7 @@ class MyHomePageState extends State<MyHomePage> {
         seigatuInt: _seigatuInt, // 6.1.8
         seinitiInt: _seinitiInt, // 6.1.8
       ),
-      const PageG(),//todo 相性ページはここに追加
+      //const PageG(),//todo 相性ページはここに追加
     ];
     return Scaffold(
       body: children[_currentIndex],
@@ -162,10 +162,10 @@ class MyHomePageState extends State<MyHomePage> {
                   icon: Icon(Icons.pie_chart),
                   label: 'ﾁｬｰﾄ',
                 ),
-                BottomNavigationBarItem(  //todo 相性ページはここに追加
+                /*BottomNavigationBarItem(  //todo 相性ページはここに追加
                   icon: Icon(Icons.supervisor_account),
                   label: '相性',
-                ),
+                ),*/
               ],
             ),
     );

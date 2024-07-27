@@ -1,7 +1,7 @@
 name: sanch6a
 description: "三柱推命ver6"
 publish_to: 'none' # pub.dev に公開したい場合はこの行を削除してください。
-version: 6.1.40+29
+version: 6.1.41+29
 
 environment:
   sdk: '>=3.4.1 <4.0.0'
@@ -57,6 +57,9 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
+    - assets/images/icon/icon_uranai_x1024.png
+    - assets/images/main/hai1.jpg
+    - assets/images/main/hai2.jpg
     - assets/images/main/gogyou1.png
     - assets/images/main/gogyou2.jpg
     - assets/images/main/gogyou3.jpg

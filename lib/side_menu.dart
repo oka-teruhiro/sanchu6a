@@ -20,7 +20,7 @@ class SideMenu extends StatelessWidget {
           ListTile(
             title: SizedBox(
               height: 70,
-                child: Image.asset('assets/images/icon/icon_uranai_x512.png'),
+                child: Image.asset('assets/images/icon/icon_uranai_x1024.png'),
             ),
           ),
           Text(
