@@ -1,7 +1,7 @@
 name: sanch6a
 description: "三柱推命ver6"
 publish_to: 'none' # pub.dev に公開したい場合はこの行を削除してください。
-version: 6.1.44+31
+version: 6.1.45+32
 
 environment:
   sdk: '>=3.4.1 <4.0.0'
@@ -35,11 +35,16 @@ flutter_native_splash:
   image: "assets/images/icon/icon_uranai_x1024.png"
   color: "#000000"
   color_dark: "#000000"
-  #android_12:
-    #icon_background_color: '#000000'
-    #image: 'assets/images/splash_android12.png'
-    #icon_background_color_dark: '#000000'
-    #image_dark: 'assets/images/splash_android12.png'
+  android: true
+  ios: true
+  android_12:
+    icon_background_color: '#000000'
+    image: "assets/images/icon/icon_uranai_x1024.png"
+    icon_background_color_dark: '#000000'
+    image_dark: "assets/images/icon/icon_uranai_x1024.png"
+
+
+
 
   #  #アプリアイコン作成用
 #  flutter_launcher_icons: ^0.13.1
